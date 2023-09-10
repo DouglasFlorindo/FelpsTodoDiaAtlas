@@ -1,0 +1,51 @@
+:root {
+    --escalaFelps: 1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100dvh;
+    height: 100dvh;
+    border: solid 3px black;
+    display: flex;
+    justify-content: center;
+}
+
+section {
+    margin-top: 50px;
+    width: 60%;
+    height: 80%;
+    border: 3px solid blue;
+    position: relative;
+}
+
+.felps {
+    scale: var(--escalaFelps);
+    position: absolute;
+    transform: translate(-50%, -50%);
+    cursor: pointer;   
+    transition: scale 0.1s ease-in-out;
+}
+
+dialog {
+    width: 30%;
+    height: auto;
+    right: 0;
+    
+}
+
+#modalWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    width: 3rem;
+}

@@ -1,0 +1,39 @@
+[
+    {
+        "id": 0,
+        "nome": "Anão",
+        "numero": 1,
+        "data": "01/01",
+        "artista": "Moss",
+        "posicao": ["6.25%", "2.5%"],
+        "arquivo": "1Anao"
+    },
+    {
+        "id": 1,
+        "nome": "Picles",
+        "numero": 2,
+        "data": "02/01",
+        "artista": "Moss",
+        "posicao": ["1.5%", "93.75%"],
+        "arquivo": "2Picles"
+    },
+    {
+        "id": 2,
+        "nome": "Maid",
+        "numero": 3,
+        "data": "03/01",
+        "artista": "Moss",
+        "posicao": ["29.5%", "90.5%"],
+        "arquivo": "3Maid"
+    },
+    {
+        "id": 106,
+        "nome": "Especial de Páscoa",
+        "numero": 107,
+        "data": "17/04",
+        "artista": "Moss",
+        "posicao": ["98.5%", "50%"],
+        "arquivo": "107EspecialDePascoa"
+    }
+]
+
