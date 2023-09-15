@@ -1,5 +1,7 @@
 :root {
     --escalaFelps: 1;
+    --corPrincipal: #ff3c64;
+    --margem: 30px;
 }
 
 * {
@@ -11,41 +13,120 @@
 body {
     min-height: 100dvh;
     height: 100dvh;
-    border: solid 3px black;
+    overflow: hidden;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
-section {
-    margin-top: 50px;
+h1, p {
+    font-family: 'Comic Sans MS';
+}
+
+header {
+    background: var(--corPrincipal);
+    min-height: 5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header h1 {
+    color: white;
+}
+
+footer {
+    height: 2.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer p {
+    color: #797979;
+    font-size: 1.25rem;
+    padding: var(--margem);
+}
+
+section#areaAtlas {
+    margin: var(--margem);
     width: 60%;
-    height: 80%;
+    height: 100%;
     border: 3px solid blue;
     position: relative;
+}
+
+div#areaBotoes {
+    position: absolute;
+    right: 0;
+    margin-top: calc(5rem + var(--margem));
+    margin-right: var(--margem);
 }
 
 .felps {
     scale: var(--escalaFelps);
     position: absolute;
-    transform: translate(-50%, -50%);
-    cursor: pointer;   
-    transition: scale 0.1s ease-in-out;
+    cursor: pointer;
+    transition: filter 0.1s ease-in-out, scale 0.1s ease-in-out;
 }
 
-dialog {
+.felps:hover {
+    filter: brightness(1.5); 
+    z-index: 5;
+    scale: calc(var(--escalaFelps) + 0.05);
+}
+
+.felpsCatalogo {
+    position: relative;
+    height: 100%;
+}
+
+#infoModal {
     width: 30%;
     height: auto;
     right: 0;
-    
+
 }
 
-#modalWrapper {
+#infoModal div.wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+#catalogoModal {
+    width: 60%;
+    height: 80dvh;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    overflow: scroll;
+}
+
+#catalogoModal div.wrapper {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 8rem);
+    padding: 5px;
+}
+
+div.itemCatalogo {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    transition: scale 0.2s ease-in-out;
+    border: 2px solid blue;
+    border-radius: 5px;
+}
+
 button {
     width: 3rem;
+    height: 3rem;
+    border-radius: 1.5rem;
 }
