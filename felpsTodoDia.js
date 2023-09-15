@@ -77,4 +77,5 @@ function alterarEscala(x) {
             break
     }
 
+    
 };
