@@ -34,7 +34,7 @@ async function populateCatalogo() {
         novoDiv.className = "itemCatalogo";
         novoImg.id = felps.id;
         novoImg.classList = "felpsCatalogo clicavel";
-        novoImg.src = `../FelpsTodoDiaAtlas/Imagens/${felps.arquivo}.png`;
+        novoImg.src = `../FelpsTodoDiaAtlas/Imagens/${felps.arquivo}HRes.png`;
         novoImg.alt = felps.nome;
         novoImg.title = felps.nome;
         novoImg.setAttribute("onClick", `mostrarModal(${felps.id})`);
@@ -50,12 +50,14 @@ async function mostrarModal(felpsId) {
     const response = await fetch("felps.json");
     const felpsInfo = await response.json();
 
-    document.getElementById("tituloModal").textContent = `${felpsInfo[felpsId].numero}. ${felpsInfo[felpsId].nome}`;
-    document.getElementById("felpsHRes").src = `../FelpsTodoDiaAtlas/Imagens/${felpsInfo[felpsId].arquivo}HRes.png`;
-    document.getElementById("felpsHRes").alt = felpsInfo[felpsId].nome;
-    document.getElementById("felpsHRes").title = felpsInfo[felpsId].nome;
-    document.getElementById("subInfoModal").textContent = `${felpsInfo[felpsId].data} • ${felpsInfo[felpsId].artista}`
-    document.getElementById("infoModal").showModal()
+    document.querySelector("#tituloModal").textContent = `${felpsInfo[felpsId].numero}. ${felpsInfo[felpsId].nome}`;
+    document.querySelector("#felpsHRes").src = `../FelpsTodoDiaAtlas/Imagens/${felpsInfo[felpsId].arquivo}HRes.png`;
+    document.querySelector("#felpsHRes").alt = felpsInfo[felpsId].nome;
+    document.querySelector("#felpsHRes").title = felpsInfo[felpsId].nome;
+    document.querySelector("#subInfoModal").textContent = `${felpsInfo[felpsId].data} • ${felpsInfo[felpsId].artista}`
+    document.querySelector("#infoModal").showModal()
+    document.querySelector("#linkTwitter").setAttribute("href", `${felpsInfo[felpsId].tweet}`)
+    document.querySelector("#linkOriginal").setAttribute("href", `${felpsInfo[felpsId].original}`)
 };
 
 populateAtlas();

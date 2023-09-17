@@ -19,7 +19,9 @@ body {
     align-items: center;
 }
 
-h1, p, button {
+h1,
+p,
+button {
     font-family: 'Comic Sans MS';
 }
 
@@ -47,12 +49,11 @@ button {
     border-radius: 1.5rem;
     background: var(--corPrincipal);
     border: 0;
-    box-shadow: rgba(0, 0, 0, 0.5) 0 5px 10px;
 }
 
 /* ========Estilos específicos========== */
 
-header h1, #catalogoModal h1 {
+header h1 {
     color: white;
 }
 
@@ -91,6 +92,7 @@ div#areaBotoes {
 }
 
 #catalogoModal {
+    border-radius: 15px;
     width: 60%;
     height: 100%;
     position: absolute;
@@ -99,20 +101,25 @@ div#areaBotoes {
     top: 50%;
     overflow: scroll;
     background: var(--corPrincipal);
-    -ms-overflow-style: none; 
-    scrollbar-width: none;
+    border: 0;
 }
 
 #catalogoModal header {
-    color: white;
-    position: relative;
-    background: transparent;
+    z-index: 10;
+    top: 0;
+    position: sticky;
+    background: white;
     height: auto;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: var(--margem);
+}
+
+#catalogoModal header h1 {
+    color: var(--corPrincipal);
+
 }
 
 #catalogoModal button {
@@ -122,16 +129,12 @@ div#areaBotoes {
     box-shadow: 0 0 0 0;
 }
 
-#catalogoModal::-webkit-scrollbar {
-    display: none;
-}
-
 #catalogoModal div.wrapper {
     width: 100%;
     height: 100dvh;
     display: grid;
     grid-template-columns: repeat(auto-fill, 8rem);
-    gap: 0.25rem;
+    gap: 0.5rem;
     padding: var(--margem);
     justify-content: space-between;
 }
@@ -142,7 +145,7 @@ div#areaBotoes {
 }
 
 .clicavel:hover {
-    filter: brightness(1.5); 
+    filter: brightness(1.5);
     z-index: 5;
     scale: 1.1;
 }
@@ -162,6 +165,8 @@ div#areaBotoes {
     width: 100%;
     aspect-ratio: 1 / 1;
     transition: scale 0.2s ease-in-out;
+    object-fit: cover;
+
 }
 
 .felpsCatalogo {
