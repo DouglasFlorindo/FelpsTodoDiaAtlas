@@ -27,7 +27,7 @@ button {
 
 header {
     background: var(--corPrincipal);
-    min-height: 5rem;
+    padding: var(--margem);
     width: 100%;
     display: flex;
     justify-content: center;
