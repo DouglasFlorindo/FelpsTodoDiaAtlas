@@ -137,6 +137,7 @@ div#areaBotoes {
     gap: 0.5rem;
     padding: var(--margem);
     justify-content: space-between;
+    overflow-x: hidden
 }
 
 .clicavel {
