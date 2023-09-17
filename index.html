@@ -14,15 +14,18 @@
     </header>
 
     <div id="areaBotoes">
-        <button type="button" onclick="alterarEscala(true)">+</button>
-        <button type="button" onclick="alterarEscala(false)">-</button>
-        <button type="button" id="botaoCatalogo">Catálogo</button>
+        <button type="button" onclick="alterarEscala(true)" class="clicavel"
+            title="Aumentar tamanho das imagens">+</button>
+        <button type="button" onclick="alterarEscala(false)" class="clicavel"
+            title="Diminuir tamanho das imagens">-</button>
+        <button type="button" id="abrirCatalogo" class="clicavel" title="Abrir catálogo">Catálogo</button>
     </div>
 
     <section id="areaAtlas">
     </section>
 
     <dialog id="infoModal">
+        <button type="button" id="fecharInfo" class="clicavel">X</button>
         <div class="wrapper">
             <h1 id="tituloModal"></h1>
             <img id="felpsHRes">
@@ -31,6 +34,11 @@
     </dialog>
 
     <dialog id="catalogoModal">
+        <header>
+            <h1>Catálogo</h1>
+            <button type="button" id="fecharCatalogo" class="clicavel">X</button>
+        </header>
+
         <div id="areaCatalogo" class="wrapper">
         </div>
     </dialog>
@@ -38,7 +46,7 @@
     <footer>
         <p>Clique ou arraste um Felps :D</p>
     </footer>
-    
+
     <script src="felpsTodoDia.js"></script>
 </body>
 

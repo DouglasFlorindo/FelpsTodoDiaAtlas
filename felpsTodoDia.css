@@ -19,7 +19,7 @@ body {
     align-items: center;
 }
 
-h1, p {
+h1, p, button {
     font-family: 'Comic Sans MS';
 }
 
@@ -32,29 +32,40 @@ header {
     align-items: center;
 }
 
-header h1 {
-    color: white;
-}
-
 footer {
     height: 2.5rem;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: var(--margem);
+}
+
+button {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1.5rem;
+    background: var(--corPrincipal);
+    border: 0;
+    box-shadow: rgba(0, 0, 0, 0.5) 0 5px 10px;
+}
+
+/* ========Estilos específicos========== */
+
+header h1, #catalogoModal h1 {
+    color: white;
 }
 
 footer p {
     color: #797979;
     font-size: 1.25rem;
-    padding: var(--margem);
+    z-index: 10;
 }
 
 section#areaAtlas {
     margin: var(--margem);
     width: 60%;
     height: 100%;
-    border: 3px solid blue;
     position: relative;
 }
 
@@ -63,24 +74,6 @@ div#areaBotoes {
     right: 0;
     margin-top: calc(5rem + var(--margem));
     margin-right: var(--margem);
-}
-
-.felps {
-    scale: var(--escalaFelps);
-    position: absolute;
-    cursor: pointer;
-    transition: filter 0.1s ease-in-out, scale 0.1s ease-in-out;
-}
-
-.felps:hover {
-    filter: brightness(1.5); 
-    z-index: 5;
-    scale: calc(var(--escalaFelps) + 0.05);
-}
-
-.felpsCatalogo {
-    position: relative;
-    height: 100%;
 }
 
 #infoModal {
@@ -99,34 +92,81 @@ div#areaBotoes {
 
 #catalogoModal {
     width: 60%;
-    height: 80dvh;
+    height: 100%;
     position: absolute;
     transform: translate(-50%, -50%);
     left: 50%;
     top: 50%;
     overflow: scroll;
+    background: var(--corPrincipal);
+    -ms-overflow-style: none; 
+    scrollbar-width: none;
+}
+
+#catalogoModal header {
+    color: white;
+    position: relative;
+    background: transparent;
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--margem);
+}
+
+#catalogoModal button {
+    position: absolute;
+    right: 0;
+    margin-right: var(--margem);
+    box-shadow: 0 0 0 0;
+}
+
+#catalogoModal::-webkit-scrollbar {
+    display: none;
 }
 
 #catalogoModal div.wrapper {
     width: 100%;
-    height: 100%;
+    height: 100dvh;
     display: grid;
     grid-template-columns: repeat(auto-fill, 8rem);
-    padding: 5px;
+    gap: 0.25rem;
+    padding: var(--margem);
+    justify-content: space-between;
 }
 
-div.itemCatalogo {
+.clicavel {
+    cursor: pointer;
+    transition: filter 0.1s ease-in-out, scale 0.1s ease-in-out;
+}
+
+.clicavel:hover {
+    filter: brightness(1.5); 
+    z-index: 5;
+    scale: 1.1;
+}
+
+.felps {
+    scale: var(--escalaFelps);
+    position: absolute;
+}
+
+.felps.clicavel:hover {
+    scale: calc(var(--escalaFelps) + 0.05)
+}
+
+.itemCatalogo {
     display: flex;
     justify-content: center;
     width: 100%;
     aspect-ratio: 1 / 1;
     transition: scale 0.2s ease-in-out;
-    border: 2px solid blue;
-    border-radius: 5px;
 }
 
-button {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 1.5rem;
+.felpsCatalogo {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    height: 8rem;
 }
