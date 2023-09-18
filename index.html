@@ -13,37 +13,50 @@
         <h1>Atlas Felps Todo Dia</h1>
     </header>
 
-    <div id="areaBotoes">
-        <button type="button" onclick="alterarEscala(true)" class="clicavel"
-            title="Aumentar tamanho das imagens">+</button>
-        <button type="button" onclick="alterarEscala(false)" class="clicavel"
-            title="Diminuir tamanho das imagens">-</button>
-        <button type="button" id="abrirCatalogo" class="clicavel" title="Abrir catálogo">Catálogo</button>
-    </div>
+    <section id="sectionPrincipal">
+        <div id="divBotoes">
+            <button type="button" onclick="alterarEscala(true)" class="clicavel"
+                title="Aumentar tamanho das imagens"><img src="Icones/aumentar.png"></button>
+            <button type="button" onclick="alterarEscala(false)" class="clicavel"
+                title="Diminuir tamanho das imagens"><img src="Icones/diminuir.png"></button>
+            <button type="button" id="abrirCatalogo" class="clicavel" title="Abrir catálogo"><img src="Icones/catalogo.png"></button>
+        </div>
 
-    <section id="areaAtlas">
+        <div id="areaAtlas"></div>
     </section>
 
     <dialog id="infoModal">
-        <button type="button" id="fecharInfo" class="clicavel">X</button>
-        <div class="wrapper">
-            <h1 id="tituloModal"></h1>
-            <img id="felpsHRes">
-            <p id="subInfoModal"></p>
-            <a id="linkTwitter" target="_blank" ><button class="clicavel" type="button">twitter</button></a>
-            <a id="linkOriginal" target="_blank" ><button class="clicavel" type="button">original</button></a>
+        <div class="grid">
+            <div class="esquerdo">
+                <header>
+                    <h1 id="tituloModal"></h1>
+                </header>
+                <div class="wrapper">
+                    <img id="felpsHRes">
+                    <p id="subInfoModal"></p>
+                    <a id="linkTwitter" target="_blank"><button class="clicavel" type="button"><img src="Icones/twitter.png"></button></a>
+                    <a id="linkOriginal" target="_blank"><button class="clicavel" type="button"><img src="Icones/original.png"></button></a>
+                </div>
+            </div>
+            <footer>
+                <button type="button" id="felpsAnterior" class="clicavel"><img src="Icones/anterior.png"></button>
+                <button type="button" id="fecharInfo" class="clicavel" tabindex="1"><img src="Icones/fechar.png"></button>
+                <button type="button" id="felpsPosterior" class="clicavel"><img src="Icones/posterior.png"></button>
+            </footer>
         </div>
     </dialog>
 
     <dialog id="catalogoModal">
         <header>
             <h1>Catálogo</h1>
-            <button type="button" id="fecharCatalogo" class="clicavel">X</button>
+            <button type="button" id="fecharCatalogo" class="clicavel"><img src="Icones/fechar.png"></button>
         </header>
 
         <div id="areaCatalogo" class="wrapper">
         </div>
     </dialog>
+
+    <dialog id="sobreModal"></dialog>
 
     <footer>
         <p>Clique ou arraste um Felps :D</p>

@@ -1,3 +1,7 @@
+const infoModal = document.querySelector("#infoModal");
+const catalogoModal = document.querySelector("#catalogoModal");
+let felpsAtualId = 0;
+
 async function populateAtlas() {
 
     const response = await fetch("felps.json");
@@ -13,9 +17,9 @@ async function populateAtlas() {
         novoImg.alt = felps.nome;
         novoImg.title = felps.nome;
         novoImg.setAttribute("onClick", `mostrarModal(${felps.id})`);
-        novoImg.style.left = `${Math.floor(Math.random() * 91)}%`;
-        novoImg.style.top = `${Math.floor(Math.random() * 91)}%`;
-    
+        novoImg.style.left = `${Math.floor(Math.random() * (96 - -5) + -5)}%`;
+        novoImg.style.top = `${Math.floor(Math.random() * 86)}%`;
+
         areaAtlas.appendChild(novoImg);
     }
 };
@@ -49,25 +53,28 @@ async function mostrarModal(felpsId) {
 
     const response = await fetch("felps.json");
     const felpsInfo = await response.json();
+    felpsAtualId = felpsId
 
     document.querySelector("#tituloModal").textContent = `${felpsInfo[felpsId].numero}. ${felpsInfo[felpsId].nome}`;
     document.querySelector("#felpsHRes").src = `../FelpsTodoDiaAtlas/Imagens/${felpsInfo[felpsId].arquivo}HRes.png`;
     document.querySelector("#felpsHRes").alt = felpsInfo[felpsId].nome;
     document.querySelector("#felpsHRes").title = felpsInfo[felpsId].nome;
-    document.querySelector("#subInfoModal").textContent = `${felpsInfo[felpsId].data} • ${felpsInfo[felpsId].artista}`
-    document.querySelector("#infoModal").showModal()
-    document.querySelector("#linkTwitter").setAttribute("href", `${felpsInfo[felpsId].tweet}`)
-    document.querySelector("#linkOriginal").setAttribute("href", `${felpsInfo[felpsId].original}`)
+    document.querySelector("#subInfoModal").textContent = `${felpsInfo[felpsId].data} • ${felpsInfo[felpsId].artista}`;
+    document.querySelector("#linkTwitter").setAttribute("href", `${felpsInfo[felpsId].tweet}`);
+    document.querySelector("#linkOriginal").setAttribute("href", `${felpsInfo[felpsId].original}`);
+
+    infoModal.showModal()
 };
 
 populateAtlas();
 populateCatalogo();
 
-document.querySelector("#abrirCatalogo").addEventListener("click", () => document.querySelector("#catalogoModal").showModal());
+document.querySelector("#abrirCatalogo").addEventListener("click", () => catalogoModal.showModal());
+document.querySelector("#fecharCatalogo").addEventListener("click", () => catalogoModal.close());
 
-document.querySelector("#fecharCatalogo").addEventListener("click", () => document.querySelector("#catalogoModal").close());
-
-document.querySelector("#fecharInfo").addEventListener("click", () => document.querySelector("#infoModal").close());
+document.querySelector("#fecharInfo").addEventListener("click", () => infoModal.close());
+document.querySelector("#felpsAnterior").addEventListener("click", () => felpsAtualId > 0 ? mostrarModal(felpsAtualId - 1) : null)
+document.querySelector("#felpsPosterior").addEventListener("click", () => felpsAtualId < 364 ? mostrarModal(felpsAtualId + 1) : null)
 
 function alterarEscala(x) {
 
@@ -82,6 +89,4 @@ function alterarEscala(x) {
             root.style.setProperty("--escalaFelps", `${tamanhoEscala - 0.1}`)
             break
     }
-
-    
 };
