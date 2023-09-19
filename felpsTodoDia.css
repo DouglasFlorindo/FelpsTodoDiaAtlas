@@ -85,12 +85,6 @@ div#divBotoes {
     z-index: 10;
 }
 
-div#areaAtlas {
-    width: 60%;
-    height: 100%;
-    position: relative;
-}
-
 /* ============Info Modal============== */
 
 dialog#infoModal {
