@@ -1,7 +1,7 @@
 :root {
     --escalaFelps: 1;
     --corPrincipal: #ff3c64;
-    --limite: 5vh;
+    --limite: 3.5vh;
 }
 
 * {
@@ -30,6 +30,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-justify: auto;
 }
 
 section {
@@ -54,8 +55,9 @@ button {
     width: 3rem;
     height: 3rem;
     border-radius: 1.5rem;
-    background: var(--corPrincipal);
+    background: transparent;
     border: 0;
+    margin: var(--limite);
 }
 
 button img {
@@ -93,13 +95,13 @@ div#areaAtlas {
 
 dialog#infoModal {
     height: 100%;
-    width: 35%;
-    max-width: 35%;
+    transform: translateY(-50%);
+    top: 50%;
+    width: 40%;
     position: absolute;
     border: hidden 0;
     border-radius: 0 15px 15px 0;
     background: white;
-    border: green solid;
 }
 
 dialog#infoModal div.grid {
@@ -107,19 +109,30 @@ dialog#infoModal div.grid {
     display: grid;
     grid-template-columns: 4fr 1fr;
     height: 100%;
-    border: blue solid;
 }
 
 dialog#infoModal div.esquerdo {
-    height: 100%;
-
-    border: red solid;
+    max-height: 100%;
+    overflow-y: scroll;
+    background: var(--corPrincipal);
+    -ms-overflow-style: none;
+    scrollbar-width: none;  
 }
 
-dialog#infoModal header,
+dialog#infoModal div.esquerdo::-webkit-scrollbar {
+    display: none;
+  }
+
+dialog#infoModal header {
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
 dialog#infoModal header h1 {
     color: var(--corPrincipal);
-    background: white;
+    text-align: center;
 }
 
 dialog#infoModal div.wrapper {
@@ -127,13 +140,42 @@ dialog#infoModal div.wrapper {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
     background: var(--corPrincipal);
+    padding: var(--limite);
 
 }
 
-dialog#infoModal div.wrapper img {
-    max-width: 80%;
+dialog#infoModal div.wrapperImagem {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    padding: var(--limite);
+}
+
+dialog#infoModal div.wrapperImagem img {
+    max-width: 100%;
+    max-height: 100%;
+    z-index: 5;
+}
+
+dialog#infoModal div.wrapperImagem img#destaque {
+    position: absolute;
+    z-index: 1;
+    animation: spin 15s linear infinite;
+}
+
+dialog#infoModal p {
+    z-index: 10;
+    font-size: 1.25rem;
+}
+
+dialog#infoModal div.wrapperBotoes {
+    display: flex;
+    width: 100%;
+    justify-content: center;
 }
 
 dialog#infoModal footer {
@@ -146,8 +188,6 @@ dialog#infoModal footer {
     position: sticky;
     right: 0;
     background: white;
-
-    border: purple solid;
 }
 
 dialog#infoModal footer button {
@@ -156,13 +196,13 @@ dialog#infoModal footer button {
     border-radius: 0;
     background: transparent;
     transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
+    margin: 0;
 }
 
 dialog#infoModal footer button:hover {
     background: var(--corPrincipal);
     scale: 1;
     filter: brightness();
-    color: white;
 }
 
 /* ==============Catálogo Modal================= */
@@ -259,4 +299,14 @@ dialog#catalogoModal div.wrapper {
 
 .felps.clicavel:hover {
     scale: calc(var(--escalaFelps) + 0.05)
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }

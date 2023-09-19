@@ -18,7 +18,7 @@ async function populateAtlas() {
         novoImg.title = felps.nome;
         novoImg.setAttribute("onClick", `mostrarModal(${felps.id})`);
         novoImg.style.left = `${Math.floor(Math.random() * (96 - -5) + -5)}%`;
-        novoImg.style.top = `${Math.floor(Math.random() * 86)}%`;
+        novoImg.style.top = `${Math.floor(Math.random() * 81)}%`;
 
         areaAtlas.appendChild(novoImg);
     }
@@ -69,12 +69,15 @@ async function mostrarModal(felpsId) {
 populateAtlas();
 populateCatalogo();
 
+document.querySelector("#abrirSobre").addEventListener("click", () => sobreModal.showModal());
+document.querySelector("#fecharSobre").addEventListener("click", () => sobreModal.close());
+
 document.querySelector("#abrirCatalogo").addEventListener("click", () => catalogoModal.showModal());
 document.querySelector("#fecharCatalogo").addEventListener("click", () => catalogoModal.close());
 
 document.querySelector("#fecharInfo").addEventListener("click", () => infoModal.close());
-document.querySelector("#felpsAnterior").addEventListener("click", () => felpsAtualId > 0 ? mostrarModal(felpsAtualId - 1) : null)
-document.querySelector("#felpsPosterior").addEventListener("click", () => felpsAtualId < 364 ? mostrarModal(felpsAtualId + 1) : null)
+document.querySelector("#felpsAnterior").addEventListener("click", () => felpsAtualId > 0 ? mostrarModal(felpsAtualId - 1) : mostrarModal(felpsAtualId = 364))
+document.querySelector("#felpsPosterior").addEventListener("click", () => felpsAtualId < 364 ? mostrarModal(felpsAtualId + 1) : mostrarModal(felpsAtualId = 0))
 
 function alterarEscala(x) {
 
@@ -90,3 +93,29 @@ function alterarEscala(x) {
             break
     }
 };
+
+let inputSenha = ""
+
+document.addEventListener("keydown", function (event) {
+    if (event.key == "'" || event.key == "-" && inputSenha.length < 4) {
+        inputSenha += event.key;
+        verificarSenha(inputSenha)
+    } else {
+        inputSenha = ""
+    }
+});
+
+function verificarSenha(senha) {
+    switch (senha) {
+        case "'-'":
+            easterEgg();
+            break;
+        default:
+            break;
+    }
+}
+
+function easterEgg() {
+    console.log("easterEgg ativado!!!")
+}
+
