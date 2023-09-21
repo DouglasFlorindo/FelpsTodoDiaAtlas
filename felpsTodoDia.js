@@ -25,6 +25,9 @@ async function populateAtlas() {
             setTimeout(() => {
                 movendo = false
             }, 250);
+            felpsDrag.style.transform = "translate(0, 0)";
+            document.querySelector(".movendo").style.filter = "none";
+            felpsDrag.classList.remove("movendo");
         })
         novoImg.style.left = `${Math.floor(Math.random() * (90 - 20 + 1)) + 10}%`;
         novoImg.style.top = `${Math.floor(Math.random() * (70 - 20 + 1)) + 20}%`;
@@ -105,7 +108,7 @@ function alterarEscala(x) {
             root.style.setProperty("--escalaFelps", `${tamanhoEscala + 0.1}`)
             break
         case false:
-            root.style.setProperty("--escalaFelps", `${tamanhoEscala - 0.1}`)
+            tamanhoEscala > 0.2 ? root.style.setProperty("--escalaFelps", `${tamanhoEscala - 0.1}`) : null
             break
     }
 };
@@ -118,11 +121,14 @@ document.addEventListener('mousedown', function (e) {
 document.addEventListener('mouseup', () => felpsDrag = null);
 document.addEventListener('mousemove', function (e) {
     if (felpsDrag != null) {
-        let x = e.pageX;
-        let y = e.pageY;
+        felpsDrag.classList.add("movendo")
+        felpsDrag.style.transform = "translate(-50%, -50%)"
+        document.querySelector(".movendo").style.filter = `drop-shadow(${felpsDrag.clientWidth/2}px ${felpsDrag.clientHeight/2}px rgba(160, 34, 59, 0.5))`;
+        let x = e.pageX / document.body.clientWidth * 100;
+        let y = e.pageY / document.body.clientHeight * 100;
 
-        felpsDrag.style.left = x + "px";
-        felpsDrag.style.top = y + "px";
+        felpsDrag.style.left = x + "%";
+        felpsDrag.style.top = y + "%";
         movendo = true
     }
 })
@@ -151,6 +157,3 @@ function verificarSenha(senha) {
 function easterEgg() {
     console.log("easterEgg ativado!!!")
 }
-
-// ok, cada felps precisa de dois event listeners, pra mouseup e down, que irão ativar funções utilizando o id como argumento.
-

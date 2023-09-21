@@ -26,8 +26,13 @@ p {
     font-family: 'Comic Sans MS';
 }
 
+p {
+    font-size: 1.25rem;
+}
+
 h2 {
     text-align: center;
+    margin: var(--limite);
 }
 
 header {
@@ -71,7 +76,8 @@ button img {
     max-width: 3rem;
 }
 
-dialog, header{
+dialog,
+header {
     box-shadow: 0 5px 0 0 var(--corSombra);
 }
 
@@ -103,7 +109,6 @@ div#gridBotoes button {
 
 footer p {
     color: #797979;
-    font-size: 1.25rem;
     z-index: 10;
 }
 
@@ -133,12 +138,12 @@ dialog#infoModal div.esquerdo {
     overflow-y: scroll;
     background: var(--corPrincipal);
     -ms-overflow-style: none;
-    scrollbar-width: none;  
+    scrollbar-width: none;
 }
 
 dialog#infoModal div.esquerdo::-webkit-scrollbar {
     display: none;
-  }
+}
 
 dialog#infoModal header {
     background: white;
@@ -185,7 +190,6 @@ dialog#infoModal div.wrapperImagem img#destaque {
 
 dialog#infoModal p {
     z-index: 10;
-    font-size: 1.25rem;
 }
 
 dialog#infoModal div.wrapperBotoes {
@@ -345,16 +349,23 @@ dialog#sobreModal div.wrapper {
     height: auto;
 }
 
+dialog#sobreModal p {
+    margin: 0 var(--limite);
+}
+
+dialog#sobreModal span, dialog#sobreModal a {
+    color: black;
+    font-weight: bold;
+}
 
 /* =========================================== */
 
 .clicavel {
     cursor: pointer;
-    transition: filter 0.1s ease-in-out, scale 0.1s ease-in-out;
+    transition: scale 0.1s ease-in-out;
 }
 
 .clicavel:hover {
-    filter: brightness(1.5);
     z-index: 5;
     scale: 1.1;
 }
@@ -366,6 +377,10 @@ dialog#sobreModal div.wrapper {
 
 .felps.clicavel:hover {
     scale: calc(var(--escalaFelps) + 0.05);
+}
+
+.movendo {
+    cursor: move;
 }
 
 @keyframes spin {
@@ -382,6 +397,7 @@ dialog#sobreModal div.wrapper {
     0% {
         transform: translate(-100%, -50%);
     }
+
     100% {
         transform: translate(0%, -50%);
     }
@@ -391,6 +407,7 @@ dialog#sobreModal div.wrapper {
     0% {
         transform: translate(0%, -50%);
     }
+
     100% {
         transform: translate(-100%, -50%);
     }
