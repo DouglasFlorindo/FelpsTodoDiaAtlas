@@ -24,7 +24,7 @@ async function populateAtlas() {
         novoImg.addEventListener('mouseup', function () {
             setTimeout(() => {
                 movendo = false
-            }, 500);
+            }, 250);
         })
         novoImg.style.left = `${Math.floor(Math.random() * (90 - 20 + 1)) + 10}%`;
         novoImg.style.top = `${Math.floor(Math.random() * (70 - 20 + 1)) + 20}%`;
@@ -85,7 +85,13 @@ document.querySelector("#fecharSobre").addEventListener("click", () => sobreModa
 document.querySelector("#abrirCatalogo").addEventListener("click", () => catalogoModal.showModal());
 document.querySelector("#fecharCatalogo").addEventListener("click", () => catalogoModal.close());
 
-document.querySelector("#fecharInfo").addEventListener("click", () => infoModal.close());
+document.querySelector("#fecharInfo").addEventListener("click", function () {
+    setTimeout(function () { 
+        infoModal.close()
+        infoModal.style.animation = "aparecerInfo 0.5s running"
+    }, 400);
+    infoModal.style.animation = "desaparecerInfo 0.5s infinite"
+});
 document.querySelector("#felpsAnterior").addEventListener("click", () => felpsAtualId > 0 ? mostrarModal(felpsAtualId - 1) : mostrarModal(felpsAtualId = 364))
 document.querySelector("#felpsPosterior").addEventListener("click", () => felpsAtualId < 364 ? mostrarModal(felpsAtualId + 1) : mostrarModal(felpsAtualId = 0))
 

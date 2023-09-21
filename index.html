@@ -14,7 +14,7 @@
     </header>
 
     <section id="sectionPrincipal">
-        <div id="divBotoes">
+        <div id="gridBotoes">
             <button type="button" onclick="alterarEscala(true)" class="clicavel"
                 title="Aumentar tamanho das imagens"><img src="Icones/aumentar.png"></button>
             <button type="button" onclick="alterarEscala(false)" class="clicavel"
@@ -60,13 +60,18 @@
             <h1>Catálogo</h1>
             <button type="button" id="fecharCatalogo" class="clicavel"><img src="Icones/fechar.png"></button>
         </header>
-
-        <div id="areaCatalogo" class="wrapper">
-        </div>
+        <div id="areaCatalogo" class="wrapper"></div>
     </dialog>
 
     <dialog id="sobreModal">
-        <button type="button" id="fecharSobre" class="clicavel"><img src="Icones/fechar.png"></button>
+        <header>
+            <h1>Sobre</h1>
+            <button type="button" id="fecharSobre" class="clicavel"><img src="Icones/fechar.png"></button>
+        </header>
+        <div class="wrapper">
+            <h2>O que é o Felps Todo Dia?</h2>
+            <h2>Créditos</h2>
+        </div>
     </dialog>
 
     <footer>
