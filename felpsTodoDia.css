@@ -83,6 +83,10 @@ header {
 
 /* ========Estilos específicos========== */
 
+dialog header {
+    z-index: 5;
+}
+
 header h1 {
     color: white;
 }
