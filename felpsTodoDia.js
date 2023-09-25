@@ -1,105 +1,141 @@
 const infoModal = document.querySelector("#infoModal");
 const catalogoModal = document.querySelector("#catalogoModal");
-let felpsAtualNum;
-let felpsDrag;
+let felpsAtualNum, felpsDrag;
 let movendo = false;
 
 async function populateAtlas() {
-
     const response = await fetch("felps.json");
     const felpsInfo = await response.json();
+    const atlas = document.querySelector("#divAtlas");
 
     for (const felps of felpsInfo) {
 
         let novoImg = document.createElement("img");
+        let novoButton = document.createElement("button");
+
         novoImg.id = `f${felps.id}`;
-        novoImg.classList = "felps clicavel";
+        novoButton.id = `b${felps.id}`;
         novoImg.src = `../FelpsTodoDiaAtlas/Imagens/${felps.arquivo}.png`;
         novoImg.alt = felps.nome;
         novoImg.title = felps.nome;
-        novoImg.addEventListener('click', () => mostrarModal(felps.id));
-        novoImg.addEventListener('mousedown', function () {
+        novoButton.classList = "felps";
+        novoButton.style.animation = "aparecerFelps 0.5s ease"
+        novoButton.addEventListener('click', () => movendo == false ? mostrarModal(felps.id) : null);
+        novoButton.addEventListener('mousedown', function () {
             felpsDrag = this;
         });
-        novoImg.addEventListener('mouseup', function () {
-            setTimeout(() => {
-                movendo = false
-            }, 250);
-            felpsDrag.style.transform = "translate(0, 0)";
-            document.querySelector(".movendo").style.filter = "none";
-            felpsDrag.classList.remove("movendo");
+        novoButton.addEventListener('mouseup', function () {
+            if (movendo == true) {
+                setTimeout(() => {
+                    movendo = false
+                }, 250);
+                felpsDrag.style.transform = "translate(0, 0)";
+                felpsDrag.style.filter = "none";
+                felpsDrag.style.cursor = "pointer";
+            }
+        });
+        novoButton.addEventListener('focus', function () {
+            this.addEventListener('keydown', function (event) {
+                switch (event.key) {
+                    case "ArrowUp":
+                        this.style.top = (parseFloat(this.style.top) - 1) + "%";
+                        break;
+                    case "ArrowDown":
+                        this.style.top = (parseFloat(this.style.top) + 1) + "%";
+                        break;
+                    case "ArrowLeft":
+                        this.style.left = (parseFloat(this.style.left) - 1) + "%";
+                        break;
+                    case "ArrowRight":
+                        this.style.left = (parseFloat(this.style.left) + 1) + "%";
+                        break;
+                    default:
+                        break;
+                }
+            })
         })
-        novoImg.style.left = `${Math.floor(Math.random() * (90 - 20 + 1)) + 10}%`;
-        novoImg.style.top = `${Math.floor(Math.random() * (70 - 20 + 1)) + 20}%`;
+        novoButton.style.left = `${Math.floor(Math.random() * (90 - 20 + 1)) + 10}%`;
+        novoButton.style.top = `${Math.floor(Math.random() * (70 - 20 + 1)) + 20}%`;
 
-        document.body.appendChild(novoImg);
+        novoButton.appendChild(novoImg);
+        atlas.appendChild(novoButton);
     }
 };
 
 async function populateCatalogo() {
-
     const response = await fetch("felps.json");
     const felpsInfo = await response.json();
 
     for (const felps of felpsInfo) {
 
         const areaCatalogo = document.getElementById("areaCatalogo");
-        let novoDiv = document.createElement("div");
+        let novoButton = document.createElement("button");
         let novoImg = document.createElement("img");
 
-        novoDiv.className = "itemCatalogo";
+        novoButton.className = "itemCatalogo";
         novoImg.id = felps.id;
         novoImg.classList = "felpsCatalogo clicavel";
         novoImg.src = `../FelpsTodoDiaAtlas/Imagens/${felps.arquivo}HRes.png`;
         novoImg.alt = felps.nome;
         novoImg.title = felps.nome;
-        novoImg.setAttribute("onClick", `mostrarModal(${felps.id})`);
+        novoButton.addEventListener("click", () => mostrarModal(felps.id));
 
-        novoDiv.appendChild(novoImg);
-        areaCatalogo.appendChild(novoDiv);
+        novoButton.appendChild(novoImg);
+        areaCatalogo.appendChild(novoButton);
 
     }
 };
 
 async function mostrarModal(felpsId) {
-    if (movendo == false) {
-        const response = await fetch("felps.json");
-        const felpsInfo = await response.json();
-        felpsAtualId = felpsId
+    const response = await fetch("felps.json");
+    const felpsInfo = await response.json();
+    felpsAtualId = felpsId
 
-        document.querySelector("#tituloModal").textContent = `${felpsInfo[felpsId].numero}. ${felpsInfo[felpsId].nome}`;
-        document.querySelector("#felpsHRes").src = `../FelpsTodoDiaAtlas/Imagens/${felpsInfo[felpsId].arquivo}HRes.png`;
-        document.querySelector("#felpsHRes").alt = felpsInfo[felpsId].nome;
-        document.querySelector("#felpsHRes").title = felpsInfo[felpsId].nome;
-        document.querySelector("#subInfoModal").textContent = `${felpsInfo[felpsId].data} • ${felpsInfo[felpsId].artista}`;
-        document.querySelector("#linkTwitter").setAttribute("href", `${felpsInfo[felpsId].tweet}`);
-        document.querySelector("#linkOriginal").setAttribute("href", `${felpsInfo[felpsId].original}`);
+    document.querySelector("#tituloModal").textContent = `${felpsInfo[felpsId].numero}. ${felpsInfo[felpsId].nome}`;
+    document.querySelector("#felpsHRes").src = `../FelpsTodoDiaAtlas/Imagens/${felpsInfo[felpsId].arquivo}HRes.png`;
+    document.querySelector("#felpsHRes").alt = felpsInfo[felpsId].nome;
+    document.querySelector("#felpsHRes").title = felpsInfo[felpsId].nome;
+    document.querySelector("#subInfoModal").textContent = `${felpsInfo[felpsId].data} • ${felpsInfo[felpsId].artista}`;
+    document.querySelector("#linkTwitter").setAttribute("href", `${felpsInfo[felpsId].tweet}`);
+    document.querySelector("#linkOriginal").setAttribute("href", `${felpsInfo[felpsId].original}`);
 
-        infoModal.showModal()
-    }
+    infoModal.showModal()
 };
 
 populateAtlas();
 populateCatalogo();
 
+document.addEventListener('keydown', (event) => event.key == "s" ? sobreModal.showModal() : null)
 document.querySelector("#abrirSobre").addEventListener("click", () => sobreModal.showModal());
-document.querySelector("#fecharSobre").addEventListener("click", () => sobreModal.close());
+document.querySelector("#fecharSobre").addEventListener("click", function () {
+    sobreModal.style.animation = "desaparecerCatalogoSobre 0.5s ease";
+    setTimeout(function () {
+        sobreModal.close()
+        sobreModal.style.animation = "aparecerCatalogoSobre 0.5s ease"
+    }, 450);
+});
 
+document.addEventListener('keydown', (event) => event.key == "c" ? catalogoModal.showModal() : null)
 document.querySelector("#abrirCatalogo").addEventListener("click", () => catalogoModal.showModal());
-document.querySelector("#fecharCatalogo").addEventListener("click", () => catalogoModal.close());
+document.querySelector("#fecharCatalogo").addEventListener("click", function () {
+    catalogoModal.style.animation = "desaparecerCatalogoSobre 0.5s ease";
+    setTimeout(function () {
+        catalogoModal.close()
+        catalogoModal.style.animation = "aparecerCatalogoSobre 0.5s ease"
+    }, 450);
+});
 
 document.querySelector("#fecharInfo").addEventListener("click", function () {
-    setTimeout(function () { 
+    infoModal.style.animation = "desaparecerInfo 0.5s ease";
+    setTimeout(function () {
         infoModal.close()
-        infoModal.style.animation = "aparecerInfo 0.5s running"
-    }, 400);
-    infoModal.style.animation = "desaparecerInfo 0.5s infinite"
+        infoModal.style.animation = "aparecerInfo 0.5s ease"
+    }, 450);
 });
 document.querySelector("#felpsAnterior").addEventListener("click", () => felpsAtualId > 0 ? mostrarModal(felpsAtualId - 1) : mostrarModal(felpsAtualId = 364))
 document.querySelector("#felpsPosterior").addEventListener("click", () => felpsAtualId < 364 ? mostrarModal(felpsAtualId + 1) : mostrarModal(felpsAtualId = 0))
 
 function alterarEscala(x) {
-
     let root = document.documentElement;
     let tamanhoEscala = parseFloat(getComputedStyle(root).getPropertyValue("--escalaFelps"));
 
@@ -112,6 +148,18 @@ function alterarEscala(x) {
             break
     }
 };
+document.addEventListener('keydown', (event) => {
+    switch (event.key) {
+        case "+":
+            alterarEscala(true);
+            break;
+        case "-":
+            alterarEscala(false);
+            break;
+        default:
+            break;
+    }
+});
 
 document.addEventListener('mousedown', function (e) {
     if (e.target.tagName === 'IMG') {
@@ -121,14 +169,15 @@ document.addEventListener('mousedown', function (e) {
 document.addEventListener('mouseup', () => felpsDrag = null);
 document.addEventListener('mousemove', function (e) {
     if (felpsDrag != null) {
-        felpsDrag.classList.add("movendo")
-        felpsDrag.style.transform = "translate(-50%, -50%)"
-        document.querySelector(".movendo").style.filter = `drop-shadow(${felpsDrag.clientWidth/2}px ${felpsDrag.clientHeight/2}px rgba(160, 34, 59, 0.5))`;
         let x = e.pageX / document.body.clientWidth * 100;
         let y = e.pageY / document.body.clientHeight * 100;
 
         felpsDrag.style.left = x + "%";
         felpsDrag.style.top = y + "%";
+        felpsDrag.style.cursor = "move"
+        felpsDrag.style.transform = "translate(-50%, -50%)"
+        felpsDrag.style.filter = `drop-shadow(${felpsDrag.clientWidth / 2}px ${felpsDrag.clientHeight / 2}px rgba(160, 34, 59, 0.5))`;
+
         movendo = true
     }
 })

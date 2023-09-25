@@ -2,7 +2,7 @@
     --escalaFelps: 1;
     --corPrincipal: #ff3c64;
     --corSombra: #a0223b;
-    --limite: 3.5vh;
+    --espaco: 3.5vh;
 }
 
 * {
@@ -14,81 +14,98 @@
 body {
     height: 100dvh;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
-h1,
-h2,
-p {
-    color: black;
+h1, h2, p, li {
     font-family: 'Comic Sans MS';
 }
 
-p {
+p, li {
     font-size: 1.25rem;
 }
 
 h2 {
     text-align: center;
-    margin: var(--limite);
+    margin: var(--espaco);
 }
 
 header {
-    background: var(--corPrincipal);
-    padding: var(--limite);
-    width: 100%;
+    padding: var(--espaco);
+    color: var(--corPrincipal);
+    background: white;
+    font-size: 1.25rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-justify: auto;
-}
-
-section {
-    width: 100%;
-    position: relative;
-    height: 100%;
-    padding: var(--limite);
-    display: flex;
-    justify-content: center;
-}
-
-footer {
-    height: 2.5rem;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: var(--limite);
 }
 
 button {
     width: 3rem;
     height: 3rem;
     background: transparent;
-    border: 0;
-    margin: var(--limite);
+    border: hidden;
 }
 
-button img {
+button img, a img {
     aspect-ratio: 1 / 1;
     max-width: 3rem;
 }
 
-dialog,
-header {
+dialog, header {
     box-shadow: 0 5px 0 0 var(--corSombra);
 }
 
-/* ========Estilos específicos========== */
+
+dialog {
+    width: 60%;
+    left: 50%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    position: absolute;
+    border: hidden;
+    border-radius: 15px;
+    background: var(--corPrincipal);
+}
 
 dialog header {
     z-index: 5;
+    position: sticky;
+    top: 0;
+    text-align: center;
 }
 
-header h1 {
+dialog header button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    margin: 0 var(--espaco);
+}
+
+/* ==========Section Principal========= */
+
+#sectionPrincipal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#sectionPrincipal header {
+    background: var(--corPrincipal);
     color: white;
+    padding: var(--espaco);
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+
+#divAtlas {
+    height: 100%;
+    width: 100%;
 }
 
 div#gridBotoes {
@@ -96,304 +113,234 @@ div#gridBotoes {
     top: 50%;
     right: 0;
     transform: translateY(-50%);
-    margin: var(--limite) 0;
     z-index: 10;
     display: grid;
     grid: 1fr;
     gap: 1rem;
     background: var(--corPrincipal);
-    padding: var(--limite);
+    padding: var(--espaco);
     border-radius: 15px 0 0 15px;
     box-shadow: 0 5px 0 0 var(--corSombra);
+    animation: aparecerBotoes 0.5s ease;
 }
 
-div#gridBotoes button {
-    margin: 0;
+#sectionPrincipal footer {
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding: var(--espaco);
 }
 
-footer p {
+#sectionPrincipal footer p {
     color: #797979;
+    text-shadow: white 1px 0, white -1px 0, white 0 1px, white 0 -1px;
+    position: relative;
     z-index: 10;
 }
 
 /* ============Info Modal============== */
 
-dialog#infoModal {
-    height: 100%;
-    transform: translateY(-50%);
-    top: 50%;
-    width: 40%;
-    position: absolute;
-    border: hidden 0;
+#infoModal {
+    left: 0;
+    transform: translate(0, -50%);
     border-radius: 0 15px 15px 0;
-    background: white;
+    width: 40%;
     animation: aparecerInfo 0.5s ease;
 }
 
-dialog#infoModal div.grid {
-    max-width: 100%;
+#infoModal div.grid {
     display: grid;
     grid-template-columns: 4fr 1fr;
     height: 100%;
 }
 
-dialog#infoModal div.esquerdo {
-    max-height: 100%;
+#infoModal div.esquerdo {
     overflow-y: scroll;
-    background: var(--corPrincipal);
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
 
-dialog#infoModal div.esquerdo::-webkit-scrollbar {
+#infoModal div.esquerdo::-webkit-scrollbar {
     display: none;
 }
 
-dialog#infoModal header {
-    background: white;
-    position: sticky;
-    top: 0;
+#infoModal header {
+    font-size: 1rem;
 }
 
-dialog#infoModal header h1 {
-    color: var(--corPrincipal);
-    text-align: center;
+#infoModal div.wrapper {
+    padding: var(--espaco);
 }
 
-dialog#infoModal div.wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: var(--corPrincipal);
-    padding: var(--limite);
-
-}
-
-dialog#infoModal div.wrapperImagem {
+#infoModal div.wrapperImagem {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     aspect-ratio: 1 / 1;
-    padding: var(--limite);
+    padding: var(--espaco);
 }
 
-dialog#infoModal div.wrapperImagem img {
+#infoModal div.wrapperImagem img {
     max-width: 100%;
     max-height: 100%;
-    z-index: 5;
+    z-index: 2;
 }
 
-dialog#infoModal div.wrapperImagem img#destaque {
+#infoModal div.wrapperImagem img#destaque {
     position: absolute;
     z-index: 1;
     animation: spin 15s linear infinite;
 }
 
-dialog#infoModal p {
-    z-index: 10;
+#infoModal p {
+    text-align: center;
 }
 
-dialog#infoModal div.wrapperBotoes {
+#infoModal a {
+    width: 3rem;
+    height: 3rem;
+    margin: var(--espaco);
+}
+
+#infoModal div.wrapperBotoes {
     display: flex;
-    width: 100%;
     justify-content: center;
 }
 
-dialog#infoModal footer {
-    padding: 0;
+#infoModal footer {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100%;
     position: sticky;
     right: 0;
     background: white;
 }
 
-dialog#infoModal footer button {
+#infoModal footer button {
     height: 100%;
     width: 100%;
-    border-radius: 0;
     background: transparent;
     transition: background 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    margin: 0;
 }
 
-dialog#infoModal footer button:hover {
+#infoModal footer button:hover {
     background: var(--corPrincipal);
     box-shadow: inset 0 5px 0 0 var(--corSombra);
-    scale: 1;
-    filter: none;
+    cursor: pointer;
 }
 
-dialog#infoModal footer button img {
+#infoModal footer button img {
     transition: transform 0.2s ease-in-out;
 }
 
-dialog#infoModal footer button:hover img {
+#infoModal footer button:hover img {
     transform: translate(0, 5px);
 }
 
 /* ==============Catálogo Modal================= */
 
-dialog#catalogoModal {
-    border-radius: 15px;
-    width: 60%;
-    height: 100%;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 50%;
-    overflow: scroll;
-    background: var(--corPrincipal);
-    border: 0;
-    overflow: hidden;
-    overflow-y: scroll;
+#catalogoModal {
+    animation: aparecerCatalogoSobre 0.5s ease;
 }
 
-dialog#catalogoModal header {
-    z-index: 10;
-    top: 0;
-    position: sticky;
-    background: white;
-    height: auto;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: var(--limite);
-}
-
-dialog#catalogoModal header h1 {
-    color: var(--corPrincipal);
-    font-size: 2rem;
-}
-
-dialog#catalogoModal button {
-    position: absolute;
-    right: 0;
-    top: 0;
-    margin: var(--limite);
-    box-shadow: 0 0 0 0;
-
-}
-
-dialog#catalogoModal div.wrapper {
+#catalogoModal div.wrapper {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill, 8rem);
     gap: 0.5rem;
-    padding: var(--limite);
+    padding: var(--espaco);
     justify-content: space-between;
     overflow-x: hidden;
 }
 
-.itemCatalogo {
+button.itemCatalogo {
     display: flex;
     justify-content: center;
+    height: 100%;
     width: 100%;
-    aspect-ratio: 1 / 1;
     transition: scale 0.2s ease-in-out;
-    object-fit: cover;
-
 }
 
-.felpsCatalogo {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    height: 8rem;
-    max-width: 8rem;
+img.felpsCatalogo {
+    height: 100%;
+    max-width: 100%;
     object-fit: scale-down;
-
 }
 
 /* ====================Sobre Modal==================== */
 
-dialog#sobreModal {
-    border-radius: 15px;
-    width: 60%;
-    height: 100%;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 50%;
-    overflow: scroll;
-    background: var(--corPrincipal);
-    border: 0;
-    overflow: hidden;
-    overflow-y: scroll;
+#sobreModal {
+    animation: aparecerCatalogoSobre 0.5s ease;
 }
 
-dialog#sobreModal header {
-    z-index: 10;
-    top: 0;
-    position: sticky;
-    background: white;
-    height: auto;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: var(--limite);
-}
-
-dialog#sobreModal header h1 {
-    color: var(--corPrincipal);
-    font-size: 2rem;
-}
-
-dialog#sobreModal button {
-    position: absolute;
-    right: 0;
-    top: 0;
-    margin: var(--limite);
-    box-shadow: 0 0 0 0;
-}
-
-dialog#sobreModal div.wrapper {
-    padding: var(--limite);
+#sobreModal div.wrapper {
+    padding: var(--espaco);
     width: 100%;
     height: auto;
 }
 
-dialog#sobreModal p {
-    margin: 0 var(--limite);
+#sobreModal p, li {
+    margin: 0 var(--espaco);
 }
 
-dialog#sobreModal span, dialog#sobreModal a {
+#sobreModal span, #sobreModal a {
     color: black;
     font-weight: bold;
 }
 
+#sobreModal div.wrapperCreditos {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#sobreModal div.wrapperItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#sobreModal div.wrapperItem img {
+    padding: var(--espaco);
+    height: 100%;
+    max-width: 75%;
+    object-fit: scale-down;
+}
+
 /* =========================================== */
 
-.clicavel {
+.clicavel, .felps {
     cursor: pointer;
     transition: scale 0.1s ease-in-out;
 }
 
 .clicavel:hover {
-    z-index: 5;
     scale: 1.1;
 }
 
 .felps {
     scale: var(--escalaFelps);
     position: absolute;
+    z-index: 5;
 }
 
-.felps.clicavel:hover {
+button.felps {
+    width: auto;
+    height: auto;
+}
+
+button.felps img {
+    max-width: none;
+}
+
+.felps:hover, .felps:focus {
+    z-index: 6;
     scale: calc(var(--escalaFelps) + 0.05);
 }
 
-.movendo {
-    cursor: move;
-}
+/* ========================================== */
 
 @keyframes spin {
     0% {
@@ -405,11 +352,19 @@ dialog#sobreModal span, dialog#sobreModal a {
     }
 }
 
+@keyframes aparecerFelps {
+    0% {
+        scale: 0;
+    }
+    100% {
+        scale: 1;
+    }
+}
+
 @keyframes aparecerInfo {
     0% {
         transform: translate(-100%, -50%);
     }
-
     100% {
         transform: translate(0%, -50%);
     }
@@ -419,8 +374,34 @@ dialog#sobreModal span, dialog#sobreModal a {
     0% {
         transform: translate(0%, -50%);
     }
-
     100% {
         transform: translate(-100%, -50%);
+    }
+}
+
+@keyframes aparecerBotoes {
+    0% {
+        transform: translate(100%, -50%);
+    }
+    100% {
+        transform: translate(0%, -50%);
+    }
+}
+
+@keyframes aparecerCatalogoSobre {
+    0% {
+        transform: translate(-50%, -150%);
+    }
+    100% {
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes desaparecerCatalogoSobre {
+    0% {
+        transform: translate(-50%, -50%);
+    }
+    100% {
+        transform: translate(-50%, -150%);
     }
 }
