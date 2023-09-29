@@ -1,0 +1,57 @@
+:root {
+    --escalaFelps: 1;
+    --corPrincipal: #ff3c64;
+    --corSombra: #a0223b;
+    --limite: 3.5vh;
+}
+
+body {
+    overflow: scroll;
+}
+
+section {
+    height: 100dvh;
+    display: none;
+}
+
+/* =============Section Jogo================== */
+
+section#telaJogo {
+    display: block;
+    position: relative;
+}
+
+/* =========================================== */
+
+.clicavel {
+    cursor: pointer;
+    transition: scale 0.1s ease-in-out;
+}
+
+.clicavel:hover {
+    z-index: 5;
+    scale: 1.1;
+}
+
+.felps {
+    scale: var(--escalaFelps);
+    position: absolute;
+}
+
+.felps.clicavel:hover {
+    scale: calc(var(--escalaFelps) + 0.05);
+}
+
+.movendo {
+    cursor: move;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

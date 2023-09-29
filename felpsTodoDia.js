@@ -1,6 +1,6 @@
 const infoModal = document.querySelector("#infoModal");
 const catalogoModal = document.querySelector("#catalogoModal");
-let felpsAtualNum, felpsDrag;
+let felpsAtualId, felpsDrag;
 let movendo = false;
 
 async function populateAtlas() {
@@ -20,7 +20,7 @@ async function populateAtlas() {
         novoImg.title = felps.nome;
         novoButton.classList = "felps";
         novoButton.style.animation = "aparecerFelps 0.5s ease"
-        novoButton.addEventListener('click', () => movendo == false ? mostrarModal(felps.id) : null);
+        novoButton.addEventListener('click', () => movendo == false ? mostrarInfo(felps.id) : null);
         novoButton.addEventListener('mousedown', function () {
             felpsDrag = this;
         });
@@ -60,6 +60,8 @@ async function populateAtlas() {
         novoButton.appendChild(novoImg);
         atlas.appendChild(novoButton);
     }
+
+    
 };
 
 async function populateCatalogo() {
@@ -78,7 +80,7 @@ async function populateCatalogo() {
         novoImg.src = `../FelpsTodoDiaAtlas/Imagens/${felps.arquivo}HRes.png`;
         novoImg.alt = felps.nome;
         novoImg.title = felps.nome;
-        novoButton.addEventListener("click", () => mostrarModal(felps.id));
+        novoButton.addEventListener("click", () => mostrarInfo(felps.id));
 
         novoButton.appendChild(novoImg);
         areaCatalogo.appendChild(novoButton);
@@ -86,11 +88,25 @@ async function populateCatalogo() {
     }
 };
 
-async function mostrarModal(felpsId) {
+async function mostrarInfo(felpsId) {
     const response = await fetch("felps.json");
     const felpsInfo = await response.json();
-    felpsAtualId = felpsId
+    felpsAtualId = felpsId;
 
+    let dataAtual, dia, mes;
+
+    dia = new Date().getDate();
+    String(dia).length == 1 ? dia = "0" + dia : null;
+    mes = new Date().getMonth() + 1;
+    String(mes).length == 1 ? mes = "0" + mes : null;
+    dataAtual = `${dia}/${mes}`;
+    
+    if (felpsInfo[felpsId].data == dataAtual) {
+        document.querySelector("#felpsDoDia").style.display = "inherit"
+    } else {
+        document.querySelector("#felpsDoDia").style.display = "none"
+    }
+    
     document.querySelector("#tituloModal").textContent = `${felpsInfo[felpsId].numero}. ${felpsInfo[felpsId].nome}`;
     document.querySelector("#felpsHRes").src = `../FelpsTodoDiaAtlas/Imagens/${felpsInfo[felpsId].arquivo}HRes.png`;
     document.querySelector("#felpsHRes").alt = felpsInfo[felpsId].nome;
@@ -105,23 +121,21 @@ async function mostrarModal(felpsId) {
 populateAtlas();
 populateCatalogo();
 
-document.addEventListener('keydown', (event) => event.key == "s" ? sobreModal.showModal() : null)
-document.querySelector("#abrirSobre").addEventListener("click", () => sobreModal.showModal());
-document.querySelector("#fecharSobre").addEventListener("click", function () {
-    sobreModal.style.animation = "desaparecerCatalogoSobre 0.5s ease";
-    setTimeout(function () {
-        sobreModal.close()
-        sobreModal.style.animation = "aparecerCatalogoSobre 0.5s ease"
-    }, 450);
-});
-
-document.addEventListener('keydown', (event) => event.key == "c" ? catalogoModal.showModal() : null)
 document.querySelector("#abrirCatalogo").addEventListener("click", () => catalogoModal.showModal());
 document.querySelector("#fecharCatalogo").addEventListener("click", function () {
     catalogoModal.style.animation = "desaparecerCatalogoSobre 0.5s ease";
     setTimeout(function () {
         catalogoModal.close()
         catalogoModal.style.animation = "aparecerCatalogoSobre 0.5s ease"
+    }, 450);
+});
+
+document.querySelector("#abrirSobre").addEventListener("click", () => sobreModal.showModal());
+document.querySelector("#fecharSobre").addEventListener("click", function () {
+    sobreModal.style.animation = "desaparecerCatalogoSobre 0.5s ease";
+    setTimeout(function () {
+        sobreModal.close()
+        sobreModal.style.animation = "aparecerCatalogoSobre 0.5s ease"
     }, 450);
 });
 
@@ -132,8 +146,8 @@ document.querySelector("#fecharInfo").addEventListener("click", function () {
         infoModal.style.animation = "aparecerInfo 0.5s ease"
     }, 450);
 });
-document.querySelector("#felpsAnterior").addEventListener("click", () => felpsAtualId > 0 ? mostrarModal(felpsAtualId - 1) : mostrarModal(felpsAtualId = 364))
-document.querySelector("#felpsPosterior").addEventListener("click", () => felpsAtualId < 364 ? mostrarModal(felpsAtualId + 1) : mostrarModal(felpsAtualId = 0))
+document.querySelector("#felpsAnterior").addEventListener("click", () => felpsAtualId > 0 ? mostrarInfo(felpsAtualId - 1) : mostrarInfo(felpsAtualId = 364))
+document.querySelector("#felpsPosterior").addEventListener("click", () => felpsAtualId < 364 ? mostrarInfo(felpsAtualId + 1) : mostrarInfo(felpsAtualId = 0))
 
 function alterarEscala(x) {
     let root = document.documentElement;
@@ -148,6 +162,7 @@ function alterarEscala(x) {
             break
     }
 };
+
 document.addEventListener('keydown', (event) => {
     switch (event.key) {
         case "+":
@@ -155,6 +170,12 @@ document.addEventListener('keydown', (event) => {
             break;
         case "-":
             alterarEscala(false);
+            break;
+        case "c":
+            catalogoModal.showModal();
+            break;
+        case "s":
+            sobreModal.showModal();
             break;
         default:
             break;
@@ -206,3 +227,4 @@ function verificarSenha(senha) {
 function easterEgg() {
     console.log("easterEgg ativado!!!")
 }
+

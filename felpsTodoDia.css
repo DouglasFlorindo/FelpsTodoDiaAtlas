@@ -195,6 +195,12 @@ div#gridBotoes {
     animation: spin 15s linear infinite;
 }
 
+#infoModal div.wrapperImagem img#felpsDoDia {
+    position: absolute;
+    z-index: 3;
+    display: none;
+}
+
 #infoModal p {
     text-align: center;
 }
@@ -297,6 +303,7 @@ img.felpsCatalogo {
 }
 
 #sobreModal div.wrapperItem {
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
