@@ -55,7 +55,6 @@ dialog, header {
     box-shadow: 0 5px 0 0 var(--corSombra);
 }
 
-
 dialog {
     width: 60%;
     left: 50%;
@@ -92,6 +91,7 @@ dialog header button {
     width: 100%;
     height: 100%;
     position: relative;
+    overflow: hidden;
 }
 
 #sectionPrincipal header {
@@ -364,7 +364,7 @@ button.felps img {
         scale: 0;
     }
     100% {
-        scale: 1;
+        scale: var(--escalaFelps);
     }
 }
 
@@ -410,5 +410,134 @@ button.felps img {
     }
     100% {
         transform: translate(-50%, -150%);
+    }
+}
+
+/* ==================================== */
+
+@media screen and (max-width: 760px){
+    :root {
+        --escalaFelps: 0.75;
+        --espaco: 2.5vh;
+    }
+
+    h1, h2 {
+        font-size: 1.5rem;
+    }
+
+    header {
+        font-size: unset;
+    }
+
+    button {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    button img, a img {
+        max-width: 2.5rem;
+    }
+
+    dialog {
+        transform: translate(-50%, 0);
+        top: unset;
+        bottom: 0;
+        border-radius: 15px 15px 0 0;
+        width: 100%;
+    }
+
+    /* ==========Section Principal========= */
+
+    div#gridBotoes {
+        top: unset;
+        right: unset;
+        transform: unset;
+        bottom: 0;
+        display: flex;
+        width: 100%;
+        justify-content: space-evenly;
+        border-radius: 15px 15px 0 0;
+        animation: aparecerBotoes 0.5s ease;
+    }
+
+    #sectionPrincipal footer {
+        display: none;
+    }
+
+    /* ============Info Modal============== */
+
+    #infoModal {
+        left: 50%;
+        bottom: 0;
+        transform: translate(-50%, 0);
+        border-radius: 15px 15px 0 0;
+        width: 100%;
+    }
+
+    /* ==============Catálogo Modal================= */
+
+    #catalogoModal div.wrapper {
+        grid-template-columns: repeat(auto-fill, 6rem);
+        gap: 0.25rem;
+
+    }
+
+    /* ====================Sobre Modal==================== */
+
+    #sobreModal div.wrapperCreditos {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #sobreModal div.wrapperItem {
+        width: 100%;
+        margin-bottom: var(--espaco);
+    }
+
+    /* ========================================== */
+
+    @keyframes aparecerInfo {
+        0% {
+            transform: translate(-50%, -150%);
+        }
+        100% {
+            transform: translate(-50%, 0);
+        }
+    }
+    
+    @keyframes desaparecerInfo {
+        0% {
+            transform: translate(-50%, 0);
+        }
+        100% {
+            transform: translate(-50%, -150%);
+        }
+    }
+    
+    @keyframes aparecerBotoes {
+        0% {
+            transform: translate(0%, 100%);
+        }
+        100% {
+            transform: translate(0%, 0%);
+        }
+    }
+    
+    @keyframes aparecerCatalogoSobre {
+        0% {
+            transform: translate(-50%, -150%);
+        }
+        100% {
+            transform: translate(-50%, 0);
+        }
+    }
+    
+    @keyframes desaparecerCatalogoSobre {
+        0% {
+            transform: translate(-50%, 0);
+        }
+        100% {
+            transform: translate(-50%, -150%);
+        }
     }
 }
