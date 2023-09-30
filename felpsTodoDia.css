@@ -474,6 +474,22 @@ button.felps img {
         width: 100%;
     }
 
+    #infoModal div.grid {
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: unset;
+
+    }
+
+    #infoModal footer {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #infoModal footer button {
+        padding: var(--espaco) 0;
+    }
+
     /* ==============Catálogo Modal================= */
 
     #catalogoModal div.wrapper {
