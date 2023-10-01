@@ -15,7 +15,7 @@ async function populateAtlas() {
 
         novoImg.id = `f${felps.id}`;
         novoButton.id = `b${felps.id}`;
-        novoImg.src = `../FelpsTodoDiaAtlas/Imagens/${felps.arquivo}.png`;
+        novoImg.src = `../FelpsTodoDiaAtlas/Imagens/${felps.arquivo}.webp`;
         novoImg.alt = felps.nome;
         novoImg.title = felps.nome;
         novoButton.classList = "felps";
@@ -77,7 +77,7 @@ async function populateCatalogo() {
         novoButton.className = "itemCatalogo";
         novoImg.id = felps.id;
         novoImg.classList = "felpsCatalogo clicavel";
-        novoImg.src = `../FelpsTodoDiaAtlas/Imagens/${felps.arquivo}HRes.png`;
+        novoImg.src = `../FelpsTodoDiaAtlas/Imagens/${felps.arquivo}HRes.webp`;
         novoImg.alt = felps.nome;
         novoImg.title = felps.nome;
         novoButton.addEventListener("click", () => mostrarInfo(felps.id));
@@ -108,7 +108,7 @@ async function mostrarInfo(felpsId) {
     }
     
     document.querySelector("#tituloModal").textContent = `${felpsInfo[felpsId].numero}. ${felpsInfo[felpsId].nome}`;
-    document.querySelector("#felpsHRes").src = `../FelpsTodoDiaAtlas/Imagens/${felpsInfo[felpsId].arquivo}HRes.png`;
+    document.querySelector("#felpsHRes").src = `../FelpsTodoDiaAtlas/Imagens/${felpsInfo[felpsId].arquivo}HRes.webp`;
     document.querySelector("#felpsHRes").alt = felpsInfo[felpsId].nome;
     document.querySelector("#felpsHRes").title = felpsInfo[felpsId].nome;
     document.querySelector("#subInfoModal").textContent = `${felpsInfo[felpsId].data} • ${felpsInfo[felpsId].artista}`;
