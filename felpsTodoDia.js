@@ -54,8 +54,8 @@ async function populateAtlas() {
                 }
             })
         })
-        novoButton.style.left = `${Math.floor(Math.random() * (90 - 20 + 1)) + 10}%`;
-        novoButton.style.top = `${Math.floor(Math.random() * (70 - 20 + 1)) + 20}%`;
+        novoButton.style.left = `${Math.floor(Math.random() * (90 - 20)) + 10}%`;
+        novoButton.style.top = `${Math.floor(Math.random() * (70 - 20)) + 20}%`;
 
         novoButton.appendChild(novoImg);
         atlas.appendChild(novoButton);
@@ -161,6 +161,17 @@ function alterarEscala(x) {
             tamanhoEscala > 0.2 ? root.style.setProperty("--escalaFelps", `${tamanhoEscala - 0.1}`) : null
             break
     }
+};
+
+document.querySelector("#randomizarPosicoes").addEventListener("click", randomizarPosicoes);
+
+function randomizarPosicoes() {
+    let felps = document.querySelectorAll(".felps");
+    
+    felps.forEach(element => {
+        element.style.left = `${Math.floor(Math.random() * (90 - 20)) + 10}%`;
+        element.style.top = `${Math.floor(Math.random() * (70 - 20)) + 20}%`;
+    });
 };
 
 document.addEventListener('keydown', (event) => {

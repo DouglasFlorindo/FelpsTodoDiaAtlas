@@ -2,7 +2,7 @@
     --escalaFelps: 1;
     --corPrincipal: #ff3c64;
     --corSombra: #a0223b;
-    --espaco: 3.5vh;
+    --espaco: calc((3.5vh + 1.5vw) / 2);
 }
 
 * {
