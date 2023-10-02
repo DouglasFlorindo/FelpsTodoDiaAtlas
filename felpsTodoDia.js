@@ -182,6 +182,9 @@ document.addEventListener('keydown', (event) => {
         case "-":
             alterarEscala(false);
             break;
+        case "r":
+            randomizarPosicoes();
+            break;
         case "c":
             catalogoModal.showModal();
             break;
