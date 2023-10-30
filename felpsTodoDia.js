@@ -163,8 +163,6 @@ function alterarEscala(x) {
     }
 };
 
-document.querySelector("#randomizarPosicoes").addEventListener("click", randomizarPosicoes);
-
 function randomizarPosicoes() {
     let felps = document.querySelectorAll(".felps");
     
@@ -173,6 +171,8 @@ function randomizarPosicoes() {
         element.style.top = `${Math.floor(Math.random() * (70 - 20)) + 20}%`;
     });
 };
+
+document.querySelector("#randomizarPosicoes").addEventListener("click", randomizarPosicoes);
 
 document.addEventListener('keydown', (event) => {
     switch (event.key) {
@@ -217,7 +217,7 @@ document.addEventListener('mousemove', function (e) {
     }
 })
 
-let inputSenha;
+let inputSenha = "";
 
 document.addEventListener("keydown", function (event) {
     if (event.key == "'" || event.key == "-" && inputSenha.length < 4) {
@@ -231,14 +231,22 @@ document.addEventListener("keydown", function (event) {
 function verificarSenha(senha) {
     switch (senha) {
         case "'-'":
-            easterEgg();
+            console.log("'-'")
+            setInterval(() => easterEgg(), 500)
             break;
         default:
             break;
     }
-}
+}   
 
 function easterEgg() {
-    console.log("easterEgg ativado!!!")
+    let novoImg = document.createElement("img");
+    const atlas = document.querySelector("#divAtlas");
+
+    novoImg.src = "../FelpsTodoDiaAtlas/Recursos/emoteCarinha.png";
+    novoImg.classList = "carinha";
+    novoImg.style.left = `${Math.floor(Math.random() * 100)}%`;
+    novoImg.style.top = `-${Math.floor(Math.random() * 90) + 10}%`;
+    atlas.appendChild(novoImg)
 }
 
