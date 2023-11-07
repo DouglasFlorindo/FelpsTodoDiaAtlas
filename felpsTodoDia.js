@@ -1,3 +1,7 @@
+// import * as func from 'functions.js';
+
+// func.HelloWorld()
+
 const infoModal = document.querySelector("#infoModal");
 const catalogoModal = document.querySelector("#catalogoModal");
 let felpsAtualId, felpsDrag;
