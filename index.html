@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="felpsTodoDia.css">
+    <script src="functions.js" type="module"></script>
     <title>Atlas Felps Todo Dia</title>
 </head>
 
@@ -16,9 +17,9 @@
 
         <div id="divAtlas"></div>
         <div id="gridBotoes">
-            <button type="button" onclick="alterarEscala(true)" class="clicavel"
+            <button type="button" id="aumentarEscala" class="clicavel"
                 title="Aumentar tamanho das imagens"><img aria-label="" src="Recursos/aumentar.png"></button>
-            <button type="button" onclick="alterarEscala(false)" class="clicavel"
+            <button type="button" id="diminuirEscala" class="clicavel"
                 title="Diminuir tamanho das imagens"><img aria-label="" src="Recursos/diminuir.png"></button>
             <button type="button" id="randomizarPosicoes" class="clicavel"
                 title="Randomizar posições"><img aria-label="" src="Recursos/aleatorio.png"></button>
@@ -107,8 +108,7 @@
             </div>
         </div>
     </dialog>
-
-    <script src="felpsTodoDia.js"></script>
+    <script src="felpsTodoDia.js" type="module"></script>
 </body>
 
 </html>
