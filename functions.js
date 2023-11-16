@@ -82,13 +82,13 @@ export async function populateAtlas(containerID, isAtlas) {
     })
 }
 
-export async function populateCatalogo(containerID) {
+export async function populateCatalogo() {
     const response = await fetch("felps.json");
     const felpsInfo = await response.json();
 
     for (const felps of felpsInfo) {
 
-        const catalogo = document.querySelector(`#${containerID}`);
+        const catalogo = document.querySelector("#areaCatalogo");
         let novoButton = document.createElement("button");
         let novoImg = document.createElement("img");
 

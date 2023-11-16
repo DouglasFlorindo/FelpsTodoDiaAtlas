@@ -2,9 +2,10 @@ import {populateAtlas, populateCatalogo, randomizarPosicoes, selecionarInfo, alt
 
 const infoModal = document.querySelector("#infoModal");
 const catalogoModal = document.querySelector("#catalogoModal");
+let inputSenha = "";
 
 populateAtlas("divAtlas", true);
-populateCatalogo("areaCatalogo");
+populateCatalogo();
 
 document.querySelector("#abrirCatalogo").addEventListener("click", () => catalogoModal.showModal());
 document.querySelector("#fecharCatalogo").addEventListener("click", function () {
@@ -61,8 +62,6 @@ document.addEventListener('keydown', (event) => {
             break;
     }
 });
-
-let inputSenha = "";
 
 document.addEventListener("keydown", function (event) {
     if (event.key == "'" || event.key == "-" && inputSenha.length < 4) {
