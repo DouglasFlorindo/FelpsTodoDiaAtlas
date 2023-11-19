@@ -1,4 +1,4 @@
-let movendo = false;
+let movendo = false, erro = false;
 let felpsDrag, felpsAtualId, quantFelps;
 
 export async function populateAtlas(containerID, isAtlas) {
@@ -17,8 +17,9 @@ export async function populateAtlas(containerID, isAtlas) {
         novoImg.src = `../FelpsTodoDiaAtlas/Imagens/${felps.arquivo}.webp`;
         novoImg.alt = felps.nome;
         novoImg.title = felps.nome;
+        novoImg.classList = "felpsImagem"
         novoButton.classList = "felps";
-        novoButton.style.animation = "aparecerFelps 0.5s ease"
+        novoButton.style.animation = "aparecerFelps 0.5s ease";
         isAtlas ? novoButton.addEventListener('click', () => movendo == false ? mostrarInfo(felps.id) : null) : null; // Verificar felps correto aqui!!!! talvez
         novoButton.addEventListener('mousedown', function () {
             felpsDrag = this;
@@ -59,6 +60,12 @@ export async function populateAtlas(containerID, isAtlas) {
         novoButton.appendChild(novoImg);
         atlas.appendChild(novoButton);
     }
+    
+    document.querySelectorAll('img.felpsImagem').forEach(element => {
+        if (element.complete == false) {
+            erro = true;
+        }
+    }); 
 
     document.addEventListener('mousedown', function (e) {
         if (e.target.tagName === 'IMG') {

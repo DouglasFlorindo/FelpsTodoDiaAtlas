@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="felpsTodoDia.css">
-    <script src="functions.js" type="module"></script>
+    <script src="functions.js"></script>
     <title>Atlas Felps Todo Dia</title>
 </head>
 
@@ -18,15 +18,15 @@
         <div id="divAtlas"></div>
         <div id="gridBotoes">
             <button type="button" id="aumentarEscala" class="clicavel"
-                title="Aumentar tamanho das imagens"><img aria-label="" src="Recursos/aumentar.png"></button>
+                title="Aumentar tamanho das imagens"><img aria-label="" src="Recursos/aumentar.png" class="icon"></button>
             <button type="button" id="diminuirEscala" class="clicavel"
-                title="Diminuir tamanho das imagens"><img aria-label="" src="Recursos/diminuir.png"></button>
+                title="Diminuir tamanho das imagens"><img aria-label="" src="Recursos/diminuir.png" class="icon"></button>
             <button type="button" id="randomizarPosicoes" class="clicavel"
-                title="Randomizar posições"><img aria-label="" src="Recursos/aleatorio.png"></button>
+                title="Randomizar posições"><img aria-label="" src="Recursos/aleatorio.png" class="icon"></button>
             <button type="button" id="abrirCatalogo" class="clicavel" title="Abrir catálogo"><img aria-label=""
-                    src="Recursos/catalogo.png"></button>
+                    src="Recursos/catalogo.png" class="icon"></button>
             <button type="button" id="abrirSobre" class="clicavel" title="Abrir sobre"><img aria-label=""
-                    src="Recursos/sobre.png"></button>
+                    src="Recursos/sobre.png" class="icon"></button>
         </div>
 
         <footer>
@@ -49,16 +49,16 @@
                     <p id="subInfoModal"></p>
                     <div class="wrapperBotoes">
                         <a id="linkTwitter" class="clicavel" target="_blank" title="Tweet"><img
-                                src="Recursos/twitter.png"></a>
+                                src="Recursos/twitter.png" class="icon"></a>
                         <a id="linkOriginal" class="clicavel" target="_blank" title="Imagem original"><img
-                                src="Recursos/original.png"></a>
+                                src="Recursos/original.png" class="icon"></a>
                     </div>
                 </div>
             </div>
             <footer>
-                <button type="button" id="felpsAnterior"><img src="Recursos/anterior.png"></button>
-                <button type="button" id="fecharInfo"><img src="Recursos/fechar.png"></button>
-                <button type="button" id="felpsPosterior"><img src="Recursos/posterior.png"></button>
+                <button type="button" id="felpsAnterior"><img src="Recursos/anterior.png" class="icon"></button>
+                <button type="button" id="fecharInfo"><img src="Recursos/fechar.png" class="icon"></button>
+                <button type="button" id="felpsPosterior"><img src="Recursos/posterior.png" class="icon"></button>
             </footer>
         </div>
     </dialog>
@@ -66,7 +66,7 @@
     <dialog id="catalogoModal" aria-label="Catálogo">
         <header>
             <h1>Catálogo</h1>
-            <button type="button" id="fecharCatalogo" class="clicavel"><img src="Recursos/fechar.png"></button>
+            <button type="button" id="fecharCatalogo" class="clicavel"><img src="Recursos/fechar.png" class="icon"></button>
         </header>
         <div id="areaCatalogo" class="wrapper"></div>
     </dialog>
@@ -74,7 +74,7 @@
     <dialog id="sobreModal" aria-label="Sobre">
         <header>
             <h1>Sobre</h1>
-            <button type="button" id="fecharSobre" class="clicavel"><img src="Recursos/fechar.png"></button>
+            <button type="button" id="fecharSobre" class="clicavel"><img src="Recursos/fechar.png" class="icon"></button>
         </header>
         <div class="wrapper">
             <h2>O que é o Felps Todo Dia?</h2>

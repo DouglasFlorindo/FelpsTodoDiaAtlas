@@ -3,6 +3,7 @@
     --corPrincipal: #ff3c64;
     --corSombra: #a0223b;
     --espaco: calc((3.5vh + 1.5vw) / 2);
+    --corFundo: #000;
 }
 
 * {
@@ -14,6 +15,7 @@
 body {
     height: 100dvh;
     overflow: hidden;
+    background: var(--corFundo);
 }
 
 h1, h2, p, li {
