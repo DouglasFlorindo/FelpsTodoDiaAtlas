@@ -224,6 +224,7 @@ div#gridBotoes {
     position: sticky;
     right: 0;
     background: white;
+    z-index: 5;
 }
 
 #infoModal footer button {
@@ -498,6 +499,14 @@ button.felps img {
         flex-direction: column;
         grid-template-columns: unset;
 
+    }
+
+    #infoModal div.wrapper {
+        margin-bottom: calc(var(--espaco) * 2 + 40px);
+    }
+
+    #infoModal div.wrapperImagem {
+        max-height: 60dvh;
     }
 
     #infoModal footer {
