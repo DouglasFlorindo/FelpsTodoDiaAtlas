@@ -4,17 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="felpsTodoDia.css">
     <link rel="stylesheet" href="acheOFelps.css">
+    <script src="functions.js" type="module"></script>
     <title>Ache o Felps!</title>
 </head>
 
 <body>
-    <section id="telaInicial"></section>
-    <section id="telaContagem"></section>
-    <section id="telaJogo"></section>
-    <section id="telaFinal"></section>
+    <!-- <section id="telaInicial"></section>
+    <section id="telaContagem"></section> -->
+    <section id="sectionJogo" style="border: 2px red solid;">
+        <div id="areaFelps" style="border: 2px blue solid">
+            <div class="hitbox" style="position: absolute; width: 100%; height: 15dvh; right: 0; left: 0; "></div>
+            <div class="hitbox" style="position: absolute; width: 10dvw; height: 100%; right: 0; left: 0; "></div>
+            <div class="hitbox" style="position: absolute; width: 10dvw; height: 100%; right: 0; right: 0;"></div>
+            <div class="hitbox" style="position: absolute; width: 100%; height: 15dvh; bottom: 0; left: 0;"></div>
+        </div>
+    </section>
 
-    <script src="acheOFelps.js"></script>
+    <script src="acheOFelps.js" type="module"></script>
 </body>
 
 </html>

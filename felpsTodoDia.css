@@ -350,6 +350,7 @@ button.felps {
 
 button.felps img {
     max-width: none;
+    transition: opacity 0.05s linear;
 }
 
 .felps:hover, .felps:focus {
@@ -366,15 +367,6 @@ button.felps img {
 
     100% {
         transform: rotate(360deg);
-    }
-}
-
-@keyframes aparecerFelps {
-    0% {
-        scale: 0;
-    }
-    100% {
-        scale: var(--escalaFelps);
     }
 }
 

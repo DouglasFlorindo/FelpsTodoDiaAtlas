@@ -6,20 +6,23 @@ export async function populateAtlas(containerID, isAtlas) {
     const felpsInfo = await response.json();
     quantFelps = felpsInfo.length;
     const atlas = document.querySelector(`#${containerID}`);
-    
+
     for (const felps of felpsInfo) {
 
         let novoImg = document.createElement("img");
         let novoButton = document.createElement("button");
 
+        novoButton.appendChild(novoImg);
         novoImg.id = `f${felps.id}`;
-        novoButton.id = `b${felps.id}`;
         novoImg.src = `../FelpsTodoDiaAtlas/Imagens/${felps.arquivo}.webp`;
         novoImg.alt = felps.nome;
         novoImg.title = felps.nome;
         novoImg.classList = "felpsImagem"
+        novoImg.style.opacity = "0"
+
+        
+        novoButton.id = `b${felps.id}`;
         novoButton.classList = "felps";
-        novoButton.style.animation = "aparecerFelps 0.5s ease";
         isAtlas ? novoButton.addEventListener('click', () => movendo == false ? mostrarInfo(felps.id) : null) : null; // Verificar felps correto aqui!!!! talvez
         novoButton.addEventListener('mousedown', function () {
             felpsDrag = this;
@@ -34,8 +37,8 @@ export async function populateAtlas(containerID, isAtlas) {
                 felpsDrag.style.cursor = "pointer";
             }
         });
-        novoButton.addEventListener('focus', () => {
-            this.addEventListener('keydown', function (event) {
+        novoButton.addEventListener('focus', (e) => {
+            e.target.addEventListener('keydown', function (event) {
                 switch (event.key) {
                     case "ArrowUp":
                         this.style.top = (parseFloat(this.style.top) - 1) + "%";
@@ -54,18 +57,20 @@ export async function populateAtlas(containerID, isAtlas) {
                 }
             })
         })
-        novoButton.style.left = `${Math.floor(Math.random() * (90 - 20)) + 10}%`;
-        novoButton.style.top = `${Math.floor(Math.random() * (70 - 20)) + 20}%`;
 
-        novoButton.appendChild(novoImg);
+        novoImg.addEventListener('load', () => {
+            let i = 0
+            while (i < 100 && checkHitbox(novoImg)) {
+                novoImg.parentElement.style.left = `${Math.floor(Math.random() * 90)}%`;
+                novoImg.parentElement.style.top = `${Math.floor(Math.random() * 90)}%`;
+                i++
+                console.log(i)
+            }
+            novoImg.style.opacity = "1"
+        })
+
         atlas.appendChild(novoButton);
     }
-    
-    document.querySelectorAll('img.felpsImagem').forEach(element => {
-        if (element.complete == false) {
-            erro = true;
-        }
-    }); 
 
     document.addEventListener('mousedown', function (e) {
         if (e.target.tagName === 'IMG') {
@@ -77,13 +82,13 @@ export async function populateAtlas(containerID, isAtlas) {
         if (felpsDrag != null) {
             let x = e.pageX / document.body.clientWidth * 100;
             let y = e.pageY / document.body.clientHeight * 100;
-    
+
             felpsDrag.style.left = x + "%";
             felpsDrag.style.top = y + "%";
             felpsDrag.style.cursor = "move"
             felpsDrag.style.transform = "translate(-50%, -50%)"
             felpsDrag.style.filter = `drop-shadow(${felpsDrag.clientWidth / 2}px ${felpsDrag.clientHeight / 2}px rgba(160, 34, 59, 0.5))`;
-    
+
             movendo = true
         }
     })
@@ -125,14 +130,13 @@ export async function mostrarInfo(felpsId) {
     mes = new Date().getMonth() + 1;
     String(mes).length == 1 ? mes = "0" + mes : null;
     dataAtual = `${dia}/${mes}`;
-    
-    //adicionar ".substring(0, 5)" após adicionar ano às datas
+
     if (felpsInfo[felpsId].data.substring(0, 5) == dataAtual) {
         document.querySelector("#felpsDoDia").style.display = "inherit"
     } else {
         document.querySelector("#felpsDoDia").style.display = "none"
     }
-    
+
     document.querySelector("#tituloModal").textContent = `${felpsInfo[felpsId].numero}. ${felpsInfo[felpsId].nome}`;
     document.querySelector("#felpsHRes").src = `../FelpsTodoDiaAtlas/Imagens/${felpsInfo[felpsId].arquivo}HRes.webp`;
     document.querySelector("#felpsHRes").alt = felpsInfo[felpsId].nome;
@@ -143,6 +147,18 @@ export async function mostrarInfo(felpsId) {
 
     infoModal.showModal()
 };
+
+export function checkHitbox(felps) {
+    const hitboxes = document.querySelectorAll("div.hitbox");
+    const felpsLimites = felps.getBoundingClientRect();
+    
+    for (const box of hitboxes) {
+        const hitboxLimites = box.getBoundingClientRect();
+        if (!(felpsLimites.top > hitboxLimites.bottom || felpsLimites.right < hitboxLimites.left || felpsLimites.bottom < hitboxLimites.top || felpsLimites.left > hitboxLimites.right)) {
+            return true
+        };
+    }
+}
 
 export function selecionarInfo(seletor) {
     switch (seletor) {
@@ -157,10 +173,16 @@ export function selecionarInfo(seletor) {
 
 export function randomizarPosicoes() {
     let felps = document.querySelectorAll(".felps");
-    
+
     felps.forEach(element => {
-        element.style.left = `${Math.floor(Math.random() * (90 - 20)) + 10}%`;
-        element.style.top = `${Math.floor(Math.random() * (70 - 20)) + 20}%`;
+        element.style.left = `${Math.floor(Math.random() * 90)}%`;
+        element.style.top = `${Math.floor(Math.random() * 90)}%`;
+        let i = 0
+        while (i < 100 && checkHitbox(element)) {
+            element.style.left = `${Math.floor(Math.random() * 90)}%`;
+            element.style.top = `${Math.floor(Math.random() * 90)}%`;
+            i++
+        }
     });
 };
 
@@ -187,7 +209,7 @@ export function verificarSenha(senha) {
         default:
             break;
     }
-}   
+}
 
 export function easterEgg() {
     let novoImg = document.createElement("img");
