@@ -127,7 +127,7 @@ export async function mostrarInfo(felpsId) {
     dataAtual = `${dia}/${mes}`;
     
     //adicionar ".substring(0, 5)" após adicionar ano às datas
-    if (felpsInfo[felpsId].data == dataAtual) {
+    if (felpsInfo[felpsId].data.substring(0, 5) == dataAtual) {
         document.querySelector("#felpsDoDia").style.display = "inherit"
     } else {
         document.querySelector("#felpsDoDia").style.display = "none"
