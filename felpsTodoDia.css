@@ -135,8 +135,9 @@ div#gridBotoes {
 }
 
 #sectionPrincipal footer p {
-    color: #797979;
-    text-shadow: white 1px 0, white -1px 0, white 0 1px, white 0 -1px;
+    color: var(--corPrincipal);
+    font-weight: bold;
+    text-shadow: black 1px 0, black -1px 0, black 0 1px, black 0 -1px;
     position: relative;
     z-index: 10;
 }
