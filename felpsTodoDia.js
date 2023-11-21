@@ -4,10 +4,10 @@ const infoModal = document.querySelector("#infoModal");
 const catalogoModal = document.querySelector("#catalogoModal");
 let inputSenha = "";
 
-if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    let root = document.documentElement;
-    root.style.setProperty("--corFundo", "#2b030b")
-}
+// if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+//     let root = document.documentElement;
+//     root.style.setProperty("--corFundo", "#2b030b")
+// }
 
 populateAtlas("divAtlas", true);
 populateCatalogo();

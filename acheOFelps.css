@@ -1,3 +1,11 @@
+:root {
+    --corClaro: #FFF;
+    --corFundo: #e7e4e5;
+    --corEscuro: #c9cecf;
+    --corMaisEscuro: #616b63;
+    --corTexto: #0e0c0c;
+}
+
 section {
     height: 100dvh;
     display: flex;
@@ -8,9 +16,53 @@ section {
     overflow: hidden;
 }
 
+/*=============== section Jogo =================*/
+
+#sectionJogo header {
+    position: fixed;
+    width: 100%;
+    box-shadow: 0 5px 0 0 var(--corEscuro);
+}
+
 #areaFelps {
     height: 100%;
     width: 100%;
+    background: var(--corFundo);
 }
 
-/*=============== section Jogo =================*/
+#gridControles {
+    background: var(--corClaro);
+    z-index: 10;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    transform: translateY(3.5rem);
+    transition: transform 0.1s linear;
+    padding: 0 var(--espaco);
+    border-radius: 15px 15px 0 0;
+}
+
+#gridControles span {
+    background: var(--corPrincipal);
+    width: 100%;
+    height: 0.5rem;
+    border-radius: 0.25rem;
+    margin: 0.5rem 0;
+}
+
+#gridControles div.wrapperBotoes {
+    display: grid;
+    grid: 1fr / repeat(3, 1fr);
+    gap: 1.5rem;
+    padding: 0 0 0.5rem 0;
+}
+
+#gridControles:hover {
+    transform: translateY(0);
+}
+
+#gridControles button {
+    width: auto;
+    height: auto;
+}

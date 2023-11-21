@@ -13,12 +13,24 @@
 <body>
     <!-- <section id="telaInicial"></section>
     <section id="telaContagem"></section> -->
-    <section id="sectionJogo" style="border: 2px red solid;">
-        <div id="areaFelps" style="border: 2px blue solid">
-            <div class="hitbox" style="position: absolute; width: 100%; height: 15dvh; right: 0; left: 0; "></div>
-            <div class="hitbox" style="position: absolute; width: 10dvw; height: 100%; right: 0; left: 0; "></div>
-            <div class="hitbox" style="position: absolute; width: 10dvw; height: 100%; right: 0; right: 0;"></div>
-            <div class="hitbox" style="position: absolute; width: 100%; height: 15dvh; bottom: 0; left: 0;"></div>
+    <section id="sectionJogo">
+        <header></header>
+        <div id="areaFelps" >
+            <div class="hitbox" style="position: absolute; width: 100%; height: 20dvh; right: 0; left: 0;"></div>
+            <div class="hitbox" style="position: absolute; width: 5dvw; height: 100%; right: 0; left: 0;"></div>
+            <div class="hitbox" style="position: absolute; width: 5dvw; height: 100%; right: 0; right: 0;"></div>
+            <div class="hitbox" style="position: absolute; width: 100%; height: 7.5dvh; bottom: 0; left: 0;"></div>
+        </div>
+        <div id="gridControles">
+            <span></span>
+            <div class="wrapperBotoes">
+                <button type="button" id="aumentarEscala" class="clicavel" title="Aumentar tamanho das imagens"><img
+                        aria-label="" src="Recursos/aumentar.png" class="icon"></button>
+                <button type="button" id="diminuirEscala" class="clicavel" title="Diminuir tamanho das imagens"><img
+                        aria-label="" src="Recursos/diminuir.png" class="icon"></button>
+                <button type="button" id="randomizarPosicoes" class="clicavel" title="Randomizar posições"><img
+                        aria-label="" src="Recursos/aleatorio.png" class="icon"></button>
+            </div>
         </div>
     </section>
 

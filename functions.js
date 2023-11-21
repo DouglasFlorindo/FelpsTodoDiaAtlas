@@ -1,5 +1,6 @@
-let movendo = false, erro = false;
+let movendo = false;
 let felpsDrag, felpsAtualId, quantFelps;
+export let felpsAlvoId;
 
 export async function populateAtlas(containerID, isAtlas) {
     const response = await fetch("felps.json");
@@ -23,7 +24,7 @@ export async function populateAtlas(containerID, isAtlas) {
         
         novoButton.id = `b${felps.id}`;
         novoButton.classList = "felps";
-        isAtlas ? novoButton.addEventListener('click', () => movendo == false ? mostrarInfo(felps.id) : null) : null; // Verificar felps correto aqui!!!! talvez
+        isAtlas ? novoButton.addEventListener('click', () => movendo == false ? mostrarInfo(felps.id) : null) : novoButton.addEventListener('click', () => movendo == false ? verificarFelpsAlvo(felps.id) : null); 
         novoButton.addEventListener('mousedown', function () {
             felpsDrag = this;
         });
@@ -64,7 +65,7 @@ export async function populateAtlas(containerID, isAtlas) {
                 novoImg.parentElement.style.left = `${Math.floor(Math.random() * 90)}%`;
                 novoImg.parentElement.style.top = `${Math.floor(Math.random() * 90)}%`;
                 i++
-                console.log(i)
+                
             }
             novoImg.style.opacity = "1"
         })
@@ -92,7 +93,7 @@ export async function populateAtlas(containerID, isAtlas) {
             movendo = true
         }
     })
-}
+};
 
 export async function populateCatalogo() {
     const response = await fetch("felps.json");
@@ -123,13 +124,7 @@ export async function mostrarInfo(felpsId) {
     const felpsInfo = await response.json();
     felpsAtualId = felpsId;
 
-    let dataAtual, dia, mes;
-
-    dia = new Date().getDate();
-    String(dia).length == 1 ? dia = "0" + dia : null;
-    mes = new Date().getMonth() + 1;
-    String(mes).length == 1 ? mes = "0" + mes : null;
-    dataAtual = `${dia}/${mes}`;
+    let dataAtual = gerarDataAtual()
 
     if (felpsInfo[felpsId].data.substring(0, 5) == dataAtual) {
         document.querySelector("#felpsDoDia").style.display = "inherit"
@@ -148,6 +143,17 @@ export async function mostrarInfo(felpsId) {
     infoModal.showModal()
 };
 
+export function gerarDataAtual(){
+    let dataAtual, dia, mes;
+
+    dia = new Date().getDate();
+    String(dia).length == 1 ? dia = "0" + dia : null;
+    mes = new Date().getMonth() + 1;
+    String(mes).length == 1 ? mes = "0" + mes : null;
+    dataAtual = `${dia}/${mes}`;
+    return dataAtual;
+};
+
 export function checkHitbox(felps) {
     const hitboxes = document.querySelectorAll("div.hitbox");
     const felpsLimites = felps.getBoundingClientRect();
@@ -158,7 +164,7 @@ export function checkHitbox(felps) {
             return true
         };
     }
-}
+};
 
 export function selecionarInfo(seletor) {
     switch (seletor) {
@@ -169,7 +175,7 @@ export function selecionarInfo(seletor) {
             felpsAtualId < quantFelps - 1 ? mostrarInfo(felpsAtualId + 1) : mostrarInfo(felpsAtualId = 0);
             break
     }
-}
+};
 
 export function randomizarPosicoes() {
     let felps = document.querySelectorAll(".felps");
@@ -209,7 +215,7 @@ export function verificarSenha(senha) {
         default:
             break;
     }
-}
+};
 
 export function easterEgg() {
     let novoImg = document.createElement("img");
@@ -220,4 +226,36 @@ export function easterEgg() {
     novoImg.style.left = `${Math.floor(Math.random() * 100)}%`;
     novoImg.style.top = `-${Math.floor(Math.random() * 90) + 10}%`;
     atlas.appendChild(novoImg)
-}
+};
+
+export async function escolherFelpsAlvo(modo, ano) {
+    const response = await fetch("felps.json");
+    const felpsInfo = await response.json();
+    let match = null;
+    quantFelps = felpsInfo.length;
+    felpsAlvoId = null;
+
+    switch (modo) {
+        case "diario":
+            ano == null ? ano = 22 : null;
+            let dataAtual = `${gerarDataAtual()}/${ano}`;
+            match = felpsInfo.find((felps) => felps.data === dataAtual);
+            felpsAlvoId = match.id;
+            break;
+        case "aleatorio":
+            while (felpsAlvoId == null) {
+                match = felpsInfo[Math.floor(Math.random() * quantFelps - 1)];
+                if (ano == null) {
+                    felpsAlvoId = match.id;
+                } else {
+                    match.data.substring(6, 8) == ano ? felpsAlvoId = match.id : null
+                }
+                console.log(match, felpsAlvoId)
+            } 
+            break;
+    }
+};
+
+export function verificarFelpsAlvo(id) {
+    id == felpsAlvoId ? console.log("é esse") : console.log("não é esse");
+};
