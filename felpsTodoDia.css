@@ -365,8 +365,7 @@ li {
     width: 100%;
 }
 
-#boasVindasModal p,
-a {
+#boasVindasModal p {
     margin: var(--espaco);
 }
 

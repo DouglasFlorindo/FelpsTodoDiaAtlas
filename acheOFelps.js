@@ -1,9 +1,10 @@
-import { populateAtlas, randomizarPosicoes, alterarEscala, escolherFelpsAlvo} from './functions.js';
+import { populateAtlas, randomizarPosicoes, alterarEscala, escolherFelpsAlvo, controleTimer} from './functions.js';
 
 document.querySelector("#aumentarEscala").addEventListener("click", () => alterarEscala(true));
 document.querySelector("#diminuirEscala").addEventListener("click", () => alterarEscala(false));
 
 document.querySelector("#randomizarPosicoes").addEventListener("click", randomizarPosicoes);
+
 document.addEventListener('keydown', (event) => {
     switch (event.key) {
         case "+":
@@ -23,3 +24,6 @@ document.addEventListener('keydown', (event) => {
 populateAtlas("areaFelps", false)
 
 escolherFelpsAlvo("aleatorio", 22)
+
+controleTimer(true)
+

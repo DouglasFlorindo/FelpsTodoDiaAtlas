@@ -14,7 +14,18 @@
     <!-- <section id="telaInicial"></section>
     <section id="telaContagem"></section> -->
     <section id="sectionJogo">
-        <header></header>
+        <header>
+            <div id="wrapperImagem">
+                <img id="felpsAlvoImagem">
+            </div>
+            <div id="wrapperAlvo">
+                <h3>Econtre:</h3>
+                <h1 id="felpsAlvoNome"></h1>
+            </div>
+            <div id="wrapperTimer">
+                <h1 id="timer"></h1>
+            </div>
+        </header>
         <div id="areaFelps" >
             <div class="hitbox" style="position: absolute; width: 100%; height: 20dvh; right: 0; left: 0;"></div>
             <div class="hitbox" style="position: absolute; width: 5dvw; height: 100%; right: 0; left: 0;"></div>
@@ -33,7 +44,7 @@
             </div>
         </div>
     </section>
-
+    <dialog id="vitoriaModal"></dialog>
     <script src="acheOFelps.js" type="module"></script>
 </body>
 

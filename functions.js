@@ -1,6 +1,6 @@
 let movendo = false;
-let felpsDrag, felpsAtualId, quantFelps;
-export let felpsAlvoId;
+let felpsDrag, felpsAtualId, quantFelps, timerId;
+export let felpsAlvo, timer;
 
 export async function populateAtlas(containerID, isAtlas) {
     const response = await fetch("felps.json");
@@ -21,10 +21,10 @@ export async function populateAtlas(containerID, isAtlas) {
         novoImg.classList = "felpsImagem"
         novoImg.style.opacity = "0"
 
-        
+
         novoButton.id = `b${felps.id}`;
         novoButton.classList = "felps";
-        isAtlas ? novoButton.addEventListener('click', () => movendo == false ? mostrarInfo(felps.id) : null) : novoButton.addEventListener('click', () => movendo == false ? verificarFelpsAlvo(felps.id) : null); 
+        isAtlas ? novoButton.addEventListener('click', () => movendo == false ? mostrarInfo(felps.id) : null) : novoButton.addEventListener('click', () => movendo == false ? verificarFelpsAlvo(felps.id) : null);
         novoButton.addEventListener('mousedown', function () {
             felpsDrag = this;
         });
@@ -65,7 +65,7 @@ export async function populateAtlas(containerID, isAtlas) {
                 novoImg.parentElement.style.left = `${Math.floor(Math.random() * 90)}%`;
                 novoImg.parentElement.style.top = `${Math.floor(Math.random() * 90)}%`;
                 i++
-                
+
             }
             novoImg.style.opacity = "1"
         })
@@ -143,7 +143,7 @@ export async function mostrarInfo(felpsId) {
     infoModal.showModal()
 };
 
-export function gerarDataAtual(){
+export function gerarDataAtual() {
     let dataAtual, dia, mes;
 
     dia = new Date().getDate();
@@ -157,7 +157,7 @@ export function gerarDataAtual(){
 export function checkHitbox(felps) {
     const hitboxes = document.querySelectorAll("div.hitbox");
     const felpsLimites = felps.getBoundingClientRect();
-    
+
     for (const box of hitboxes) {
         const hitboxLimites = box.getBoundingClientRect();
         if (!(felpsLimites.top > hitboxLimites.bottom || felpsLimites.right < hitboxLimites.left || felpsLimites.bottom < hitboxLimites.top || felpsLimites.left > hitboxLimites.right)) {
@@ -228,34 +228,60 @@ export function easterEgg() {
     atlas.appendChild(novoImg)
 };
 
+// ====================== Ache O Felps ======================
+
 export async function escolherFelpsAlvo(modo, ano) {
     const response = await fetch("felps.json");
     const felpsInfo = await response.json();
     let match = null;
     quantFelps = felpsInfo.length;
-    felpsAlvoId = null;
+    felpsAlvo = null;
 
     switch (modo) {
         case "diario":
             ano == null ? ano = 22 : null;
             let dataAtual = `${gerarDataAtual()}/${ano}`;
-            match = felpsInfo.find((felps) => felps.data === dataAtual);
-            felpsAlvoId = match.id;
+            felpsAlvo = felpsInfo.find((felps) => felps.data === dataAtual);
+
             break;
         case "aleatorio":
-            while (felpsAlvoId == null) {
+            while (felpsAlvo == null) {
                 match = felpsInfo[Math.floor(Math.random() * quantFelps - 1)];
                 if (ano == null) {
-                    felpsAlvoId = match.id;
+                    felpsAlvo = match;
                 } else {
-                    match.data.substring(6, 8) == ano ? felpsAlvoId = match.id : null
+                    match.data.substring(6, 8) == ano ? felpsAlvo = match : null
                 }
-                console.log(match, felpsAlvoId)
-            } 
+                console.log(felpsAlvo)
+            }
             break;
     }
+    document.querySelector("#felpsAlvoNome").textContent = felpsAlvo.nome
+    document.querySelector("#felpsAlvoImagem").src = `../FelpsTodoDiaAtlas/Imagens/${felpsAlvo.arquivo}.webp`
 };
 
 export function verificarFelpsAlvo(id) {
-    id == felpsAlvoId ? console.log("é esse") : console.log("não é esse");
+    id == felpsAlvo.id ? controleTimer(false) : console.log("não é esse");
 };
+
+export function controleTimer(start) {
+    switch (start) {
+        case true:
+            let tempoInicial = new Date().getTime();
+            let tempoAtual;
+
+            timerId = setInterval(() => {
+                tempoAtual = new Date().getTime();
+                timer = tempoAtual - tempoInicial;
+                timer = timer.toString();
+                document.querySelector("#timer").textContent = `${Math.floor(timer / 1000)}.${timer.slice(-3, -1)}`;
+            }, 10)
+            break;
+        case false:
+            clearInterval(timerId);
+        default:
+            break;
+    }
+}
+
+
