@@ -2,15 +2,19 @@ import {populateAtlas, populateCatalogo, randomizarPosicoes, selecionarInfo, alt
 
 const infoModal = document.querySelector("#infoModal");
 const catalogoModal = document.querySelector("#catalogoModal");
-let inputSenha = "";
+const boasVindasModal = document.querySelector("#boasVindasModal");
 
-// if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-//     let root = document.documentElement;
-//     root.style.setProperty("--corFundo", "#2b030b")
-// }
+let inputSenha = "";
 
 populateAtlas("divAtlas", true);
 populateCatalogo();
+
+document.addEventListener("DOMContentLoaded", function() {
+    if (!localStorage.getItem("modalShown")) {
+        boasVindasModal.showModal()
+        localStorage.setItem("modalShown", "true");
+    }
+});
 
 document.querySelector("#abrirCatalogo").addEventListener("click", () => catalogoModal.showModal());
 document.querySelector("#fecharCatalogo").addEventListener("click", function () {
@@ -35,6 +39,14 @@ document.querySelector("#fecharInfo").addEventListener("click", function () {
     setTimeout(function () {
         infoModal.close()
         infoModal.style.animation = "aparecerInfo 0.5s ease"
+    }, 450);
+});
+
+document.querySelector("#fecharBoasVindas").addEventListener("click", function () {
+    boasVindasModal.style.animation = "desaparecerCatalogoSobre 0.5s ease";
+    setTimeout(function () {
+        boasVindasModal.close()
+        boasVindasModal.style.animation = "aparecerCatalogoSobre 0.5s ease"
     }, 450);
 });
 

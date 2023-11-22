@@ -1,9 +1,34 @@
 :root {
+    --text: #0f0103;
+    --background: #ffeef1;
+    --primary: #ff3c64;
+    --secondary: #fcacbc;
+    --accent: #d30931;
+    --invert: 0;
     --escalaFelps: 1;
-    --corPrincipal: #ff3c64;
-    --corSombra: #a0223b;
     --espaco: calc((3.5vh + 1.5vw) / 2);
-    --corFundo: #fff;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --text: #0f0103;
+        --background: #ffeef1;
+        --primary: #ff3c64;
+        --secondary: #fcacbc;
+        --accent: #d30931;
+        --invert: 0;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text: #fef1f3;
+        --background: #1c0d10;
+        --primary: #ff3c64;
+        --secondary: #450711;
+        --accent: #d30931;
+        --invert: 1;
+    }
 }
 
 * {
@@ -15,14 +40,19 @@
 body {
     height: 100dvh;
     overflow: hidden;
-    background: var(--corFundo);
+    background: var(--background);
 }
 
-h1, h2, p, li {
+h1,
+h2,
+p,
+li {
+    color: var(--text);
     font-family: 'Comic Sans MS';
 }
 
-p, li {
+p,
+li {
     font-size: 1.25rem;
 }
 
@@ -33,8 +63,7 @@ h2 {
 
 header {
     padding: var(--espaco);
-    color: var(--corPrincipal);
-    background: white;
+    background: var(--primary);
     font-size: 1.25rem;
     display: flex;
     justify-content: center;
@@ -48,13 +77,15 @@ button {
     border: hidden;
 }
 
-button img, a img {
+button img,
+a img {
     aspect-ratio: 1 / 1;
     max-width: 3rem;
 }
 
-dialog, header {
-    box-shadow: 0 5px 0 0 var(--corSombra);
+dialog,
+header {
+    box-shadow: 0 5px 0 0 var(--accent);
 }
 
 dialog {
@@ -66,7 +97,7 @@ dialog {
     position: absolute;
     border: hidden;
     border-radius: 15px;
-    background: var(--corPrincipal);
+    background: var(--background);
 }
 
 dialog header {
@@ -97,8 +128,6 @@ dialog header button {
 }
 
 #sectionPrincipal header {
-    background: var(--corPrincipal);
-    color: white;
     padding: var(--espaco);
     width: 100%;
     position: absolute;
@@ -119,10 +148,10 @@ div#gridBotoes {
     display: grid;
     grid: 1fr;
     gap: 1rem;
-    background: var(--corPrincipal);
+    background: var(--primary);
     padding: var(--espaco);
     border-radius: 15px 0 0 15px;
-    box-shadow: 0 5px 0 0 var(--corSombra);
+    box-shadow: 0 5px 0 0 var(--accent);
     animation: aparecerBotoes 0.5s ease;
 }
 
@@ -135,9 +164,10 @@ div#gridBotoes {
 }
 
 #sectionPrincipal footer p {
-    color: var(--corPrincipal);
+    color: var(--primary);
     font-weight: bold;
-    text-shadow: black 1px 0, black -1px 0, black 0 1px, black 0 -1px;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: black;
     position: relative;
     z-index: 10;
 }
@@ -224,7 +254,7 @@ div#gridBotoes {
     flex-direction: column;
     position: sticky;
     right: 0;
-    background: white;
+    background: var(--primary);
     z-index: 5;
 }
 
@@ -236,8 +266,8 @@ div#gridBotoes {
 }
 
 #infoModal footer button:hover {
-    background: var(--corPrincipal);
-    box-shadow: inset 0 5px 0 0 var(--corSombra);
+    background: var(--background);
+    box-shadow: inset 0 5px 0 0 var(--accent);
     cursor: pointer;
 }
 
@@ -291,12 +321,14 @@ img.felpsCatalogo {
     height: auto;
 }
 
-#sobreModal p, li {
+#sobreModal p,
+li {
     margin: 0 var(--espaco);
 }
 
-#sobreModal span, #sobreModal a {
-    color: black;
+#sobreModal span,
+#sobreModal a {
+    color: var(--text);
     font-weight: bold;
 }
 
@@ -320,9 +352,28 @@ img.felpsCatalogo {
     object-fit: scale-down;
 }
 
+/* ====================Boas Vindas Modal==================== */
+
+#boasVindasModal {
+    animation: aparecerCatalogoSobre 0.5s ease;
+    height: auto;
+}
+
+#boasVindasModal div.wrapper {
+    text-align: center;
+    padding: var(--espaco);
+    width: 100%;
+}
+
+#boasVindasModal p,
+a {
+    margin: var(--espaco);
+}
+
 /* =========================================== */
 
-.clicavel, .felps {
+.clicavel,
+.felps {
     cursor: pointer;
     transition: scale 0.1s ease-in-out;
 }
@@ -353,9 +404,14 @@ button.felps img {
     transition: opacity 0.05s linear;
 }
 
-.felps:hover, .felps:focus {
+.felps:hover,
+.felps:focus {
     z-index: 6;
     scale: calc(var(--escalaFelps) + 0.05);
+}
+
+.icon {
+    filter: invert(var(--invert));
 }
 
 /* ========================================== */
@@ -374,6 +430,7 @@ button.felps img {
     0% {
         transform: translate(-100%, -50%);
     }
+
     100% {
         transform: translate(0%, -50%);
     }
@@ -383,6 +440,7 @@ button.felps img {
     0% {
         transform: translate(0%, -50%);
     }
+
     100% {
         transform: translate(-100%, -50%);
     }
@@ -392,6 +450,7 @@ button.felps img {
     0% {
         transform: translate(100%, -50%);
     }
+
     100% {
         transform: translate(0%, -50%);
     }
@@ -401,6 +460,7 @@ button.felps img {
     0% {
         transform: translate(-50%, -150%);
     }
+
     100% {
         transform: translate(-50%, -50%);
     }
@@ -410,6 +470,7 @@ button.felps img {
     0% {
         transform: translate(-50%, -50%);
     }
+
     100% {
         transform: translate(-50%, -150%);
     }
@@ -420,6 +481,7 @@ button.felps img {
         transform: rotate(360deg);
         top: 120%;
     }
+
     100% {
         opacity: 0;
         top: 120%
@@ -428,13 +490,14 @@ button.felps img {
 
 /* ==================================== */
 
-@media screen and (max-width: 760px){
+@media screen and (max-width: 760px) {
     :root {
         --escalaFelps: 0.75;
         --espaco: 2.5vh;
     }
 
-    h1, h2 {
+    h1,
+    h2 {
         font-size: 1.5rem;
     }
 
@@ -447,7 +510,8 @@ button.felps img {
         height: 2.5rem;
     }
 
-    button img, a img {
+    button img,
+    a img {
         max-width: 2.5rem;
     }
 
@@ -540,42 +604,47 @@ button.felps img {
         0% {
             transform: translate(-50%, -150%);
         }
+
         100% {
             transform: translate(-50%, 0);
         }
     }
-    
+
     @keyframes desaparecerInfo {
         0% {
             transform: translate(-50%, 0);
         }
+
         100% {
             transform: translate(-50%, -150%);
         }
     }
-    
+
     @keyframes aparecerBotoes {
         0% {
             transform: translate(0%, 100%);
         }
+
         100% {
             transform: translate(0%, 0%);
         }
     }
-    
+
     @keyframes aparecerCatalogoSobre {
         0% {
             transform: translate(-50%, -150%);
         }
+
         100% {
             transform: translate(-50%, 0);
         }
     }
-    
+
     @keyframes desaparecerCatalogoSobre {
         0% {
             transform: translate(-50%, 0);
         }
+
         100% {
             transform: translate(-50%, -150%);
         }
