@@ -405,7 +405,7 @@ button.felps img {
 
 .felps:hover,
 .felps:focus {
-    /* z-index: 6; */
+    z-index: 6;
     scale: calc(var(--escalaFelps) + 0.05);
 }
 
