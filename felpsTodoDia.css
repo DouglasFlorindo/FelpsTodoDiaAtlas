@@ -39,7 +39,7 @@
 
 body {
     height: 100dvh;
-    overflow: hidden;
+    overflow: scroll;
     background: var(--background);
 }
 
@@ -97,7 +97,7 @@ dialog {
     position: absolute;
     border: hidden;
     border-radius: 15px;
-    background: var(--background);
+    background: var(--background);    
 }
 
 dialog header {

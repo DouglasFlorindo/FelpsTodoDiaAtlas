@@ -1,4 +1,4 @@
-import {populateAtlas, populateCatalogo, randomizarPosicoes, selecionarInfo, alterarEscala, verificarSenha} from './functions.js';
+import { populateAtlas, populateCatalogo, randomizarPosicoes, selecionarInfo, alterarEscala, verificarSenha } from './functions.js';
 
 const infoModal = document.querySelector("#infoModal");
 const catalogoModal = document.querySelector("#catalogoModal");
@@ -9,7 +9,7 @@ let inputSenha = "";
 populateAtlas("divAtlas", true);
 populateCatalogo();
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     if (!localStorage.getItem("modalShown")) {
         boasVindasModal.showModal()
         localStorage.setItem("modalShown", "true");
@@ -52,6 +52,18 @@ document.querySelector("#fecharBoasVindas").addEventListener("click", function (
 
 document.querySelector("#felpsAnterior").addEventListener("click", () => selecionarInfo(true))
 document.querySelector("#felpsPosterior").addEventListener("click", () => selecionarInfo(false))
+infoModal.addEventListener('keydown', (event) => {
+    switch (event.key) {
+        case "ArrowUp":
+            selecionarInfo(true);
+            break;
+        case "ArrowDown":
+            selecionarInfo(false);
+            break;
+        default:
+            break;
+    }
+})
 
 document.querySelector("#aumentarEscala").addEventListener("click", () => alterarEscala(true));
 document.querySelector("#diminuirEscala").addEventListener("click", () => alterarEscala(false));

@@ -25,10 +25,19 @@ h1 {
     color: var(--corTexto);
 }
 
+dialog {
+    background: var(--corClaro);
+}
+
+dialog::backdrop {
+    backdrop-filter: blur(10px);
+}
+
 /*=============== section Jogo =================*/
 
 #sectionJogo header {
-    position: fixed;
+    position: absolute;
+    top: 0;
     width: 100%;
     box-shadow: 0 5px 0 0 var(--corEscuro);
     display: flex;
@@ -50,6 +59,7 @@ h1 {
     height: 100%;
     width: 100%;
     background: var(--corFundo);
+
 }
 
 #gridControles {
@@ -63,6 +73,7 @@ h1 {
     transition: transform 0.1s linear;
     padding: 0 var(--espaco);
     border-radius: 15px 15px 0 0;
+    animation: controles 3s infinite;
 }
 
 #gridControles span {
@@ -87,4 +98,23 @@ h1 {
 #gridControles button {
     width: auto;
     height: auto;
+}
+
+/*=============== Resultado Modal =================*/
+
+#resultadoModal div.wrapper {
+    height: 100%;
+    width: 100%;
+}
+
+@keyframes controles {
+    0% {
+        box-shadow: var(--primary) 0 0 0 0;
+    }
+    50% {
+        box-shadow: var(--primary) 0 0 20px 0;
+    }
+    90% {
+        box-shadow: transparent 0 0 20px 0;
+    }
 }

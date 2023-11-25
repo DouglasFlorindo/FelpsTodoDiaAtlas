@@ -1,6 +1,7 @@
 let movendo = false;
 let felpsDrag, felpsAtualId, quantFelps, timerId;
 export let felpsAlvo, timer;
+let modo, ano;
 
 export async function populateAtlas(containerID, isAtlas) {
     const response = await fetch("felps.json");
@@ -74,9 +75,7 @@ export async function populateAtlas(containerID, isAtlas) {
     }
 
     document.addEventListener('mousedown', function (e) {
-        if (e.target.tagName === 'IMG') {
-            e.preventDefault();
-        }
+        e.target.tagName === 'IMG' ? e.preventDefault() : null    
     });
     document.addEventListener('mouseup', () => felpsDrag = null);
     document.addEventListener('mousemove', function (e) {
@@ -225,6 +224,7 @@ export function easterEgg() {
     novoImg.classList = "carinha";
     novoImg.style.left = `${Math.floor(Math.random() * 100)}%`;
     novoImg.style.top = `-${Math.floor(Math.random() * 90) + 10}%`;
+    novoImg.style.transform = `rotate(${Math.floor(Math.random() * 720) - 360}deg)`
     atlas.appendChild(novoImg)
 };
 
@@ -261,7 +261,7 @@ export async function escolherFelpsAlvo(modo, ano) {
 };
 
 export function verificarFelpsAlvo(id) {
-    id == felpsAlvo.id ? controleTimer(false) : console.log("não é esse");
+    id == felpsAlvo.id ? finalizarPartida() : console.log("não é esse");
 };
 
 export function controleTimer(start) {
@@ -282,6 +282,29 @@ export function controleTimer(start) {
         default:
             break;
     }
+}
+
+export function carregarPartida() {
+    
+    let queryString = window.location.search;
+    let params = new URLSearchParams(queryString);
+    modo = params.get('modoDeJogo');
+    ano = params.get('colecaoDeFelps')
+    console.log(params.get('colecaoDeFelps'))
+    resultadoModal.close();
+    randomizarPosicoes();
+    escolherFelpsAlvo(modo, ano);
+    //carregar contagem aqui
+    controleTimer(true)
+}
+
+export function finalizarPartida() {
+    controleTimer(false);
+    let timerResultado = timer;
+    document.querySelector("#felpsHRes").src = `../FelpsTodoDiaAtlas/Imagens/${felpsAlvo.arquivo}HRes.webp`;
+    document.querySelector("#nomeFelpsAlvoResultado").textContent = felpsAlvo.nome;
+    document.querySelector("#timerResultado").textContent = `${Math.floor(timerResultado / 1000)}.${timerResultado.slice(-3, -1)}s`;
+    resultadoModal.showModal();
 }
 
 
