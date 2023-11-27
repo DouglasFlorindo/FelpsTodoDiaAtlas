@@ -7,6 +7,10 @@
     --invert: 0
 }
 
+form {
+    color: var(--corClaro);
+}
+
 section {
     height: 100dvh;
     display: flex;
@@ -86,7 +90,8 @@ dialog::backdrop {
 
 #gridControles div.wrapperBotoes {
     display: grid;
-    grid: 1fr / repeat(3, 1fr);
+    grid: 1fr;
+    grid-auto-flow: column;
     gap: 1.5rem;
     padding: 0 0 0.5rem 0;
 }

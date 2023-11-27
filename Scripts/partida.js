@@ -4,8 +4,6 @@ const resultadoModal = document.querySelector("#resultadoModal");
 let modo = "aleatorio";
 let ano = 22;
 
-document.querySelector("#botaoJogar").addEventListener("click", carregarPartida)
-
 document.querySelector("#aumentarEscala").addEventListener("click", () => alterarEscala(true));
 document.querySelector("#diminuirEscala").addEventListener("click", () => alterarEscala(false));
 
@@ -29,8 +27,6 @@ document.addEventListener('keydown', (event) => {
 
 document.querySelector("#botaoJogarNovamente").addEventListener("click", carregarPartida)
 
-populateAtlas("areaFelps", false)
+populateAtlas("areaFelps", false);
 
-
-
-
+carregarPartida();

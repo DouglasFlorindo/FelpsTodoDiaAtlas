@@ -1,10 +1,10 @@
 let movendo = false;
-let felpsDrag, felpsAtualId, quantFelps, timerId;
-export let felpsAlvo, timer;
-let modo, ano;
+let felpsDrag, felpsAtualId, quantFelps;
+let felpsAlvo, timer, timerId, modo, ano;
+
 
 export async function populateAtlas(containerID, isAtlas) {
-    const response = await fetch("felps.json");
+    const response = await fetch("../FelpsTodoDiaAtlas/Recursos/felps.json");
     const felpsInfo = await response.json();
     quantFelps = felpsInfo.length;
     const atlas = document.querySelector(`#${containerID}`);
@@ -75,7 +75,7 @@ export async function populateAtlas(containerID, isAtlas) {
     }
 
     document.addEventListener('mousedown', function (e) {
-        e.target.tagName === 'IMG' ? e.preventDefault() : null    
+        e.target.tagName === 'IMG' ? e.preventDefault() : null
     });
     document.addEventListener('mouseup', () => felpsDrag = null);
     document.addEventListener('mousemove', function (e) {
@@ -95,7 +95,7 @@ export async function populateAtlas(containerID, isAtlas) {
 };
 
 export async function populateCatalogo() {
-    const response = await fetch("felps.json");
+    const response = await fetch("../FelpsTodoDiaAtlas/Recursos/felps.json");
     const felpsInfo = await response.json();
 
     for (const felps of felpsInfo) {
@@ -119,7 +119,7 @@ export async function populateCatalogo() {
 };
 
 export async function mostrarInfo(felpsId) {
-    const response = await fetch("felps.json");
+    const response = await fetch("../FelpsTodoDiaAtlas/Recursos/felps.json");
     const felpsInfo = await response.json();
     felpsAtualId = felpsId;
 
@@ -230,8 +230,16 @@ export function easterEgg() {
 
 // ====================== Ache O Felps ======================
 
+export function coletarConfigs() {
+    let configs = new FormData(document.querySelector("#configsDeJogo"));
+    for (const par of configs.entries()) {
+
+        localStorage.setItem(par[0], par[1]);
+    }
+}
+
 export async function escolherFelpsAlvo(modo, ano) {
-    const response = await fetch("felps.json");
+    const response = await fetch("../FelpsTodoDiaAtlas/Recursos/felps.json");
     const felpsInfo = await response.json();
     let match = null;
     quantFelps = felpsInfo.length;
@@ -285,17 +293,15 @@ export function controleTimer(start) {
 }
 
 export function carregarPartida() {
-    
-    let queryString = window.location.search;
-    let params = new URLSearchParams(queryString);
-    modo = params.get('modoDeJogo');
-    ano = params.get('colecaoDeFelps')
-    console.log(params.get('colecaoDeFelps'))
+    modo = localStorage.getItem("modoDeJogo");
+    ano = localStorage.getItem("colecaoDeFelps");
+
+
     resultadoModal.close();
     randomizarPosicoes();
     escolherFelpsAlvo(modo, ano);
     //carregar contagem aqui
-    controleTimer(true)
+    controleTimer(true);
 }
 
 export function finalizarPartida() {
@@ -306,5 +312,6 @@ export function finalizarPartida() {
     document.querySelector("#timerResultado").textContent = `${Math.floor(timerResultado / 1000)}.${timerResultado.slice(-3, -1)}s`;
     resultadoModal.showModal();
 }
+
 
 

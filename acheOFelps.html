@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="felpsTodoDia.css">
-    <link rel="stylesheet" href="acheOFelps.css">
-    <script src="functions.js" type="module"></script>
+    <link rel="stylesheet" href="Styles/felpsTodoDia.css">
+    <link rel="stylesheet" href="Styles/acheOFelps.css">
+    <script src="Scripts/functions.js" type="module"></script>
     <title>Ache o Felps!</title>
 </head>
 
@@ -14,7 +14,7 @@
     <section id="telaInicial">
         <h1>Ache o Felps!</h1>
         <p>Ache um Felps específico no menor tempo possível.</p>
-        <form id="configsDeJogo" method="get">
+        <form id="configsDeJogo" method="get" action="partida.html">
             <fieldset>
                 <legend>Modo de jogo:</legend>
                 <input type="radio" value="aleatorio" id="inputModoAleatorio" name="modoDeJogo" checked>
@@ -29,58 +29,13 @@
                 <input type="radio" value="22" id="inputColecao22" name="colecaoDeFelps" checked>
                 <label for="inputColecao22">2022</label>
                 <input type="radio" value="24" id="inputColecao24" name="colecaoDeFelps" disabled>
-                <label for="inputColecao24">Todos</label>
+                <label for="inputColecao24">2024</label>
             </fieldset>
-            <button type="submit" id="botaoJogar">Jogar</button>
+            <button style="color: white;" type="submit" id="botaoJogar">Jogar</button>
         </form>
     </section>
     <!-- <section id="telaContagem"></section> -->
-    <section id="sectionJogo">
-        <header>
-            <div id="wrapperImagem">
-                <img id="felpsAlvoImagem">
-            </div>
-            <div id="wrapperAlvo">
-                <h3>Econtre:</h3>
-                <h1 id="felpsAlvoNome"></h1>
-            </div>
-            <div id="wrapperTimer">
-                <h1 id="timer"></h1>
-            </div>
-        </header>
-        <div id="areaFelps">
-            <div class="hitbox" style="position: absolute; width: 100%; height: 20dvh; right: 0; left: 0;"></div>
-            <div class="hitbox" style="position: absolute; width: 5dvw; height: 100%; right: 0; left: 0;"></div>
-            <div class="hitbox" style="position: absolute; width: 5dvw; height: 100%; right: 0; right: 0;"></div>
-            <div class="hitbox" style="position: absolute; width: 100%; height: 7.5dvh; bottom: 0; left: 0;"></div>
-        </div>
-        <div id="gridControles">
-            <span></span>
-            <div class="wrapperBotoes">
-                <button type="button" id="aumentarEscala" class="clicavel" title="Aumentar tamanho das imagens"><img
-                        aria-label="" src="Recursos/aumentar.png" class="icon"></button>
-                <button type="button" id="diminuirEscala" class="clicavel" title="Diminuir tamanho das imagens"><img
-                        aria-label="" src="Recursos/diminuir.png" class="icon"></button>
-                <button type="button" id="randomizarPosicoes" class="clicavel" title="Randomizar posições"><img
-                        aria-label="" src="Recursos/aleatorio.png" class="icon"></button>
-            </div>
-        </div>
-    </section>
-    <dialog id="resultadoModal">
-        <div class="wrapper">
-            <h3>Você achou:</h3>
-            <div class="wrapperImagem">
-                <img id="felpsHRes">
-                <img id="destaque" src="Recursos/destaque.png">
-            </div>
-            <h1 id="nomeFelpsAlvoResultado"></h1>
-            <h3>em:</h3>
-            <h1 id="timerResultado"></h1>
-            <button id="botaoJogarNovamente">Jogar Novamente</button>
-        </div>
-    </dialog>
-
-    <script src="acheOFelps.js" type="module"></script>
+    <script src="Scripts/acheOFelps.js" type="module"></script>
 </body>
 
 </html>
