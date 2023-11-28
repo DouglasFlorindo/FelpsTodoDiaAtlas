@@ -14,7 +14,7 @@
         --text: #0f0103;
         --background: #ffeef1;
         --primary: #ff3c64;
-        --secondary: #fcacbc;
+        --secondary: rgb(255, 212, 221);
         --accent: #d30931;
         --invert: 0;
     }
@@ -25,7 +25,7 @@
         --text: #fef1f3;
         --background: #1c0d10;
         --primary: #ff3c64;
-        --secondary: #450711;
+        --secondary: #241216;
         --accent: #d30931;
         --invert: 1;
     }
@@ -97,7 +97,7 @@ dialog {
     position: absolute;
     border: hidden;
     border-radius: 15px;
-    background: var(--background);    
+    background: var(--background);
 }
 
 dialog header {
@@ -125,6 +125,10 @@ dialog header button {
     height: 100%;
     position: relative;
     overflow: hidden;
+    background-color: var(--background);
+    background-image: radial-gradient(var(--secondary) 5px, transparent 5px), radial-gradient(var(--secondary) 5px, var(--background) 5px);
+    background-size: 80px 80px;
+    animation: fundo 600s infinite linear;
 }
 
 #sectionPrincipal header {
@@ -134,9 +138,10 @@ dialog header button {
     top: 0;
 }
 
-#divAtlas {
+#divAtlas {   
     height: 100%;
     width: 100%;
+
 }
 
 div#gridBotoes {
@@ -422,6 +427,15 @@ button.felps img {
 
     100% {
         transform: rotate(360deg);
+    }
+}
+
+@keyframes fundo {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 600% 600%;
     }
 }
 

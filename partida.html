@@ -39,7 +39,7 @@
                         aria-label="" src="Recursos/diminuir.png" class="icon"></button>
                 <button type="button" id="randomizarPosicoes" class="clicavel" title="Randomizar posições"><img
                         aria-label="" src="Recursos/aleatorio.png" class="icon"></button>
-                <button type="button" class="clicavel"><a href="../FelpsTodoDiaAtlas/acheOFelps.html"><img src="Recursos/catalogo.png"></a></button>
+                <button type="button" class="clicavel"><a href="../FelpsTodoDiaAtlas/acheOFelps.html"><img src="Recursos/home.png"></a></button>
             </div>
         </div>
     </section>
@@ -54,8 +54,18 @@
             <h3>em:</h3>
             <h1 id="timerResultado"></h1>
             <button id="botaoJogarNovamente">Jogar Novamente</button>
-            <button id="botaoVoltarMeno"><a href="acheOFelps.html">Menu</a></button>
+            <button id="botaoVoltarMenu"><a href="acheOFelps.html">Menu</a></button>
         </div>
+    </dialog>
+    <dialog id="derrotaModal">
+        <div class="wrapper">
+            <h1>Tempo Esgotado...</h1>
+            <button id="botaoJogarNovamente">Jogar Novamente</button>
+            <button id="botaoVoltarMenu"><a href="acheOFelps.html">Menu</a></button>
+        </div>
+    </dialog>
+    <dialog id="erroModal">
+        <div class="wrapper"></div>
     </dialog>
     <script src="Scripts/partida.js" type="module"></script>
 </body>

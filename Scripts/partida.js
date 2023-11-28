@@ -1,8 +1,4 @@
-import { populateAtlas, randomizarPosicoes, alterarEscala, escolherFelpsAlvo, controleTimer, finalizarPartida, carregarPartida } from './functions.js';
-
-const resultadoModal = document.querySelector("#resultadoModal");
-let modo = "aleatorio";
-let ano = 22;
+import { populateAtlas, randomizarPosicoes, alterarEscala, escolherFelpsAlvo, controleTimer, finalizarPartida, carregarPartida, carregamentoCompleto } from './functions.js';
 
 document.querySelector("#aumentarEscala").addEventListener("click", () => alterarEscala(true));
 document.querySelector("#diminuirEscala").addEventListener("click", () => alterarEscala(false));
@@ -29,4 +25,16 @@ document.querySelector("#botaoJogarNovamente").addEventListener("click", carrega
 
 populateAtlas("areaFelps", false);
 
-carregarPartida();
+let esperarCarregamento = setInterval(() => {
+    if (carregamentoCompleto) {
+        carregarPartida();
+        clearInterval(esperarCarregamento);
+    }
+}, 10);
+
+setTimeout(() => {
+    if (carregamentoCompleto == false) {
+        alert("erro");
+        clearInterval(esperarCarregamento);
+    }
+}, 10000);

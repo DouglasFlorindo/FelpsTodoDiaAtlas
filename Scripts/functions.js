@@ -1,6 +1,7 @@
 let movendo = false;
 let felpsDrag, felpsAtualId, quantFelps;
-let felpsAlvo, timer, timerId, modo, ano;
+let felpsAlvo, timer, timerId, modo, ano, modoTimer;
+export let carregamentoCompleto = false;
 
 
 export async function populateAtlas(containerID, isAtlas) {
@@ -8,6 +9,8 @@ export async function populateAtlas(containerID, isAtlas) {
     const felpsInfo = await response.json();
     quantFelps = felpsInfo.length;
     const atlas = document.querySelector(`#${containerID}`);
+    let felpsCarregados = 0;
+    carregamentoCompleto = false;
 
     for (const felps of felpsInfo) {
 
@@ -68,7 +71,9 @@ export async function populateAtlas(containerID, isAtlas) {
                 i++
 
             }
-            novoImg.style.opacity = "1"
+            novoImg.style.opacity = "1";
+            felpsCarregados = felpsCarregados + 1;
+            felpsCarregados == quantFelps ? carregamentoCompleto = true : null
         })
 
         atlas.appendChild(novoButton);
@@ -260,7 +265,6 @@ export async function escolherFelpsAlvo(modo, ano) {
                 } else {
                     match.data.substring(6, 8) == ano ? felpsAlvo = match : null
                 }
-                console.log(felpsAlvo)
             }
             break;
     }
@@ -269,24 +273,39 @@ export async function escolherFelpsAlvo(modo, ano) {
 };
 
 export function verificarFelpsAlvo(id) {
-    id == felpsAlvo.id ? finalizarPartida() : console.log("não é esse");
+    id == felpsAlvo.id ? finalizarPartida("vitoria") : console.log("não é esse");
 };
 
-export function controleTimer(start) {
+export function controleTimer(start, modoTimer) {
     switch (start) {
         case true:
             let tempoInicial = new Date().getTime();
-            let tempoAtual;
+            let tempoAtual, tempoRestante;
 
-            timerId = setInterval(() => {
-                tempoAtual = new Date().getTime();
-                timer = tempoAtual - tempoInicial;
-                timer = timer.toString();
-                document.querySelector("#timer").textContent = `${Math.floor(timer / 1000)}.${timer.slice(-3, -1)}`;
-            }, 10)
+            switch (modoTimer) {
+                case "cronometro":
+                    timerId = setInterval(() => {
+                        tempoAtual = new Date().getTime();
+                        timer = tempoAtual - tempoInicial;
+                        timer = timer.toString();
+                        document.querySelector("#timer").textContent = `${Math.floor(timer / 1000)}.${timer.slice(-3, -1)}`;
+                    }, 10)
+                    break;
+                case "temporizador":
+                    timerId = setInterval(() => {
+                        tempoAtual = new Date().getTime();
+                        timer = tempoAtual - tempoInicial;
+                        tempoRestante = 60000 - timer;
+                        tempoRestante <= 0 ? finalizarPartida("derrota") : null
+                        tempoRestante = tempoRestante.toString();
+                        document.querySelector("#timer").textContent = `${Math.floor(tempoRestante / 1000)}.${tempoRestante.slice(-3, -1)}`;
+                    }, 10)
+                    break;
+            }
             break;
         case false:
             clearInterval(timerId);
+            break;
         default:
             break;
     }
@@ -294,6 +313,7 @@ export function controleTimer(start) {
 
 export function carregarPartida() {
     modo = localStorage.getItem("modoDeJogo");
+    modoTimer = localStorage.getItem("modoDeTimer");
     ano = localStorage.getItem("colecaoDeFelps");
 
 
@@ -301,16 +321,25 @@ export function carregarPartida() {
     randomizarPosicoes();
     escolherFelpsAlvo(modo, ano);
     //carregar contagem aqui
-    controleTimer(true);
+    controleTimer(true, modoTimer);
 }
 
-export function finalizarPartida() {
-    controleTimer(false);
-    let timerResultado = timer;
-    document.querySelector("#felpsHRes").src = `../FelpsTodoDiaAtlas/Imagens/${felpsAlvo.arquivo}HRes.webp`;
-    document.querySelector("#nomeFelpsAlvoResultado").textContent = felpsAlvo.nome;
-    document.querySelector("#timerResultado").textContent = `${Math.floor(timerResultado / 1000)}.${timerResultado.slice(-3, -1)}s`;
-    resultadoModal.showModal();
+export function finalizarPartida(resultado) {
+    switch (resultado) {
+        case "derrota":
+            controleTimer(false);
+            document.querySelector("#derrotaModal").showModal();
+            break;
+        case "vitoria":
+            controleTimer(false);
+            let timerResultado = timer.toString();
+            document.querySelector("#felpsHRes").src = `../FelpsTodoDiaAtlas/Imagens/${felpsAlvo.arquivo}HRes.webp`;
+            document.querySelector("#nomeFelpsAlvoResultado").textContent = felpsAlvo.nome;
+            document.querySelector("#timerResultado").textContent = `${Math.floor(timerResultado / 1000)}.${timerResultado.slice(-3, -1)}s`;
+            resultadoModal.showModal();
+            break;
+    }
+
 }
 
 

@@ -23,6 +23,13 @@
                 <label for="inputModoDiario">Diário</label>
             </fieldset>
             <fieldset>
+                <legend>Modo de timer:</legend>
+                <input type="radio" value="cronometro" id="inputModoTimerCronometro" name="modoDeTimer" checked>
+                <label for="inputModoTimerCronometro">Cronômetro</label>
+                <input type="radio" value="temporizador" id="inputModoTimerTemporizador" name="modoDeTimer">
+                <label for="inputModoTimerTemporizador">Temporizador</label>
+            </fieldset>
+            <fieldset>
                 <legend>Coleção de Felps:</legend>
                 <input type="radio" value="null" id="inputColecaoNull" name="colecaoDeFelps" disabled>
                 <label for="inputColecaoNull">Todos</label>
@@ -31,7 +38,7 @@
                 <input type="radio" value="24" id="inputColecao24" name="colecaoDeFelps" disabled>
                 <label for="inputColecao24">2024</label>
             </fieldset>
-            <button style="color: white;" type="submit" id="botaoJogar">Jogar</button>
+            <button type="submit" id="botaoJogar">Jogar</button>
         </form>
     </section>
     <!-- <section id="telaContagem"></section> -->
