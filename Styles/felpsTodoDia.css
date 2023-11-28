@@ -46,13 +46,15 @@ body {
 h1,
 h2,
 p,
-li {
+li,
+a {
     color: var(--text);
     font-family: 'Comic Sans MS';
 }
 
 p,
-li {
+li, 
+a {
     font-size: 1.25rem;
 }
 
@@ -168,7 +170,7 @@ div#gridBotoes {
     padding: var(--espaco);
 }
 
-#sectionPrincipal footer p {
+#sectionPrincipal footer a {
     color: var(--primary);
     font-weight: bold;
     -webkit-text-stroke-width: 0.5px;
