@@ -39,7 +39,8 @@ section {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    position: relative;
+    position: absolute;
+    top: 0;
     overflow: hidden;
 }
 
@@ -59,6 +60,31 @@ dialog::backdrop {
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(25px);
 }
+
+/*=============== section Carregando =================*/
+
+#sectionCarregando {
+    background-color: var(--background);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+/*=============== section Contagem =================*/
+
+#sectionContagem {
+    background-color: var(--background);
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* #divContagem {
+
+} */
 
 /*=============== section Jogo =================*/
 
@@ -147,5 +173,18 @@ button.felps img {
     }
     90% {
         box-shadow: transparent 0 0 20px 0;
+    }
+}
+
+@keyframes contagem {
+    0% {
+        opacity: 1;
+        scale: 5;
+        transform: rotate(-45deg);
+    }
+    100% {
+        opacity: 0.5;
+        scale: 1;
+        transform: rotate(25deg);
     }
 }

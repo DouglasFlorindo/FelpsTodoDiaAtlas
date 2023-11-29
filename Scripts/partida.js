@@ -37,4 +37,4 @@ setTimeout(() => {
         alert("erro");
         clearInterval(esperarCarregamento);
     }
-}, 10000);
+}, 20000);

@@ -316,12 +316,47 @@ export function carregarPartida() {
     modoTimer = localStorage.getItem("modoDeTimer");
     ano = localStorage.getItem("colecaoDeFelps");
 
-
     resultadoModal.close();
     randomizarPosicoes();
     escolherFelpsAlvo(modo, ano);
-    //carregar contagem aqui
-    controleTimer(true, modoTimer);
+    document.querySelector("#sectionCarregando").style.display = "none";
+    contagem();
+}
+
+export function contagem() {
+    let i = 3;
+    let contador = document.querySelector("#contagem");
+    let div = document.querySelector("#divContagem");
+    contador.textContent = i;
+    // div.style.animation = "contagem 1s ease-in-out";
+    i = i - 1;
+    let contagem = setInterval(() => {
+        switch (i) {
+            case 2:
+                div.style.animation = "unset";
+                contador.textContent = i;
+                // div.style.animation = "contagem 1s ease-in-out";
+                i = i - 1;
+                break;
+            case 1:
+                div.style.animation = "unset";
+                contador.textContent = i;
+                // div.style.animation = "contagem 1s ease-in-out";
+                i = i - 1;
+                break;
+            case 0:
+                div.style.animation = "unset";
+                contador.textContent = "Vai!";
+                // div.style.animation = "contagem 1s ease-in-out";
+                i = i - 1;
+                break;
+            case -1:
+                document.querySelector("#sectionContagem").style.display = "none";
+                controleTimer(true, modoTimer);
+                clearInterval(contagem);
+                break;
+        }
+    }, 1000);
 }
 
 export function finalizarPartida(resultado) {
