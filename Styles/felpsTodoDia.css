@@ -77,6 +77,10 @@ button {
     height: 3rem;
     background: transparent;
     border: hidden;
+    cursor: pointer;
+    font-family: 'Comic Sans MS';
+    font-size: 1.25rem;
+    color: var(--text);
 }
 
 button img,

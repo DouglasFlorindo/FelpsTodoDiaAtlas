@@ -320,6 +320,7 @@ export function carregarPartida() {
     randomizarPosicoes();
     escolherFelpsAlvo(modo, ano);
     document.querySelector("#sectionCarregando").style.display = "none";
+    document.querySelector("#sectionContagem").style.display = "flex"
     contagem();
 }
 
@@ -327,27 +328,27 @@ export function contagem() {
     let i = 3;
     let contador = document.querySelector("#contagem");
     let div = document.querySelector("#divContagem");
+    div.style.animation = "contagem 1s cubic-bezier(0.65, 0, 0.35, 1)";
     contador.textContent = i;
-    // div.style.animation = "contagem 1s ease-in-out";
     i = i - 1;
     let contagem = setInterval(() => {
+        div.style.animation = "none";
+        div.offsetHeight;
+        div.style.animation = null;
         switch (i) {
             case 2:
-                div.style.animation = "unset";
                 contador.textContent = i;
-                // div.style.animation = "contagem 1s ease-in-out";
+                div.style.animation = "contagem 1s cubic-bezier(0.65, 0, 0.35, 1)";
                 i = i - 1;
                 break;
             case 1:
-                div.style.animation = "unset";
                 contador.textContent = i;
-                // div.style.animation = "contagem 1s ease-in-out";
+                div.style.animation = "contagem 1s cubic-bezier(0.65, 0, 0.35, 1)";
                 i = i - 1;
                 break;
             case 0:
-                div.style.animation = "unset";
                 contador.textContent = "Vai!";
-                // div.style.animation = "contagem 1s ease-in-out";
+                div.style.animation = "contagem 1s cubic-bezier(0.65, 0, 0.35, 1)";
                 i = i - 1;
                 break;
             case -1:

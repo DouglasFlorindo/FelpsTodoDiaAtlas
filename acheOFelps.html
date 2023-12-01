@@ -11,32 +11,52 @@
 </head>
 
 <body>
-    <section id="telaInicial">
+    <section id="sectionInicial">
         <h1>Ache o Felps!</h1>
         <p>Ache um Felps específico no menor tempo possível.</p>
         <form id="configsDeJogo" method="get" action="partida.html">
             <fieldset>
                 <legend>Modo de jogo:</legend>
-                <input type="radio" value="aleatorio" id="inputModoAleatorio" name="modoDeJogo" checked>
-                <label for="inputModoAleatorio">Aleatório</label>
-                <input type="radio" value="diario" id="inputModoDiario" name="modoDeJogo">
-                <label for="inputModoDiario">Diário</label>
+                <div class="divInputs">
+                    <div class="divInputIndividual">
+                        <input type="radio" value="aleatorio" id="inputModoAleatorio" name="modoDeJogo" checked>
+                        <label for="inputModoAleatorio">Aleatório</label>
+                    </div>
+                    <div class="divInputIndividual">
+                        <input type="radio" value="diario" id="inputModoDiario" name="modoDeJogo">
+                        <label for="inputModoDiario">Diário</label>
+                    </div>
+                </div>
             </fieldset>
             <fieldset>
                 <legend>Modo de timer:</legend>
-                <input type="radio" value="cronometro" id="inputModoTimerCronometro" name="modoDeTimer" checked>
-                <label for="inputModoTimerCronometro">Cronômetro</label>
-                <input type="radio" value="temporizador" id="inputModoTimerTemporizador" name="modoDeTimer">
-                <label for="inputModoTimerTemporizador">Temporizador</label>
+                <div class="divInputs">
+                    <div class="divInputIndividual">
+                        <input type="radio" value="cronometro" id="inputModoTimerCronometro" name="modoDeTimer" checked>
+                        <label for="inputModoTimerCronometro">Cronômetro</label>
+                    </div>
+                    <div class="divInputIndividual">
+                        <input type="radio" value="temporizador" id="inputModoTimerTemporizador" name="modoDeTimer">
+                        <label for="inputModoTimerTemporizador">Temporizador</label>
+                    </div>
+                </div>
             </fieldset>
             <fieldset>
                 <legend>Coleção de Felps:</legend>
-                <input type="radio" value="null" id="inputColecaoNull" name="colecaoDeFelps" disabled>
-                <label for="inputColecaoNull">Todos</label>
-                <input type="radio" value="22" id="inputColecao22" name="colecaoDeFelps" checked>
-                <label for="inputColecao22">2022</label>
-                <input type="radio" value="24" id="inputColecao24" name="colecaoDeFelps" disabled>
-                <label for="inputColecao24">2024</label>
+                <div class="divInputs">
+                    <div class="divInputIndividual">
+                        <input type="radio" value="null" id="inputColecaoNull" name="colecaoDeFelps" disabled>
+                        <label for="inputColecaoNull">Todos</label>
+                    </div>
+                    <div class="divInputIndividual">
+                        <input type="radio" value="22" id="inputColecao22" name="colecaoDeFelps" checked>
+                        <label for="inputColecao22">2022</label>
+                    </div>
+                    <div class="divInputIndividual">
+                        <input type="radio" value="24" id="inputColecao24" name="colecaoDeFelps" disabled>
+                        <label for="inputColecao24">2024</label>
+                    </div>
+                </div>
             </fieldset>
             <button type="submit" id="botaoJogar">Jogar</button>
         </form>

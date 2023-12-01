@@ -10,27 +10,50 @@
 :root {
     --text: #030202;
     --background: #f0efef;
+    --backgroundOpacity: rgba(240, 239, 239, 0.8);
     --primary: #ff3c64;
     --secondary: #d6d6d6;
+    --tertiary: #d30931;
     --accent: #b5acac;
-  }
+}
 
 @media (prefers-color-scheme: light) {
     :root {
-      --text: #030202;
-      --background: #f0efef;
-      --primary: #ff3c64;
-      --secondary: #d6d6d6;
-      --accent: #b5acac;
+        --text: #030202;
+        --background: #f0efef;
+        --backgroundOpacity: rgba(240, 239, 239, 0.8);
+        --primary: #ff3c64;
+        --secondary: #d6d6d6;
+        --tertiary: #d30931;
+        --accent: #b5acac;
     }
-  }
+}
 
 body {
     background: var(--background);
+    display: flex;
+    justify-content: center;
+    background-color: var(--background);
+    background-size: 80px 80px;
+    background-image: repeating-linear-gradient(45deg, var(--accent) 0, var(--accent) 4px, var(--background) 0, var(--background) 50%);
+    animation: fundo 600s infinite linear;
 }
-  
+
 form {
+    font-family: 'Comic Sans MS';
+    font-size: 1.25rem;
     color: var(--text);
+    height: 100%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+fieldset {
+    width: 100%;
+    border-radius: 15px;
 }
 
 section {
@@ -61,6 +84,77 @@ dialog::backdrop {
     backdrop-filter: blur(25px);
 }
 
+/*=============== section Inicial =================*/
+
+#sectionInicial {
+    padding: var(--espaco);
+    padding-bottom: 0;
+    width: auto;
+    max-width: 100dvw;
+    height: 100%;
+    background: var(--backgroundOpacity);
+    backdrop-filter: blur(4px);
+    box-shadow: var(--accent) 0 0 100px -30px;
+}
+
+#sectionInicial form fieldset div.divInputs {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: var(--background);
+}
+
+#sectionInicial form fieldset div.divInputIndividual {
+    position: relative;
+    width: 100%;
+}
+
+#sectionInicial form fieldset input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    background-color: var(--background);
+    /* border: var(--primary) 1px solid; */
+}
+
+#sectionInicial form fieldset input[type="radio"]:checked {
+    background-color: var(--primary);
+}
+
+#sectionInicial form fieldset input + label {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    cursor: pointer;
+    text-align: center;
+}
+
+#sectionInicial form fieldset input:checked + label {
+    color: var(--background);
+}
+
+#sectionInicial form fieldset input:disabled + label {
+    color: var(--accent);
+    cursor: not-allowed;
+}
+
+#sectionInicial form button#botaoJogar {
+    width: 100%;
+    background-color: var(--primary);
+    border-radius: 15px;
+    box-shadow: 0 5px 0 0 var(--tertiary), 0 10px 10px 0 var(--accent);
+    transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+#sectionInicial form button#botaoJogar:hover {
+    transform: translateY(5px);
+    box-shadow: 0 0 0 0 var(--tertiary);
+}
+
 /*=============== section Carregando =================*/
 
 #sectionCarregando {
@@ -82,10 +176,6 @@ dialog::backdrop {
     align-items: center;
 }
 
-/* #divContagem {
-
-} */
-
 /*=============== section Jogo =================*/
 
 #sectionJogo header {
@@ -106,7 +196,7 @@ dialog::backdrop {
 #sectionJogo header div img {
     max-height: 80%;
     max-width: 100%;
-} 
+}
 
 #areaFelps {
     height: 100%;
@@ -122,7 +212,7 @@ dialog::backdrop {
     bottom: 0;
     display: flex;
     flex-direction: column;
-    transform: translateY(3.5rem);
+    transform: translateY(4rem);
     transition: transform 0.1s linear;
     padding: 0 var(--espaco);
     border-radius: 15px 15px 0 0;
@@ -164,13 +254,27 @@ button.felps img {
     transition: none;
 }
 
+/* ========================================== */
+
+@keyframes fundo {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 0 6000%;
+    }
+}
+
 @keyframes controles {
     0% {
         box-shadow: var(--primary) 0 0 0 0;
     }
+
     50% {
         box-shadow: var(--primary) 0 0 20px 0;
     }
+
     90% {
         box-shadow: transparent 0 0 20px 0;
     }
@@ -182,9 +286,24 @@ button.felps img {
         scale: 5;
         transform: rotate(-45deg);
     }
+
     100% {
         opacity: 0.5;
         scale: 1;
         transform: rotate(25deg);
     }
 }
+
+
+
+
+
+
+
+
+/* 936c6c
+
+
+
+
+992936 */
