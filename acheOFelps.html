@@ -13,11 +13,12 @@
 <body>
     <section id="sectionInicial">
         <h1>Ache o Felps!</h1>
-        <p>Ache um Felps específico no menor tempo possível.</p>
+        <p id="subtitulo">Ache um Felps específico no menor tempo possível.</p>
         <form id="configsDeJogo" method="get" action="partida.html">
-            <fieldset>
-                <legend>Modo de jogo:</legend>
-                <div class="divInputs">
+            <div class="wrapper">
+                <fieldset>
+                    <legend>Modo de jogo:</legend>
+
                     <div class="divInputIndividual">
                         <input type="radio" value="aleatorio" id="inputModoAleatorio" name="modoDeJogo" checked>
                         <label for="inputModoAleatorio">Aleatório</label>
@@ -26,11 +27,16 @@
                         <input type="radio" value="diario" id="inputModoDiario" name="modoDeJogo">
                         <label for="inputModoDiario">Diário</label>
                     </div>
+
+                </fieldset>
+                <div id="descricaoModoDeJogo" class="descricao">
+                    <p>Lorem Ipsum sit amet.</p>
                 </div>
-            </fieldset>
-            <fieldset>
-                <legend>Modo de timer:</legend>
-                <div class="divInputs">
+            </div>
+            <div class="wrapper">
+                <fieldset>
+                    <legend>Modo de timer:</legend>
+
                     <div class="divInputIndividual">
                         <input type="radio" value="cronometro" id="inputModoTimerCronometro" name="modoDeTimer" checked>
                         <label for="inputModoTimerCronometro">Cronômetro</label>
@@ -39,11 +45,16 @@
                         <input type="radio" value="temporizador" id="inputModoTimerTemporizador" name="modoDeTimer">
                         <label for="inputModoTimerTemporizador">Temporizador</label>
                     </div>
+
+                </fieldset>
+                <div id="descricaoModoDeTimer" class="descricao">
+                    <p>Lorem Ipsum sit amet.</p>
                 </div>
-            </fieldset>
-            <fieldset>
-                <legend>Coleção de Felps:</legend>
-                <div class="divInputs">
+            </div>
+            <div class="wrapper">
+                <fieldset>
+                    <legend>Coleção de Felps:</legend>
+
                     <div class="divInputIndividual">
                         <input type="radio" value="null" id="inputColecaoNull" name="colecaoDeFelps" disabled>
                         <label for="inputColecaoNull">Todos</label>
@@ -56,8 +67,12 @@
                         <input type="radio" value="24" id="inputColecao24" name="colecaoDeFelps" disabled>
                         <label for="inputColecao24">2024</label>
                     </div>
+
+                </fieldset>
+                <div id="descricaoColecaoDeFelps" class="descricao">
+                    <p>Lorem Ipsum sit amet.</p>
                 </div>
-            </fieldset>
+            </div>
             <button type="submit" id="botaoJogar">Jogar</button>
         </form>
     </section>

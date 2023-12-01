@@ -12,7 +12,7 @@
     --background: #f0efef;
     --backgroundOpacity: rgba(240, 239, 239, 0.8);
     --primary: #ff3c64;
-    --secondary: #d6d6d6;
+    --secondary: #e4e3e3;
     --tertiary: #d30931;
     --accent: #b5acac;
 }
@@ -23,7 +23,7 @@
         --background: #f0efef;
         --backgroundOpacity: rgba(240, 239, 239, 0.8);
         --primary: #ff3c64;
-        --secondary: #d6d6d6;
+        --secondary: #e4e3e3;
         --tertiary: #d30931;
         --accent: #b5acac;
     }
@@ -37,6 +37,7 @@ body {
     background-size: 80px 80px;
     background-image: repeating-linear-gradient(45deg, var(--accent) 0, var(--accent) 4px, var(--background) 0, var(--background) 50%);
     animation: fundo 600s infinite linear;
+ 
 }
 
 form {
@@ -45,10 +46,6 @@ form {
     color: var(--text);
     height: 100%;
     width: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
 }
 
 fieldset {
@@ -87,6 +84,7 @@ dialog::backdrop {
 /*=============== section Inicial =================*/
 
 #sectionInicial {
+    overflow: scroll;
     padding: var(--espaco);
     padding-bottom: 0;
     width: auto;
@@ -97,16 +95,49 @@ dialog::backdrop {
     box-shadow: var(--accent) 0 0 100px -30px;
 }
 
-#sectionInicial form fieldset div.divInputs {
+#sectionInicial p#subtitulo {
+    margin: var(--espaco);
+    max-width: 80%;
+    text-align: center;
+}
+
+#sectionInicial form div.wrapper {
+    padding: var(--espaco) 0;
+}
+
+#sectionInicial form fieldset {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    background-color: var(--background);
+    border-radius: 15px 15px 0 0;
+    background-color: var(--secondary);
+    border: none;
+    position: relative;
+}
+
+#sectionInicial form fieldset legend {
+    color: var(--text);
+    position: absolute;
+    transform: translateY(-100%);
+    bottom: 0.5rem;
+    font-size: 1rem;
 }
 
 #sectionInicial form fieldset div.divInputIndividual {
     position: relative;
     width: 100%;
+}
+
+#sectionInicial form fieldset div:first-of-type input {
+    border-radius: 15px 0 0 0;
+    border-top: solid 1px var(--primary);
+    border-left: solid 1px var(--primary);
+}
+
+#sectionInicial form fieldset div:last-of-type input {
+    border-radius: 0 15px 0 0;
+    border-top: solid 1px var(--primary);
+    border-right: solid 1px var(--primary);
 }
 
 #sectionInicial form fieldset input[type="radio"] {
@@ -115,35 +146,54 @@ dialog::backdrop {
     margin: 0;
     width: 100%;
     height: 100%;
-    border-radius: 15px;
+    border-top: solid 1px var(--primary);
     background-color: var(--background);
-    /* border: var(--primary) 1px solid; */
+    box-shadow: 0 5px 0 0 var(--accent);
 }
 
 #sectionInicial form fieldset input[type="radio"]:checked {
     background-color: var(--primary);
+    box-shadow: 0 5px 0 0 var(--tertiary);
 }
 
-#sectionInicial form fieldset input + label {
+#sectionInicial form fieldset input+label {
     width: 100%;
     height: 100%;
     left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
     position: absolute;
     cursor: pointer;
     text-align: center;
 }
 
-#sectionInicial form fieldset input:checked + label {
+#sectionInicial form fieldset input:checked+label {
     color: var(--background);
 }
 
-#sectionInicial form fieldset input:disabled + label {
+#sectionInicial form fieldset input:disabled+label {
     color: var(--accent);
     cursor: not-allowed;
 }
 
+#sectionInicial form div.descricao {
+    border-radius: 0 0 15px 15px;
+    background-color: var(--secondary);
+    padding: var(--espaco);
+    border: solid 1px var(--primary);
+    border-top: none;
+    box-shadow: var(--accent) 0px 15px 30px -5px inset;
+}
+
+#sectionInicial form div.descricao p {
+    font-size: 1rem;
+    margin: 0;
+}
+
 #sectionInicial form button#botaoJogar {
     width: 100%;
+    margin: var(--espaco) 0;
     background-color: var(--primary);
     border-radius: 15px;
     box-shadow: 0 5px 0 0 var(--tertiary), 0 10px 10px 0 var(--accent);
