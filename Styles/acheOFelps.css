@@ -183,7 +183,7 @@ dialog::backdrop {
     padding: var(--espaco);
     border: solid 1px var(--primary);
     border-top: none;
-    box-shadow: var(--accent) 0px 15px 30px -5px inset;
+    box-shadow: var(--accent) 0px 0px 10px 0 inset;
 }
 
 #sectionInicial form div.descricao p {
