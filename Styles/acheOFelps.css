@@ -72,6 +72,20 @@ h1 {
     color: var(--text);
 }
 
+button.menu {
+    width: 100%;
+    margin: var(--espaco) 0;
+    background-color: var(--secondary);
+    border-radius: 15px;
+    box-shadow: 0 5px 0 0 var(--accent), 0 10px 10px 0 var(--accent);
+    transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+button.menu:hover {
+    transform: translateY(5px);
+    box-shadow: 0 0 0 0 var(--accent);
+}
+
 dialog {
     background: var(--background);
 }
@@ -84,7 +98,7 @@ dialog::backdrop {
 /*=============== section Inicial =================*/
 
 #sectionInicial {
-    overflow: scroll;
+    overflow: auto;
     padding: var(--espaco);
     padding-bottom: 0;
     width: auto;
@@ -99,6 +113,18 @@ dialog::backdrop {
     margin: var(--espaco);
     max-width: 80%;
     text-align: center;
+}
+
+#sectionInicial button#botaoInfoAcheOFelps {
+    position: absolute;
+    left: 80%;
+    top: var(--espaco);
+    width: 2rem;
+    height: 2rem;
+}
+
+#sectionInicial button#botaoInfoAcheOFelps img {
+    max-width: 2rem;
 }
 
 #sectionInicial form div.wrapper {
@@ -183,26 +209,11 @@ dialog::backdrop {
     padding: var(--espaco);
     border: solid 1px var(--primary);
     border-top: none;
-    /* box-shadow: var(--accent) 0px 0px 10px 0 inset; */
 }
 
 #sectionInicial form div.descricao p {
     font-size: 1rem;
     margin: 0;
-}
-
-#sectionInicial form button#botaoJogar {
-    width: 100%;
-    margin: var(--espaco) 0;
-    background-color: var(--primary);
-    border-radius: 15px;
-    box-shadow: 0 5px 0 0 var(--tertiary), 0 10px 10px 0 var(--accent);
-    transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
-}
-
-#sectionInicial form button#botaoJogar:hover {
-    transform: translateY(5px);
-    box-shadow: 0 0 0 0 var(--tertiary);
 }
 
 /*=============== section Carregando =================*/
@@ -227,6 +238,11 @@ dialog::backdrop {
 }
 
 /*=============== section Jogo =================*/
+
+#sectionJogo {
+    height: 100dvh;
+    overflow: hidden;
+}
 
 #sectionJogo header {
     position: absolute;
@@ -303,6 +319,19 @@ dialog::backdrop {
 button.felps img {
     transition: none;
 }
+
+button.principal {
+    background-color: var(--primary);
+    box-shadow: 0 5px 0 0 var(--tertiary), 0 10px 10px 0 var(--accent);
+}
+
+button.principal:hover {
+    box-shadow: 0 0 0 0 var(--tertiary);
+}
+
+/* ========================================== */
+
+
 
 /* ========================================== */
 

@@ -14,6 +14,7 @@
     <section id="sectionInicial">
         <h1>Ache o Felps!</h1>
         <p id="subtitulo">Ache um Felps específico no menor tempo possível.</p>
+        <button id="botaoInfoAcheOFelps" class="clicavel"><img src="Recursos/sobre.png"></button>
         <form id="configsDeJogo" method="get" action="partida.html">
             <div class="wrapper">
                 <fieldset>
@@ -73,9 +74,12 @@
                     <p  id="descricaoColecaoDeFelps">Lorem Ipsum sit amet.</p>
                 </div>
             </div>
-            <button type="submit" id="botaoJogar">Jogar</button>
+            <button type="submit" id="botaoJogar" class="principal menu">Jogar</button>
         </form>
     </section>
+    <dialog id="infoAcheOFelpsModal">
+        <button id="fecharInfoAcheOFelps" class="clicavel"><img src="Recursos/fechar.png"></button>
+    </dialog>
     <script src="Scripts/acheOFelps.js" type="module"></script>
 </body>
 

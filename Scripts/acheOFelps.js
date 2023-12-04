@@ -3,9 +3,15 @@ import {coletarConfigs} from './functions.js';
 localStorage.clear();
 atualizarDescricoes();
 
+const infoModal = document.querySelector("#infoAcheOFelpsModal");
+
+document.querySelector("#botaoInfoAcheOFelps").addEventListener("click", () => infoModal.showModal());
+
 document.querySelector("#configsDeJogo").addEventListener("submit", coletarConfigs);
 
 document.querySelector("#configsDeJogo").addEventListener("change", atualizarDescricoes);
+
+document.querySelector("#fecharInfoAcheOFelps").addEventListener("click", () => infoModal.close())
 
 function atualizarDescricoes() {
     const descricaoModoDeJogo = document.querySelector("#descricaoModoDeJogo");

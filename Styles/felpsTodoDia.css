@@ -39,7 +39,7 @@
 
 body {
     height: 100dvh;
-    overflow: scroll;
+    overflow: hidden;
     background: var(--background);
 }
 
@@ -167,11 +167,9 @@ div#gridBotoes {
 }
 
 #sectionPrincipal footer {
-    text-align: center;
-    width: 100%;
     position: absolute;
     bottom: 0;
-    padding: var(--espaco);
+    margin: var(--espaco);
 }
 
 #sectionPrincipal footer a {
