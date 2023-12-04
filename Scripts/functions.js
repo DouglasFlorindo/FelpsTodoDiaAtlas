@@ -1,6 +1,8 @@
 let movendo = false;
 let felpsDrag, felpsAtualId, quantFelps;
 let felpsAlvo, timer, timerId, modo, ano, modoTimer;
+const sfx = new Audio("../FelpsTodoDiaAtlas/Recursos/hitSFX.mp3");
+sfx.volume = 0.5;
 export let carregamentoCompleto = false;
 
 
@@ -269,11 +271,21 @@ export async function escolherFelpsAlvo(modo, ano) {
             break;
     }
     document.querySelector("#felpsAlvoNome").textContent = felpsAlvo.nome
-    document.querySelector("#felpsAlvoImagem").src = `../FelpsTodoDiaAtlas/Imagens/${felpsAlvo.arquivo}.webp`
+    document.querySelector("#felpsAlvoImagem").src = `../FelpsTodoDiaAtlas/Imagens/${felpsAlvo.arquivo}HRes.webp`
 };
 
 export function verificarFelpsAlvo(id) {
-    id == felpsAlvo.id ? finalizarPartida("vitoria") : console.log("não é esse");
+    if (id == felpsAlvo.id) {
+        finalizarPartida("vitoria")
+    } else {
+        let elemento = document.querySelector(`#b${id}`);
+        elemento.style.animation = "none";
+        elemento.offsetHeight;
+        elemento.style.animation = "hit 0.1s ease-in-out"
+        sfx.currentTime = 0;
+        sfx.play(); 
+
+    }
 };
 
 export function controleTimer(start, modoTimer) {
@@ -357,7 +369,7 @@ export function contagem() {
                 clearInterval(contagem);
                 break;
         }
-    }, 1000);
+    }, 100);
 }
 
 export function finalizarPartida(resultado) {

@@ -72,6 +72,12 @@ h1 {
     color: var(--text);
 }
 
+h3 {
+    font-size: 1rem;
+    color: var(--accent);
+    font-family: 'Comic Sans MS';
+}
+
 button.menu {
     width: 100%;
     margin: var(--espaco) 0;
@@ -246,22 +252,42 @@ dialog::backdrop {
 
 #sectionJogo header {
     position: absolute;
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
     top: 0;
+    min-height: 100px;
     width: 100%;
+    height: 20dvh;
     box-shadow: 0 5px 0 0 var(--accent);
-    display: flex;
-    justify-content: space-between;
-    max-height: 20dvh;
 }
 
 #sectionJogo header div {
-    height: 100%;
-    border: red solid 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#sectionJogo header div img {
-    max-height: 80%;
-    max-width: 100%;
+#sectionJogo header div#wrapperImagem {
+    position: relative;
+    height: 100%;
+    
+}
+
+#sectionJogo header div#wrapperImagem img {
+    height: 100%;
+    max-height: 100%;
+    position: absolute;
+}
+
+#sectionJogo header div#wrapperImagem img#felpsAlvoImagemFundo {
+    scale: 1.5;
+    animation: spin 15s linear infinite;
+}
+
+#sectionJogo header div#wrapperAlvo {
+    display: grid;
+    text-align: center;
+    grid-auto-flow: row;
 }
 
 #areaFelps {
@@ -373,7 +399,23 @@ button.principal:hover {
     }
 }
 
-
+@keyframes hit {
+    20% {
+        transform: translateX(-5%);
+    }
+    40% {
+        transform: translateX(5%);
+    }
+    60% {
+        transform: translateX(-5%);
+    }
+    80% {
+        transform: translateX(5%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
 
 
 

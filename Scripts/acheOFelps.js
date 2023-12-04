@@ -21,7 +21,7 @@ function atualizarDescricoes() {
     document.querySelector("#inputModoAleatorio").checked ? descricaoModoDeJogo.textContent = "Ache um Felps aleatório." : null;
     document.querySelector("#inputModoDiario").checked ? descricaoModoDeJogo.textContent = "Ache o Felps do dia." : null;
 
-    document.querySelector("#inputModoTimerCronometro").checked ? descricaoModoDeTimer.textContent = "Jogue sem a pressão do tempo." : null;
+    document.querySelector("#inputModoTimerCronometro").checked ? descricaoModoDeTimer.textContent = "Sem limite de tempo." : null;
     document.querySelector("#inputModoTimerTemporizador").checked ? descricaoModoDeTimer.textContent = "Apenas 60 segundos para achar o Felps." : null;
 
     document.querySelector("#inputColecaoTodos").checked ? descricaoColecaoDeFelps.textContent = "Jogue com todos os Felps." : null;
