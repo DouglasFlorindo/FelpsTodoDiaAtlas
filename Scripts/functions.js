@@ -369,7 +369,7 @@ export function contagem() {
                 clearInterval(contagem);
                 break;
         }
-    }, 100);
+    }, 1000);
 }
 
 export function finalizarPartida(resultado) {
