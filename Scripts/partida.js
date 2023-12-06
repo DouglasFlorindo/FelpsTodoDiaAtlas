@@ -22,6 +22,7 @@ document.addEventListener('keydown', (event) => {
 });
 
 document.querySelector("#botaoJogarNovamente").addEventListener("click", carregarPartida)
+document.querySelector("#botaoVoltarMenu").addEventListener("click", () => window.location.href = "https://douglasflorindo.github.io/FelpsTodoDiaAtlas/acheOFelps.html")
 
 populateAtlas("areaFelps", false);
 

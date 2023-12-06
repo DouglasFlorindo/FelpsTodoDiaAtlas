@@ -31,6 +31,7 @@
             </div>
             <div id="wrapperTimer">
                 <h1 id="timer"></h1>
+                <h1>s</h1>
             </div>
         </header>
         <div id="areaFelps">
@@ -54,17 +55,27 @@
         </div>
     </section>
     <dialog id="resultadoModal">
+        
         <div class="wrapper">
-            <h3>Você achou:</h3>
-            <div class="wrapperImagem">
-                <img id="felpsHRes">
-                <img id="destaque" src="Recursos/destaque.png">
+            <header>
+                <h1>Parabéns!</h1>
+            </header>
+            <div class="gridResultado">
+                <div class="wrapperImagem">
+                    <img id="destaque" src="Recursos/destaque.png">
+                    <img id="felpsHRes">
+                </div>
+                <h3>Você achou:</h3>
+                <h1 id="nomeFelpsAlvoResultado"></h1>
+                <h3>em:</h3>
+                <h1 id="timerResultado"></h1>
             </div>
-            <h1 id="nomeFelpsAlvoResultado"></h1>
-            <h3>em:</h3>
-            <h1 id="timerResultado"></h1>
-            <button id="botaoJogarNovamente" class="menu principal">Jogar Novamente</button>
-            <button id="botaoVoltarMenu" class="menu"><a href="acheOFelps.html">Menu</a></button>
+            <div class="gridBotoes">
+                
+                <button id="botaoVoltarMenu" class="menu"><img src="Recursos/home.png">Menu</button>
+                <button id="botaoCompartilhar" class="menu" onclick="alert('esse botão ainda não faz nada :/')"><img src="Recursos/compartilhar.png">Compartilhar</button>
+                <button id="botaoJogarNovamente" class="menu principal"><img src="Recursos/play.png">Jogar Novamente</button>
+            </div>
         </div>
     </dialog>
     <dialog id="derrotaModal">
