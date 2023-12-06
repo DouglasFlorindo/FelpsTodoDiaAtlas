@@ -1,6 +1,6 @@
 let movendo = false;
 let felpsDrag, felpsAtualId, quantFelps;
-let felpsAlvo, timer, timerId, modo, ano, modoTimer;
+let felpsAlvo, timer, timerId, modo, ano, modoTimer, intervalConfeti;
 const sfx = new Audio("../FelpsTodoDiaAtlas/Recursos/hitSFX.mp3");
 sfx.volume = 0.5;
 export let carregamentoCompleto = false;
@@ -229,6 +229,11 @@ export function easterEgg() {
 
     novoImg.src = "../FelpsTodoDiaAtlas/Recursos/emoteCarinha.png";
     novoImg.classList = "carinha";
+    novoImg.addEventListener('load', () => {
+        setTimeout(() => {
+            novoImg.remove();
+        }, 15000);
+    })
     novoImg.style.left = `${Math.floor(Math.random() * 100)}%`;
     novoImg.style.top = `-${Math.floor(Math.random() * 90) + 10}%`;
     novoImg.style.transform = `rotate(${Math.floor(Math.random() * 720) - 360}deg)`
@@ -327,7 +332,12 @@ export function carregarPartida() {
     modo = localStorage.getItem("modoDeJogo");
     modoTimer = localStorage.getItem("modoDeTimer");
     ano = localStorage.getItem("colecaoDeFelps");
-
+    if (typeof intervalConfeti !== 'undefined') {
+        clearInterval(intervalConfeti);
+        document.querySelectorAll("img.confeti").forEach(element => {
+            element.remove();
+        });;
+    }
     resultadoModal.close();
     randomizarPosicoes();
     escolherFelpsAlvo(modo, ano);
@@ -385,10 +395,31 @@ export function finalizarPartida(resultado) {
             document.querySelector("#nomeFelpsAlvoResultado").textContent = felpsAlvo.nome;
             document.querySelector("#timerResultado").textContent = `${Math.floor(timerResultado / 1000)}.${timerResultado.slice(-3, -1)}s`;
             resultadoModal.showModal();
+            intervalConfeti = setInterval(confeti, 500);
             break;
     }
 
 }
 
+export function confeti() {
+    let novoImg = document.createElement("img");
+
+    novoImg.src = "../FelpsTodoDiaAtlas/Recursos/emoteCarinha.png";
+    novoImg.classList = "confeti";
+    novoImg.addEventListener('load', () => {
+        setTimeout(() => {
+            novoImg.remove();
+        }, 15000);
+    })
+    novoImg.style.position = "fixed"
+    novoImg.style.zIndex = "500"
+    novoImg.style.height = "4rem"
+    novoImg.style.width = "5rem"
+    novoImg.style.left = `${Math.floor(Math.random() * 100)}%`;
+    novoImg.style.top = `-${Math.floor(Math.random() * 20) + 10}%`;
+    novoImg.style.transform = `rotate(${Math.floor(Math.random() * 720) - 360}deg)`;
+    novoImg.style.filter = `hue-rotate(${Math.floor(Math.random() * 360)}deg)`;
+    document.body.appendChild(novoImg);
+};
 
 

@@ -17,6 +17,11 @@
     --accent: #b5acac;
 }
 
+dialog::backdrop {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(25px);
+}
+
 @media (prefers-color-scheme: light) {
     :root {
         --text: #030202;
@@ -26,6 +31,29 @@
         --secondary: #e4e3e3;
         --tertiary: #d30931;
         --accent: #b5acac;
+    }
+
+    dialog::backdrop {
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(25px);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text: #f9f4f4;
+        --background: #100f0f;
+        --backgroundOpacity: rgba(16, 15, 15, 0.8);
+        --primary: #ff3c64;
+        --secondary: #1d1b1b;
+        --tertiary: #d30931;
+        --accent: #544a4a;
+        --invert: 1;
+    }
+
+    dialog::backdrop {
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(25px);
     }
 }
 
@@ -111,11 +139,6 @@ dialog {
         background-color: var(--primary);
         box-shadow: 0 5px 0 0 var(--tertiary);
     }
-}
-
-dialog::backdrop {
-    background: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(25px);
 }
 
 /*=============== section Inicial =================*/
@@ -475,7 +498,9 @@ button.principal:hover {
     box-shadow: 0 0 0 0 var(--tertiary);
 }
 
-
+.confeti {
+    animation: confetiY 10s linear, confetiSpin 1s linear infinite;
+}
 
 
 /* ========================================== */
@@ -538,4 +563,25 @@ button.principal:hover {
     100% {
         transform: translateX(0);
     }
+}
+
+@keyframes confetiY {
+    100% {
+        top: 120%;
+    }
+}
+
+@keyframes confetiSpin {
+    0% {
+        transform: scaleY(1);
+    }
+
+    50% {
+        transform: scaleY(-1);
+    }
+
+    100% {
+        transform: scaleY(1);
+    }
+    
 }
