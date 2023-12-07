@@ -433,7 +433,7 @@ dialog#resultadoModal {
                 justify-content: center;
                 align-items: center;
 
-                &img {
+                & img {
                     max-height: 100%;
                     max-width: 100%;
                     object-fit: contain;
@@ -471,7 +471,7 @@ dialog#resultadoModal {
             width: 100%;
             gap: 1rem;
 
-            &button {
+            & button {
                 margin: 0;
 
                 &#botaoJogarNovamente {
