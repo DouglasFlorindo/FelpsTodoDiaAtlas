@@ -16,6 +16,9 @@ document.addEventListener('keydown', (event) => {
         case "r":
             randomizarPosicoes();
             break;
+        case "ç": //TIRAR ISSO DEPOIS!!!!!!!!!!!!!!!!
+            finalizarPartida("vitoria");
+            break;
         default:
             break;
     }
