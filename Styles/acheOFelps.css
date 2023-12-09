@@ -135,7 +135,7 @@ button.menu img {
 dialog {
     background: var(--background);
 
-    header {
+    >header {
         background-color: var(--primary);
         box-shadow: 0 5px 0 0 var(--primaryShade);
     }
@@ -289,7 +289,7 @@ dialog {
     height: 100dvh;
     overflow: hidden;
 
-    h1 {
+    & h1 {
         font-size: 2.25rem;
     }
 }
@@ -340,14 +340,14 @@ dialog {
     display: grid;
     grid-auto-flow: column;
 
-    h1 {
+    & h1 {
         height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
     }
 
-    h1:last-child {
+    & h1:last-child {
         color: var(--accent);
         font-weight: normal;
     }
