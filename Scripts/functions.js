@@ -39,6 +39,7 @@ export async function populateAtlas(containerID, isAtlas) {
                 setTimeout(() => {
                     movendo = false
                 }, 250);
+
                 felpsDrag.style.transform = "translate(0, 0)";
                 felpsDrag.style.filter = "none";
                 felpsDrag.style.cursor = "pointer";
@@ -117,6 +118,7 @@ export async function populateCatalogo() {
         novoImg.src = `../FelpsTodoDiaAtlas/Imagens/${felps.arquivo}HRes.webp`;
         novoImg.alt = felps.nome;
         novoImg.title = felps.nome;
+        novoButton.style.filter = 'none';
         novoButton.addEventListener("click", () => mostrarInfo(felps.id));
 
         novoButton.appendChild(novoImg);
@@ -189,12 +191,13 @@ export function randomizarPosicoes() {
     felps.forEach(element => {
         element.style.left = `${Math.floor(Math.random() * 90)}%`;
         element.style.top = `${Math.floor(Math.random() * 90)}%`;
-        let i = 0
+        let i = 0;
         while (i < 100 && checkHitbox(element)) {
             element.style.left = `${Math.floor(Math.random() * 90)}%`;
             element.style.top = `${Math.floor(Math.random() * 90)}%`;
             i++
-        }
+        };
+        element.style.filter = 'none';
     });
 };
 

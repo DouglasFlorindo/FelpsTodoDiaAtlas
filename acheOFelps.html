@@ -77,11 +77,35 @@
                     <p id="descricaoColecaoDeFelps">Lorem Ipsum sit amet.</p>
                 </div>
             </div>
-            <button type="submit" id="botaoJogar" class="principal menu"><img class="icon" src="Recursos/play.png">Jogar</button>
+            <button type="submit" id="botaoJogar" class="principal menu"><img class="icon"
+                    src="Recursos/play.png">Jogar</button>
         </form>
     </section>
-    <dialog id="infoAcheOFelpsModal">
-        <button id="fecharInfoAcheOFelps" class="clicavel"><img src="Recursos/fechar.png"></button>
+    <dialog id="instrucoesModal" >
+        <div class="wrapper">
+            <header>
+                <h1>Instruções</h1>
+                <button id="fecharInstrucoes" class="clicavel"><img src="Recursos/fechar.png"></button>
+            </header>
+            <div class="wrapperConteudo">
+                <h2>Clique e arraste um felps para movê-lo:</h2>
+                <div class="wrapperTutorial">
+                    <div id="wrapperTutorial1">
+                        <img src="Recursos/felpsCara.png">
+                        <img class="icon" src="Recursos/cursor.png">
+                    </div>
+                </div>
+                <h2>Clique no felps correto para encerrar a partida:</h2>
+                <div id="wrapperTutorial2" class="wrapperTutorial">
+                    <img src="Recursos/felpsCara.png">
+                    <img class="icon" src="Recursos/cursor.png">
+                </div>
+                <h2>Acesse a barra de ferramentas no centro inferior da tela:</h2>
+                <div class="wrapperTutorial"></div>
+                <h2>Ou use os atalhos do teclado:</h2>
+                
+            </div>
+        </div>
     </dialog>
     <script src="Scripts/acheOFelps.js" type="module"></script>
 </body>

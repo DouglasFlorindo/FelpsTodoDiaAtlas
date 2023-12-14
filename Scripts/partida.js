@@ -24,8 +24,11 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-document.querySelector("#botaoJogarNovamente").addEventListener("click", carregarPartida)
-document.querySelector("#botaoVoltarMenu").addEventListener("click", () => window.location.replace("https://douglasflorindo.github.io/FelpsTodoDiaAtlas/acheOFelps.html"))
+document.querySelector("#resultadoModal").addEventListener('keydown', (event) => {
+    event.key == "Escape" ? event.preventDefault() : null;
+});
+document.querySelector("#botaoJogarNovamente").addEventListener("click", carregarPartida);
+document.querySelector("#botaoVoltarMenu").addEventListener("click", () => window.location.replace("https://douglasflorindo.github.io/FelpsTodoDiaAtlas/acheOFelps.html"));
 
 populateAtlas("areaFelps", false);
 

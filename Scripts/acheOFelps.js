@@ -3,7 +3,15 @@ import {coletarConfigs} from './functions.js';
 localStorage.clear();
 atualizarDescricoes();
 
-const infoModal = document.querySelector("#infoAcheOFelpsModal");
+const infoModal = document.querySelector("#instrucoesModal");
+console.log(localStorage.getItem("teste"));
+
+document.addEventListener("DOMContentLoaded", function () {
+    if (!localStorage.getItem("teste")) {
+        infoModal.showModal()
+        localStorage.setItem("teste", "true");
+    }
+});
 
 document.querySelector("#botaoInfoAcheOFelps").addEventListener("click", () => infoModal.showModal());
 
@@ -11,7 +19,7 @@ document.querySelector("#configsDeJogo").addEventListener("submit", coletarConfi
 
 document.querySelector("#configsDeJogo").addEventListener("change", atualizarDescricoes);
 
-document.querySelector("#fecharInfoAcheOFelps").addEventListener("click", () => infoModal.close())
+document.querySelector("#fecharInstrucoes").addEventListener("click", () => infoModal.close())
 
 function atualizarDescricoes() {
     const descricaoModoDeJogo = document.querySelector("#descricaoModoDeJogo");
@@ -28,3 +36,5 @@ function atualizarDescricoes() {
     document.querySelector("#inputColecao22").checked ? descricaoColecaoDeFelps.textContent = "Jogue apenas com os Felps de 2022." : null;
     document.querySelector("#inputColecao24").checked ? descricaoColecaoDeFelps.textContent = "Jogue apenas com os Felps de 2024." : null;
 }
+
+
