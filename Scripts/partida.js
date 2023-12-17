@@ -16,6 +16,9 @@ document.addEventListener('keydown', (event) => {
         case "r":
             randomizarPosicoes();
             break;
+        case "Escape":
+            // window.location.replace("https://douglasflorindo.github.io/FelpsTodoDiaAtlas/acheOFelps.html");
+            break;
         case "ç": //TIRAR ISSO DEPOIS!!!!!!!!!!!!!!!!
             finalizarPartida("vitoria");
             break;

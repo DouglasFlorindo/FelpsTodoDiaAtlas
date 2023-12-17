@@ -18,6 +18,8 @@ document.querySelector("#configsDeJogo").addEventListener("submit", coletarConfi
 document.querySelector("#configsDeJogo").addEventListener("change", atualizarDescricoes);
 
 document.querySelector("#fecharInstrucoes").addEventListener("click", () => infoModal.close())
+document.querySelector("#fecharInstrucoesPrincipal").addEventListener("click", () => infoModal.close())
+
 
 function atualizarDescricoes() {
     const descricaoModoDeJogo = document.querySelector("#descricaoModoDeJogo");
