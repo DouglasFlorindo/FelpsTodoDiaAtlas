@@ -266,7 +266,7 @@ dialog {
 
 dialog#instrucoesModal {
 
-    > div.wrapper > div.wrapperConteudo {
+    >div.wrapper>div.wrapperConteudo {
         padding: var(--espaco);
         padding-top: 0;
         display: flex;
@@ -280,8 +280,8 @@ dialog#instrucoesModal {
             min-height: 5rem;
             position: relative;
             overflow: hidden;
-           
-            > div#wrapperTutorial1 {
+
+            >div#wrapperTutorial1 {
                 transform: translateX(-50%);
                 left: 50%;
                 position: absolute;
@@ -297,7 +297,7 @@ dialog#instrucoesModal {
                         transform: translateX(-50%);
                         left: 50%;
                     }
-                    
+
                     &:last-child {
                         height: 35%;
                         left: 50%;
@@ -305,7 +305,7 @@ dialog#instrucoesModal {
                     }
                 }
             }
-            
+
             &#wrapperTutorial2 {
 
                 & img {
@@ -342,7 +342,7 @@ dialog#instrucoesModal {
                 border-radius: 15px 15px 0 0;
                 animation: controles 3s infinite, tutorial3 5s ease-in-out infinite;
 
-                > span {
+                >span {
                     background: var(--primary);
                     width: 100%;
                     height: 0.5rem;
@@ -350,7 +350,7 @@ dialog#instrucoesModal {
                     margin: 0.5rem 0;
                 }
 
-                > div.wrapperBotoes {
+                >div.wrapperBotoes {
                     display: grid;
                     grid-auto-flow: column;
                     gap: 1.5rem;
@@ -384,12 +384,25 @@ dialog#instrucoesModal {
 
 /*=============== section Contagem =================*/
 
-#sectionContagem {
+section#sectionContagem {
     background-color: var(--background);
     z-index: 50;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    >div#divContagem {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    & img#exemploContagem {
+        padding-top: var(--espaco);
+        display: none;
+        max-height: 40dvh;
+    }
 }
 
 /*=============== section Jogo =================*/
@@ -533,7 +546,7 @@ dialog#resultadoModal {
             min-height: 40dvh;
             min-width: 70%;
             max-width: 100%;
-            
+
 
             >div.wrapperImagem {
                 grid-row: 1 / 5;
@@ -625,7 +638,7 @@ button.principal:hover {
 }
 
 @keyframes tutorial1 {
-    0% { 
+    0% {
         left: 20%;
     }
 
@@ -654,6 +667,7 @@ button.principal:hover {
     40% {
         top: 55%;
     }
+
     45% {
         top: 50%;
     }
@@ -757,5 +771,5 @@ button.principal:hover {
     100% {
         transform: scaleY(1);
     }
-    
+
 }

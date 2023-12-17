@@ -353,7 +353,9 @@ export function contagem() {
     let i = 3;
     let contador = document.querySelector("#contagem");
     let div = document.querySelector("#divContagem");
+    let imagem = document.querySelector("#exemploContagem")
     div.style.animation = "contagem 1s cubic-bezier(0.65, 0, 0.35, 1)";
+    imagem.style.display = "none";
     contador.textContent = i;
     i = i - 1;
     let contagem = setInterval(() => {
@@ -361,6 +363,7 @@ export function contagem() {
         div.offsetHeight;
         div.style.animation = null;
         switch (i) {
+            
             case 2:
                 contador.textContent = i;
                 div.style.animation = "contagem 1s cubic-bezier(0.65, 0, 0.35, 1)";
@@ -370,10 +373,11 @@ export function contagem() {
                 contador.textContent = i;
                 div.style.animation = "contagem 1s cubic-bezier(0.65, 0, 0.35, 1)";
                 i = i - 1;
+                imagem.src = `../FelpsTodoDiaAtlas/Imagens/${felpsAlvo.arquivo}HRes.webp`
                 break;
             case 0:
-                contador.textContent = "Vai!";
-                div.style.animation = "contagem 1s cubic-bezier(0.65, 0, 0.35, 1)";
+                contador.textContent = "Encontre:";
+                imagem.style.display = "unset"
                 i = i - 1;
                 break;
             case -1:
