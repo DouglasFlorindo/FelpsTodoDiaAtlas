@@ -267,8 +267,7 @@ dialog {
 dialog#instrucoesModal {
 
     >div.wrapper>div.wrapperConteudo {
-        padding: var(--espaco);
-        padding-top: 0;
+        padding: 0 var(--espaco);
         display: flex;
         flex-direction: column;
         align-items: center;
