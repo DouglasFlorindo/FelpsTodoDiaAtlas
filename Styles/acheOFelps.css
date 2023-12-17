@@ -267,7 +267,8 @@ dialog {
 dialog#instrucoesModal {
 
     > div.wrapper > div.wrapperConteudo {
-        padding: 0 var(--espaco);
+        padding: var(--espaco);
+        padding-top: 0;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -324,6 +325,48 @@ dialog#instrucoesModal {
                     }
                 }
             }
+
+            div#gridControlesTutorial {
+                border: solid 1px var(--primary);
+                border-bottom: 0;
+                background: var(--background);
+                z-index: 10;
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                display: flex;
+                flex-direction: column;
+                transform: translate(-50%, 4rem);
+                transition: transform 0.1s linear;
+                padding: 0 var(--espaco);
+                border-radius: 15px 15px 0 0;
+                animation: controles 3s infinite, tutorial3 5s ease-in-out infinite;
+
+                > span {
+                    background: var(--primary);
+                    width: 100%;
+                    height: 0.5rem;
+                    border-radius: 0.25rem;
+                    margin: 0.5rem 0;
+                }
+
+                > div.wrapperBotoes {
+                    display: grid;
+                    grid-auto-flow: column;
+                    gap: 1.5rem;
+                    padding: 0 0 0.5rem 0;
+
+                    & button {
+                        width: auto;
+                        height: auto;
+                    }
+                }
+            }
+
+        }
+
+        & span {
+            font-weight: bold;
         }
     }
 }
@@ -621,6 +664,28 @@ button.principal:hover {
 
     80% {
         left: 80%;
+    }
+}
+
+@keyframes tutorial3 {
+    0% {
+        transform: translate(-50%, 4rem);
+    }
+
+    40% {
+        transform: translate(-50%, 4rem);
+    }
+
+    50% {
+        transform: translate(-50%, 0);
+    }
+
+    90% {
+        transform: translate(-50%, 0);
+    }
+
+    100% {
+        transform: translate(-50%, 4rem);
     }
 }
 

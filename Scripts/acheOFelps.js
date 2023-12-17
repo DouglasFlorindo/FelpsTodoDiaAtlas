@@ -1,15 +1,13 @@
 import {coletarConfigs} from './functions.js';
 
-localStorage.clear();
 atualizarDescricoes();
 
 const infoModal = document.querySelector("#instrucoesModal");
-console.log(localStorage.getItem("teste"));
 
 document.addEventListener("DOMContentLoaded", function () {
-    if (!localStorage.getItem("teste")) {
+    if (!localStorage.getItem("infoShown")) {
         infoModal.showModal()
-        localStorage.setItem("teste", "true");
+        localStorage.setItem("infoShown", "true");
     }
 });
 
@@ -36,5 +34,3 @@ function atualizarDescricoes() {
     document.querySelector("#inputColecao22").checked ? descricaoColecaoDeFelps.textContent = "Jogue apenas com os Felps de 2022." : null;
     document.querySelector("#inputColecao24").checked ? descricaoColecaoDeFelps.textContent = "Jogue apenas com os Felps de 2024." : null;
 }
-
-
