@@ -329,7 +329,6 @@ dialog#instrucoesModal {
                 border: solid 1px var(--primary);
                 border-bottom: 0;
                 background: var(--background);
-                z-index: 10;
                 position: absolute;
                 bottom: 0;
                 left: 50%;
