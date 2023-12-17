@@ -40,8 +40,6 @@ export async function populateAtlas(containerID, isAtlas) {
                     movendo = false
                 }, 250);
 
-                felpsDrag.style.transform = "translate(0, 0)";
-                felpsDrag.style.filter = "none";
                 felpsDrag.style.cursor = "pointer";
             }
         });
@@ -49,16 +47,16 @@ export async function populateAtlas(containerID, isAtlas) {
             e.target.addEventListener('keydown', function (event) {
                 switch (event.key) {
                     case "ArrowUp":
-                        this.style.top = (parseFloat(this.style.top) - 1) + "%";
+                        this.style.top = `calc(${this.style.top} - 1%)`;
                         break;
                     case "ArrowDown":
-                        this.style.top = (parseFloat(this.style.top) + 1) + "%";
+                        this.style.top = `calc(${this.style.top} + 1%)`;
                         break;
                     case "ArrowLeft":
-                        this.style.left = (parseFloat(this.style.left) - 1) + "%";
+                        this.style.left = `calc(${this.style.left} - 1%)`;
                         break;
                     case "ArrowRight":
-                        this.style.left = (parseFloat(this.style.left) + 1) + "%";
+                        this.style.left = `calc(${this.style.left} + 1%)`;
                         break;
                     default:
                         break;
@@ -91,11 +89,9 @@ export async function populateAtlas(containerID, isAtlas) {
             let x = e.pageX / document.body.clientWidth * 100;
             let y = e.pageY / document.body.clientHeight * 100;
 
-            felpsDrag.style.left = x + "%";
-            felpsDrag.style.top = y + "%";
+            felpsDrag.style.left = `calc(${x}% - ${felpsDrag.clientWidth / 2}px)`;
+            felpsDrag.style.top = `calc(${y}% - ${felpsDrag.clientHeight / 2}px)`;
             felpsDrag.style.cursor = "move"
-            felpsDrag.style.transform = "translate(-50%, -50%)"
-            felpsDrag.style.filter = `drop-shadow(${felpsDrag.clientWidth / 2}px ${felpsDrag.clientHeight / 2}px rgba(160, 34, 59, 0.5))`;
 
             movendo = true
         }
@@ -291,7 +287,7 @@ export function verificarFelpsAlvo(id) {
         elemento.offsetHeight;
         elemento.style.animation = "hit 0.1s ease-in-out"
         sfx.currentTime = 0;
-        sfx.play(); 
+        sfx.play();
 
     }
 };
@@ -363,7 +359,7 @@ export function contagem() {
         div.offsetHeight;
         div.style.animation = null;
         switch (i) {
-            
+
             case 2:
                 contador.textContent = i;
                 div.style.animation = "contagem 1s cubic-bezier(0.65, 0, 0.35, 1)";
