@@ -1,9 +1,11 @@
 import { populateAtlas, randomizarPosicoes, alterarEscala, escolherFelpsAlvo, controleTimer, finalizarPartida, carregarPartida, carregamentoCompleto, compartilharResultado } from './functions.js';
 
+const confirmacaoModal = document.querySelector("#voltarMenuModal");
+
 document.querySelector("#aumentarEscala").addEventListener("click", () => alterarEscala(true));
 document.querySelector("#diminuirEscala").addEventListener("click", () => alterarEscala(false));
-
 document.querySelector("#randomizarPosicoes").addEventListener("click", randomizarPosicoes);
+document.querySelector("#voltarMenu").addEventListener("click", () => confirmacaoModal.showModal());
 
 document.addEventListener('keydown', (event) => {
     switch (event.key) {
@@ -16,8 +18,8 @@ document.addEventListener('keydown', (event) => {
         case "r":
             randomizarPosicoes();
             break;
-        case "Escape":
-            // window.location.replace("https://douglasflorindo.github.io/FelpsTodoDiaAtlas/acheOFelps.html");
+        case "m":
+            confirmacaoModal.showModal();
             break;
         case "ç": //TIRAR ISSO DEPOIS!!!!!!!!!!!!!!!!
             finalizarPartida("vitoria");
@@ -42,6 +44,9 @@ document.querySelector("#derrotaModal").addEventListener('keydown', (event) => {
 });
 document.querySelector("#botaoJogarNovamente2").addEventListener("click", carregarPartida);
 document.querySelector("#botaoVoltarMenu2").addEventListener("click", () => window.location.replace("https://douglasflorindo.github.io/FelpsTodoDiaAtlas/acheOFelps.html"));
+
+document.querySelector("#botaoVoltarSim").addEventListener("click", () => window.location.replace("https://douglasflorindo.github.io/FelpsTodoDiaAtlas/acheOFelps.html"));
+document.querySelector("#botaoVoltarNao").addEventListener("click", () =>  confirmacaoModal.close())
 
 populateAtlas("areaFelps", false);
 

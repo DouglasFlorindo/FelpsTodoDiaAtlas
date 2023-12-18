@@ -1,8 +1,12 @@
 let movendo = false;
 let felpsDrag, felpsAtualId, quantFelps;
 let felpsAlvo, timer, timerId, modo, ano, modoTimer, intervalConfeti;
-const sfx = new Audio("../FelpsTodoDiaAtlas/Recursos/hitSFX.mp3");
-sfx.volume = 0.5;
+const hitSFX = new Audio("../FelpsTodoDiaAtlas/Recursos/hitSFX.mp3");
+hitSFX.volume = 0.5;
+const metronomoSFX = new Audio("../FelpsTodoDiaAtlas/Recursos/metronomoSFX.mp3");
+metronomoSFX.volume = 0.5;
+const metronomoHighSFX = new Audio("../FelpsTodoDiaAtlas/Recursos/metronomoHighSFX.mp3");
+metronomoHighSFX.volume = 0.5;
 export let carregamentoCompleto = false;
 
 
@@ -286,8 +290,8 @@ export function verificarFelpsAlvo(id) {
         elemento.style.animation = "none";
         elemento.offsetHeight;
         elemento.style.animation = "hit 0.1s ease-in-out"
-        sfx.currentTime = 0;
-        sfx.play();
+        hitSFX.currentTime = 0;
+        hitSFX.play();
 
     }
 };
@@ -349,37 +353,50 @@ export function carregarPartida() {
 
 export function contagem() {
     let i = 3;
+    const sectionContagem = document.querySelector("#sectionContagem");
     let contador = document.querySelector("#contagem");
     let div = document.querySelector("#divContagem");
     let imagem = document.querySelector("#exemploContagem")
-    div.style.animation = "contagem 1s cubic-bezier(0.65, 0, 0.35, 1)";
     imagem.style.display = "none";
+    div.style.animation = "contagem 1s cubic-bezier(0.65, 0, 0.35, 1)";
+    sectionContagem.style.animation = "sombraInterna 0.5s linear";
+    metronomoSFX.currentTime = 0;
+    metronomoSFX.play();
     contador.textContent = i;
     i = i - 1;
     let contagem = setInterval(() => {
         div.style.animation = "none";
+        sectionContagem.style.animation = "none";
         div.offsetHeight;
         div.style.animation = null;
         switch (i) {
 
             case 2:
+                metronomoSFX.currentTime = 0;
+                metronomoSFX.play();
                 contador.textContent = i;
+                sectionContagem.style.animation = "sombraInterna 0.5s linear";
                 div.style.animation = "contagem 1s cubic-bezier(0.65, 0, 0.35, 1)";
                 i = i - 1;
                 break;
             case 1:
+                metronomoSFX.currentTime = 0;
+                metronomoSFX.play();
                 contador.textContent = i;
+                sectionContagem.style.animation = "sombraInterna 0.5s linear";
                 div.style.animation = "contagem 1s cubic-bezier(0.65, 0, 0.35, 1)";
                 i = i - 1;
                 imagem.src = `../FelpsTodoDiaAtlas/Imagens/${felpsAlvo.arquivo}HRes.webp`
                 break;
             case 0:
+                metronomoHighSFX.currentTime = 0;
+                metronomoHighSFX.play();
                 contador.textContent = "Encontre:";
                 imagem.style.display = "unset"
                 i = i - 1;
                 break;
             case -1:
-                document.querySelector("#sectionContagem").style.display = "none";
+                sectionContagem.style.display = "none";
                 controleTimer(true, modoTimer);
                 clearInterval(contagem);
                 break;
@@ -432,11 +449,9 @@ export function compartilharResultado() {
     const botaoCompartilhar = document.querySelector("#botaoCompartilhar");
     let timerResultado = timer.toString();
     let texto = `Achei `;
-    console.log(texto);
     switch (modo) {
         case "aleatorio":
             texto = texto + `"${felpsAlvo.nome}"`;
-            console.log(texto);
             break;
         case "diario":
             texto = texto + `o Felps do dia ${felpsAlvo.data}`
@@ -444,8 +459,8 @@ export function compartilharResultado() {
             break;
     }
     texto = texto + ` em ${Math.floor(timerResultado / 1000)}.${timerResultado.slice(-3, -1)} segundos!`
-    console.log(texto);
     navigator.clipboard.writeText(texto);
+    
     botaoCompartilhar.innerHTML = "<img class='icon' src='Recursos/compartilhar.png'>Copiado!";
     setTimeout(() => {
         botaoCompartilhar.innerHTML = "<img class='icon' src='Recursos/compartilhar.png'>Compartilhar";

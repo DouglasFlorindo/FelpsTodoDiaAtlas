@@ -360,13 +360,45 @@ dialog#instrucoesModal {
                     }
                 }
             }
-
         }
 
         & span {
             font-weight: bold;
         }
     }
+}
+
+/*=============== voltar Menu Modal =================*/
+
+dialog#voltarMenuModal {
+    height: auto;
+
+    >div.wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--espaco);
+        height: 100%;
+        width: 100%;
+
+        > h1 {
+            margin: var(--espaco);
+        }
+
+        > div.gridBotoes {
+            width: 100%;
+            display: grid;
+            grid-auto-flow: column;
+            gap: 1.5rem;
+            padding: 0 0 0.5rem 0;
+
+            & button {
+                width: auto;
+            }
+        }
+    }
+
 }
 
 /*=============== section Carregando =================*/
@@ -389,11 +421,15 @@ section#sectionContagem {
     justify-content: center;
     align-items: center;
 
-    >div#divContagem {
+    > div#divContagem {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        > h1 {
+            font-size: 3rem;
+        }
     }
 
     & img#exemploContagem {
@@ -780,6 +816,20 @@ button.principal:hover {
         opacity: 0.5;
         scale: 1;
         transform: rotate(25deg);
+    }
+}
+
+@keyframes sombraInterna {
+    0% {
+        box-shadow: inset transparent 0 0 0 0;
+    }
+
+    5% { 
+        box-shadow: inset var(--primary) 0 0 1rem 1rem;
+    }
+
+    100% {
+        box-shadow: inset transparent 0 0 0 0;
     }
 }
 
