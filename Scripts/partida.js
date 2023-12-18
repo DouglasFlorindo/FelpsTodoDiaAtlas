@@ -21,12 +21,12 @@ document.addEventListener('keydown', (event) => {
         case "m":
             confirmacaoModal.showModal();
             break;
-        case "ç": //TIRAR ISSO DEPOIS!!!!!!!!!!!!!!!!
-            finalizarPartida("vitoria");
-            break;
-        case "l": //TIRAR ISSO DEPOIS!!!!!!!!!!!!!!!!
-            finalizarPartida("derrota");
-            break;
+        // case "ç": //TIRAR ISSO DEPOIS!!!!!!!!!!!!!!!!
+        //     finalizarPartida("vitoria");
+        //     break;
+        // case "l": //TIRAR ISSO DEPOIS!!!!!!!!!!!!!!!!
+        //     finalizarPartida("derrota");
+        //     break;
         default:
             break;
     }
