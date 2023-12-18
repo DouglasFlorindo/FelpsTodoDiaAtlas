@@ -486,7 +486,8 @@ section#sectionContagem {
 #gridControles {
     border: solid 1px var(--primary);
     border-bottom: 0;
-    background: var(--background);
+    background: var(--backgroundOpacity);
+    backdrop-filter: blur(5px);
     z-index: 10;
     position: absolute;
     bottom: 0;
@@ -598,6 +599,59 @@ dialog#resultadoModal {
                     grid-column: 1/3;
                 }
             }
+        }
+    }
+}
+
+/*=============== Derrota Modal =================*/
+
+dialog#derrotaModal {
+
+    >div.wrapper {
+        width: 100%;
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+
+        >div.wrapperImagem {
+            margin: var(--espaco);
+            height: 60dvh;
+            width: 80%;
+            position: relative;
+
+            & img {
+                position: absolute;
+                transform: translateX(-50%);
+                left: 50%;
+                height: 100%;
+                width: 100%;
+                max-height: 100%;
+                max-width: 100%;
+                object-fit: contain;
+
+                &#felpsHResDerrota {
+                    height: 50%;
+                    bottom: 5%;
+                    filter: saturate(0);
+                }
+            }
+        }
+
+        >div.gridBotoes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            width: 100%;
+            padding: var(--espaco);
+            gap: var(--espaco);
+
+            & button {
+                width: 100%;
+                margin: 0;
+            }
+
         }
     }
 }

@@ -338,6 +338,8 @@ export function carregarPartida() {
         });;
     }
     resultadoModal.close();
+    derrotaModal.close();
+    
     randomizarPosicoes();
     escolherFelpsAlvo(modo, ano);
     document.querySelector("#sectionCarregando").style.display = "none";
@@ -389,6 +391,7 @@ export function finalizarPartida(resultado) {
     switch (resultado) {
         case "derrota":
             controleTimer(false);
+            document.querySelector("#felpsHResDerrota").src = `../FelpsTodoDiaAtlas/Imagens/${felpsAlvo.arquivo}HRes.webp`;
             document.querySelector("#derrotaModal").showModal();
             break;
         case "vitoria":
@@ -425,4 +428,26 @@ export function confeti() {
     document.body.appendChild(novoImg);
 };
 
-
+export function compartilharResultado() {
+    const botaoCompartilhar = document.querySelector("#botaoCompartilhar");
+    let timerResultado = timer.toString();
+    let texto = `Achei `;
+    console.log(texto);
+    switch (modo) {
+        case "aleatorio":
+            texto = texto + `"${felpsAlvo.nome}"`;
+            console.log(texto);
+            break;
+        case "diario":
+            texto = texto + `o Felps do dia ${felpsAlvo.data}`
+        default:
+            break;
+    }
+    texto = texto + ` em ${Math.floor(timerResultado / 1000)}.${timerResultado.slice(-3, -1)} segundos!`
+    console.log(texto);
+    navigator.clipboard.writeText(texto);
+    botaoCompartilhar.innerHTML = "<img class='icon' src='Recursos/compartilhar.png'>Copiado!";
+    setTimeout(() => {
+        botaoCompartilhar.innerHTML = "<img class='icon' src='Recursos/compartilhar.png'>Compartilhar";
+    }, 3000);
+}
