@@ -1,6 +1,20 @@
-import { populateAtlas, randomizarPosicoes, alterarEscala, escolherFelpsAlvo, controleTimer, finalizarPartida, carregarPartida, carregamentoCompleto, compartilharResultado } from './functions.js';
+import { populateAtlas, randomizarPosicoes, alterarEscala, carregarPartida, carregamentoCompleto, compartilharResultado, hitSFX, metronomoSFX, metronomoHighSFX } from './functions.js';
 
 const confirmacaoModal = document.querySelector("#voltarMenuModal");
+const inputAudio = document.querySelector("#inputAudio");
+
+inputAudio.checked = false;
+inputAudio.addEventListener("change", () => {
+    if (inputAudio.checked) {
+        hitSFX.volume = 0.5;
+        metronomoSFX.volume = 0.5;
+        metronomoHighSFX.volume = 0.5;
+    } else {
+        hitSFX.volume = 0;
+        metronomoSFX.volume = 0;
+        metronomoHighSFX.volume = 0;
+    }
+});
 
 document.querySelector("#aumentarEscala").addEventListener("click", () => alterarEscala(true));
 document.querySelector("#diminuirEscala").addEventListener("click", () => alterarEscala(false));

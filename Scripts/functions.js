@@ -1,12 +1,12 @@
 let movendo = false;
 let felpsDrag, felpsAtualId, quantFelps;
 let felpsAlvo, timer, timerId, modo, ano, modoTimer, intervalConfeti;
-const hitSFX = new Audio("../FelpsTodoDiaAtlas/Recursos/hitSFX.mp3");
-hitSFX.volume = 0.5;
-const metronomoSFX = new Audio("../FelpsTodoDiaAtlas/Recursos/metronomoSFX.mp3");
-metronomoSFX.volume = 0.5;
-const metronomoHighSFX = new Audio("../FelpsTodoDiaAtlas/Recursos/metronomoHighSFX.mp3");
-metronomoHighSFX.volume = 0.5;
+export const hitSFX = new Audio("../FelpsTodoDiaAtlas/Recursos/hitSFX.mp3");
+hitSFX.volume = 0;
+export const metronomoSFX = new Audio("../FelpsTodoDiaAtlas/Recursos/metronomoSFX.mp3");
+metronomoSFX.volume = 0;
+export const metronomoHighSFX = new Audio("../FelpsTodoDiaAtlas/Recursos/metronomoHighSFX.mp3");
+metronomoHighSFX.volume = 0;
 export let carregamentoCompleto = false;
 
 
