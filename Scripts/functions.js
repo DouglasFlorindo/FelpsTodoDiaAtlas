@@ -346,6 +346,8 @@ export function carregarPartida() {
     
     randomizarPosicoes();
     escolherFelpsAlvo(modo, ano);
+    let esperarFelpsAlvo = setInterval(() => felpsAlvo != undefined ? clearInterval(esperarFelpsAlvo) : console.log("Ainda escolhendo Felps...")
+    , 10);
     document.querySelector("#sectionCarregando").style.display = "none";
     document.querySelector("#sectionContagem").style.display = "flex"
     contagem();
