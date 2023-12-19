@@ -1,0 +1,22 @@
+const audioTeste = new Audio("../FelpsTodoDiaAtlas/Frums - HALL.mp3")
+                let controleTeste = false;
+                document.addEventListener("click", () => {
+                    if (controleTeste == false) {
+                        controleTeste = true;
+                        audioTeste.currentTime = timer / 1000;
+                        audioTeste.play();
+                        console.log(timer, audioTeste.currentTime)
+                        setInterval(() => {
+                            if (Math.floor(audioTeste.currentTime) != Math.floor(timer / 1000)) {
+                                audioTeste.currentTime = timer / 1000;
+                            audioTeste.play();
+                            console.log("fora de sync")
+                            } else {
+                                console.log("em sync")
+                            }
+                            
+                            console.log(timer, audioTeste.currentTime)
+                        }, 2000);
+                    }
+
+                })
