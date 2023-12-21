@@ -34,6 +34,7 @@ export async function populateAtlas(containerID, isAtlas) {
 
         novoButton.id = `b${felps.id}`;
         novoButton.classList = "felps";
+
         isAtlas ? novoButton.addEventListener('click', () => movendo == false ? mostrarInfo(felps.id) : null) : novoButton.addEventListener('click', () => movendo == false ? verificarFelpsAlvo(felps.id) : null);
         novoButton.addEventListener('mousedown', function () {
             felpsDrag = this;
@@ -47,6 +48,23 @@ export async function populateAtlas(containerID, isAtlas) {
                 felpsDrag.style.cursor = "pointer";
             }
         });
+
+        novoButton.addEventListener('touchstart', function (e) {
+            felpsDrag = this;
+            console.log(felps.id);
+            
+            let clientX = e.touches[0].clientX;
+            let clientY = e.touches[0].clientY;
+            console.log(clientX, clientY);
+        });
+        novoButton.addEventListener('mouseup', function () {
+            if (movendo == true) {
+                setTimeout(() => {
+                    movendo = false
+                }, 250);
+            }
+        });
+
         novoButton.addEventListener('focus', (e) => {
             e.target.addEventListener('keydown', function (event) {
                 switch (event.key) {
@@ -98,6 +116,19 @@ export async function populateAtlas(containerID, isAtlas) {
             felpsDrag.style.cursor = "move"
 
             movendo = true
+        }
+    })
+
+    document.addEventListener('touchend', () => felpsDrag = null);
+    document.addEventListener('touchmove', (e) => {
+        if (felpsDrag != null) {
+            let clientX = e.touches[0].clientX / document.body.clientWidth * 100;
+            let clientY = e.touches[0].clientY / document.body.clientHeight * 100;
+
+            felpsDrag.style.left = `calc(${clientX}% - ${felpsDrag.clientWidth / 2}px)`;
+            felpsDrag.style.top = `calc(${clientY}% - ${felpsDrag.clientHeight / 2}px)`;
+
+            movendo = true;
         }
     })
 };
@@ -343,11 +374,11 @@ export function carregarPartida() {
     }
     resultadoModal.close();
     derrotaModal.close();
-    
+
     randomizarPosicoes();
     escolherFelpsAlvo(modo, ano);
     let esperarFelpsAlvo = setInterval(() => felpsAlvo != undefined ? clearInterval(esperarFelpsAlvo) : console.log("Ainda escolhendo Felps...")
-    , 10);
+        , 10);
     document.querySelector("#sectionCarregando").style.display = "none";
     document.querySelector("#sectionContagem").style.display = "flex"
     contagem();
@@ -462,7 +493,7 @@ export function compartilharResultado() {
     }
     texto = texto + ` em ${Math.floor(timerResultado / 1000)}.${timerResultado.slice(-3, -1)} segundos!`
     navigator.clipboard.writeText(texto);
-    
+
     botaoCompartilhar.innerHTML = "<img class='icon' src='Recursos/compartilhar.png'>Copiado!";
     setTimeout(() => {
         botaoCompartilhar.innerHTML = "<img class='icon' src='Recursos/compartilhar.png'>Compartilhar";
