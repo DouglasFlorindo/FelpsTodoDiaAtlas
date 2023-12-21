@@ -51,11 +51,6 @@ export async function populateAtlas(containerID, isAtlas) {
 
         novoButton.addEventListener('touchstart', function (e) {
             felpsDrag = this;
-            console.log(felps.id);
-            
-            let clientX = e.touches[0].clientX;
-            let clientY = e.touches[0].clientY;
-            console.log(clientX, clientY);
         });
         novoButton.addEventListener('mouseup', function () {
             if (movendo == true) {
