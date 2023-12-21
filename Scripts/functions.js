@@ -52,7 +52,7 @@ export async function populateAtlas(containerID, isAtlas) {
         novoButton.addEventListener('touchstart', function (e) {
             felpsDrag = this;
         });
-        novoButton.addEventListener('mouseup', function () {
+        novoButton.addEventListener('touchend', function () {
             if (movendo == true) {
                 setTimeout(() => {
                     movendo = false
