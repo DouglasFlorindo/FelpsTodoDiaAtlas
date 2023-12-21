@@ -17,7 +17,7 @@ inputAudio.addEventListener("change", () => {
     }
 });
 
-header.addEventListener("touchstart", () => {
+header.addEventListener("click", () => {
     if (header.classList.contains("aberto")) {
         header.classList = "";
         header.style.top = "calc(10dvh + 2 * var(--espaco))"
