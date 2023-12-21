@@ -909,3 +909,52 @@ button.principal:hover {
     }
 
 }
+
+@media screen and (max-width: 760px) {
+
+    form {
+        width: 100%;
+    }
+
+    #sectionJogo header {
+        height: 100%;
+        grid-template-columns: unset;
+        grid-template-rows: 15dvh 1fr 10dvh;
+        gap: 1rem;
+        top: calc(10dvh + 2 * var(--espaco));
+        transform: translateY(-100%);
+        transition: all 0.3s ease-in-out;
+
+        & div { 
+            width: 100dvw;
+        }
+        
+        > div#wrapperAlvo {
+            grid-row: 1;
+
+            > h1 {
+                font-size: 1.75rem;
+            } 
+        }
+
+        > div#wrapperImagem {
+            grid-row: 2;
+            & img {
+                height: unset;
+                width: 100%;
+                max-width: 100%;
+
+                &#felpsAlvoImagemFundo {
+                    scale: 1;
+                }
+
+                &#felpsAlvoImagem {
+                    height: unset;
+                    scale: 0.6;
+                }
+            }
+            
+        }
+            
+    }
+}

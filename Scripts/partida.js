@@ -2,6 +2,7 @@ import { populateAtlas, randomizarPosicoes, alterarEscala, carregarPartida, carr
 
 const confirmacaoModal = document.querySelector("#voltarMenuModal");
 const inputAudio = document.querySelector("#inputAudio");
+const header = document.querySelector("#headerJogo")
 
 inputAudio.checked = false;
 inputAudio.addEventListener("change", () => {
@@ -15,6 +16,18 @@ inputAudio.addEventListener("change", () => {
         metronomoHighSFX.volume = 0;
     }
 });
+
+header.addEventListener("touchstart", () => {
+    if (header.classList.contains("aberto")) {
+        header.classList = "";
+        header.style.top = "calc(10dvh + 2 * var(--espaco))"
+        header.style.zIndex = "1"
+    } else {
+        header.classList = "aberto";
+        header.style.zIndex = "15"
+        header.style.top = "100%"
+    }
+})
 
 document.querySelector("#aumentarEscala").addEventListener("click", () => alterarEscala(true));
 document.querySelector("#diminuirEscala").addEventListener("click", () => alterarEscala(false));
@@ -35,12 +48,12 @@ document.addEventListener('keydown', (event) => {
         case "m":
             confirmacaoModal.showModal();
             break;
-        // case "ç": //TIRAR ISSO DEPOIS!!!!!!!!!!!!!!!!
-        //     finalizarPartida("vitoria");
-        //     break;
-        // case "l": //TIRAR ISSO DEPOIS!!!!!!!!!!!!!!!!
-        //     finalizarPartida("derrota");
-        //     break;
+        case "ç": //TIRAR ISSO DEPOIS!!!!!!!!!!!!!!!!
+            finalizarPartida("vitoria");
+            break;
+        case "l": //TIRAR ISSO DEPOIS!!!!!!!!!!!!!!!!
+            finalizarPartida("derrota");
+            break;
         default:
             break;
     }
