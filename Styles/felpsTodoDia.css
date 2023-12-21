@@ -546,6 +546,11 @@ button.felps img {
 
     /* ==========Section Principal========= */
 
+    #sectionPrincipal footer {
+        margin: var(--espaco);
+        margin-bottom: calc(2.5rem + var(--espaco) * 2);
+    }
+
     div#gridBotoes {
         top: unset;
         right: unset;
@@ -556,10 +561,6 @@ button.felps img {
         justify-content: space-evenly;
         border-radius: 15px 15px 0 0;
         animation: aparecerBotoes 0.5s ease;
-    }
-
-    #sectionPrincipal footer {
-        display: none;
     }
 
     /* ============Info Modal============== */
