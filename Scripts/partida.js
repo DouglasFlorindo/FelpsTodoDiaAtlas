@@ -1,4 +1,4 @@
-import {finalizarPartida, populateAtlas, randomizarPosicoes, alterarEscala, carregarPartida, carregamentoCompleto, compartilharResultado, hitSFX, metronomoSFX, metronomoHighSFX } from './functions.js';
+import { finalizarPartida, populateAtlas, randomizarPosicoes, alterarEscala, carregarPartida, carregamentoCompleto, compartilharResultado, hitSFX, metronomoSFX, metronomoHighSFX } from './functions.js';
 
 const confirmacaoModal = document.querySelector("#voltarMenuModal");
 const inputAudio = document.querySelector("#inputAudio");
@@ -17,16 +17,29 @@ inputAudio.addEventListener("change", () => {
     }
 });
 
-header.addEventListener("click", () => {
-    if (header.classList.contains("aberto")) {
+window.addEventListener("resize", () => {
+    if (document.body.clientWidth <= 760) {
         header.classList = "";
         header.style.top = "calc(10dvh + 2 * var(--espaco))"
         header.style.zIndex = "1"
     } else {
-        header.classList = "aberto";
-        header.style.zIndex = "15"
-        header.style.top = "100%"
+        header.style.zIndex = "1";
+        header.style.top = "0"
     }
+})
+
+header.addEventListener("click", () => {
+    if (document.body.clientWidth <= 760) {
+        if (header.classList.contains("aberto")) {
+            header.classList = "";
+            header.style.top = "calc(10dvh + 2 * var(--espaco))"
+            header.style.zIndex = "1"
+        } else {
+            header.classList = "aberto";
+            header.style.zIndex = "15"
+            header.style.top = "100%"
+        }
+    } 
 })
 
 document.querySelector("#aumentarEscala").addEventListener("click", () => alterarEscala(true));
@@ -73,7 +86,7 @@ document.querySelector("#botaoJogarNovamente2").addEventListener("click", carreg
 document.querySelector("#botaoVoltarMenu2").addEventListener("click", () => window.location.replace("https://douglasflorindo.github.io/FelpsTodoDiaAtlas/acheOFelps.html"));
 
 document.querySelector("#botaoVoltarSim").addEventListener("click", () => window.location.replace("https://douglasflorindo.github.io/FelpsTodoDiaAtlas/acheOFelps.html"));
-document.querySelector("#botaoVoltarNao").addEventListener("click", () =>  confirmacaoModal.close())
+document.querySelector("#botaoVoltarNao").addEventListener("click", () => confirmacaoModal.close())
 
 populateAtlas("areaFelps", false);
 
