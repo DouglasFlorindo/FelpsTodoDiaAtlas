@@ -33,7 +33,7 @@
 
 * {
     margin: 0;
-    padding: 0; 
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -53,7 +53,7 @@ a {
 }
 
 p,
-li, 
+li,
 a {
     font-size: 1.25rem;
 }
@@ -144,7 +144,7 @@ dialog header button {
     top: 0;
 }
 
-#divAtlas {   
+#divAtlas {
     height: 100%;
     width: 100%;
 
@@ -442,6 +442,7 @@ button.felps img {
     0% {
         background-position: 0 0;
     }
+
     100% {
         background-position: 600% 600%;
     }
@@ -549,6 +550,12 @@ button.felps img {
     #sectionPrincipal footer {
         margin: var(--espaco);
         margin-bottom: calc(2.5rem + var(--espaco) * 2);
+
+        > p > a {
+            font-weight: unset;
+            -webkit-text-stroke-width: unset;
+            -webkit-text-stroke-color: unset;
+        }
     }
 
     div#gridBotoes {
