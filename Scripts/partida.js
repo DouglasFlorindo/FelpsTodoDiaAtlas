@@ -1,4 +1,4 @@
-import { populateAtlas, randomizarPosicoes, alterarEscala, carregarPartida, carregamentoCompleto, compartilharResultado, hitSFX, metronomoSFX, metronomoHighSFX } from './functions.js';
+import {finalizarPartida, populateAtlas, randomizarPosicoes, alterarEscala, carregarPartida, carregamentoCompleto, compartilharResultado, hitSFX, metronomoSFX, metronomoHighSFX } from './functions.js';
 
 const confirmacaoModal = document.querySelector("#voltarMenuModal");
 const inputAudio = document.querySelector("#inputAudio");
@@ -48,12 +48,12 @@ document.addEventListener('keydown', (event) => {
         case "m":
             confirmacaoModal.showModal();
             break;
-        case "ç": //TIRAR ISSO DEPOIS!!!!!!!!!!!!!!!!
-            finalizarPartida("vitoria");
-            break;
-        case "l": //TIRAR ISSO DEPOIS!!!!!!!!!!!!!!!!
-            finalizarPartida("derrota");
-            break;
+        // case "ç": //TIRAR ISSO DEPOIS!!!!!!!!!!!!!!!!
+        //     finalizarPartida("vitoria");
+        //     break;
+        // case "l": //TIRAR ISSO DEPOIS!!!!!!!!!!!!!!!!
+        //     finalizarPartida("derrota");
+        //     break;
         default:
             break;
     }

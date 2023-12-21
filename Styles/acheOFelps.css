@@ -1,13 +1,4 @@
 :root {
-    --corClaro: #FFF;
-    --corFundo: #e7e4e5;
-    --corEscuro: #c9cecf;
-    --corMaisEscuro: #616b63;
-    --corTexto: #0e0c0c;
-    --invert: 0
-}
-
-:root {
     --text: #030202;
     --background: #f0efef;
     --backgroundOpacity: rgba(240, 239, 239, 0.8);
@@ -15,6 +6,7 @@
     --secondary: #e4e3e3;
     --primaryShade: #d30931;
     --accent: #b5acac;
+    --invert: 0;
 }
 
 dialog::backdrop {
@@ -31,6 +23,7 @@ dialog::backdrop {
         --secondary: #e4e3e3;
         --primaryShade: #d30931;
         --accent: #b5acac;
+        --invert: 0;
     }
 
     dialog::backdrop {
@@ -156,7 +149,7 @@ fieldset#fieldsetAudio {
 
     >label {
         display: none;
-    } 
+    }
 
     >input#inputAudio {
         filter: invert(var(--invert));
@@ -305,6 +298,17 @@ dialog#instrucoesModal {
         display: flex;
         flex-direction: column;
         align-items: center;
+
+        & .tutorialMobile {
+            display: none;
+        }
+
+        & img.cursor {
+            background-image: url(../Recursos/cursor.png);
+            background-size: 100%;
+            aspect-ratio: 1/1;
+            border: 0 solid transparent;
+        }
 
         & div.wrapperTutorial {
             width: 100%;
@@ -688,11 +692,12 @@ dialog#derrotaModal {
 
         >div.wrapperImagem {
             margin: var(--espaco);
-            height: 60dvh;
             width: 80%;
             position: relative;
+            aspect-ratio: 1 / 1;
 
             & img {
+
                 position: absolute;
                 transform: translateX(-50%);
                 left: 50%;
@@ -825,6 +830,28 @@ button.principal:hover {
     }
 }
 
+@keyframes tutorialMobile {
+    0% {
+        transform: translateY(-85%);
+    }
+
+    40% {
+        transform: translateY(-85%);
+    }
+
+    50% {
+        transform: translateY(0);
+    }
+
+    90% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-85%);
+    }
+}
+
 @keyframes controles {
     0% {
         box-shadow: var(--primary) 0 0 0 0;
@@ -910,51 +937,202 @@ button.principal:hover {
 
 }
 
+@keyframes corTimer {
+    0% {
+        color: var(--text);
+    }
+
+    100% {
+        color: var(--primary);
+    }
+}
+
 @media screen and (max-width: 760px) {
+
+    section#sectionInicial {
+
+        >p#subtitulo {
+            font-size: 1rem;
+        }
+
+        >button#botaoInfoAcheOFelps {
+            left: unset;
+            right: var(--espaco);
+        }
+    }
+
+    fieldset#fieldsetAudio {
+        top: 0;
+        bottom: unset;
+    }
 
     form {
         width: 100%;
     }
 
-    #sectionJogo header {
-        height: 100%;
-        grid-template-columns: unset;
-        grid-template-rows: 15dvh 1fr 10dvh;
-        gap: 1rem;
-        top: calc(10dvh + 2 * var(--espaco));
-        transform: translateY(-100%);
-        transition: all 0.3s ease-in-out;
+    dialog#instrucoesModal {
 
-        & div { 
-            width: 100dvw;
-        }
-        
-        > div#wrapperAlvo {
-            grid-row: 1;
+        >div.wrapper>div.wrapperConteudo {
+            & .tutorialMobile {
+                display: unset;
+            }
 
-            > h1 {
-                font-size: 1.75rem;
-            } 
-        }
+            & h2 {
+                font-size: 1.25rem;
+            }
 
-        > div#wrapperImagem {
-            grid-row: 2;
-            & img {
-                height: unset;
-                width: 100%;
-                max-width: 100%;
+            & img.cursor {
+                background-image: url(../Recursos/cursorMobile.png);
+            }
 
-                &#felpsAlvoImagemFundo {
-                    scale: 1;
+            >div.tutorialMobile {
+                height: auto;
+                max-height: unset;
+
+                >img {
+                    border: 1px solid var(--primary);
+                    width: 100%;
+                    transform: translateY(-85%);
+                    animation: tutorialMobile 5s ease-in-out infinite;
                 }
 
-                &#felpsAlvoImagem {
-                    height: unset;
-                    scale: 0.6;
+            }
+        }
+    }
+
+
+    section#sectionJogo {
+        >header {
+            height: 100%;
+            grid-template-columns: unset;
+            grid-template-rows: 15dvh 1fr 10dvh;
+            gap: 1rem;
+            top: calc(10dvh + 2 * var(--espaco));
+            transform: translateY(-100%);
+            transition: all 0.3s ease-in-out;
+
+            & div {
+                width: 100dvw;
+            }
+
+            >div#wrapperAlvo {
+                grid-row: 1;
+
+                >h1 {
+                    font-size: 1.75rem;
                 }
             }
-            
+
+            >div#wrapperImagem {
+                grid-row: 2;
+                
+                & img {
+                    object-fit: contain;
+                    height: unset;
+                    width: 100%;
+                    max-width: 100%;
+
+                    &#felpsAlvoImagemFundo {
+                        scale: 1;
+                    }
+
+                    &#felpsAlvoImagem {
+                        height: unset;
+                        scale: 0.6;
+                    }
+                }
+
+            }
         }
-            
+
+        >div#gridControles {
+            width: 100%;
+            transform: translateY(3.5rem);
+
+            &:hover {
+                transform: translateY(0);
+            }
+
+            >span {
+                margin: 1rem 0;
+            }
+        }
+    }
+
+    dialog#resultadoModal {
+        >div.wrapper {
+            justify-content: unset;
+            min-height: unset;
+
+            >div.gridResultado {
+                grid-template-columns: unset;
+                grid-template-rows: 1fr 0.5fr 1fr 0.5fr 1fr;
+                margin-bottom: calc(3 * 2.5rem + 2 * 0.5rem + 2 * var(--espaco));
+                overflow: auto;
+
+                >div.wrapperImagem {
+                    grid-row: 1;
+
+                    & img {
+                        max-width: 60%;
+                    }
+                }
+
+                >h1 {
+                    font-size: 1.5rem;
+                    text-align: center;
+                }
+
+                >h3 {
+                    font-size: 1.25rem;
+                    text-align: center;
+                }
+            }
+
+            >div.gridBotoes {
+                grid-template-columns: unset;
+                grid-template-rows: repeat(3, 1fr);
+                grid-auto-flow: row;
+                position: absolute;
+                gap: 0.5rem;
+                bottom: 0;
+
+                >button#botaoJogarNovamente {
+                    grid-column: unset;
+                }
+            }
+        }
+    }
+
+    dialog#derrotaModal {
+        >div.wrapper {
+            justify-content: unset;
+
+            >div.wrapperImagem {
+                >img#felpsHResDerrota {
+                    width: 50%;
+                }
+            }
+
+            >div.gridBotoes {
+                grid-template-columns: unset;
+                grid-auto-flow: row;
+                gap: 0.5rem;
+                position: absolute;
+                bottom: 0;
+            }
+        }
+    }
+
+    dialog#voltarMenuModal {
+        >div.wrapper>div.gridBotoes {
+            grid-auto-flow: row;
+            gap: 1rem;
+            padding: var(--espaco) 0;
+
+            & button {
+                margin: 0;
+            }
+        }
     }
 }
