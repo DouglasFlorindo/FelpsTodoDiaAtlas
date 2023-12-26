@@ -61,20 +61,20 @@ document.addEventListener('keydown', (event) => {
         case "m":
             confirmacaoModal.showModal();
             break;
-        //Cheats de dev: 
-        case "ç": 
-            finalizarPartida("vitoria");
-            break;
-        case "l": 
-            finalizarPartida("derrota");
-            break;
-        case "k":
-            finalizarPartida("vitoriaMaratona");
-            break;
-        case "j":
-            finalizarPartida("derrotaMaratona");
-        default:
-            break;
+        // //Cheats de dev: 
+        // case "ç": 
+        //     finalizarPartida("vitoria");
+        //     break;
+        // case "l": 
+        //     finalizarPartida("derrota");
+        //     break;
+        // case "k":
+        //     finalizarPartida("vitoriaMaratona");
+        //     break;
+        // case "j":
+        //     finalizarPartida("derrotaMaratona");
+        // default:
+        //     break;
     }
 });
 
