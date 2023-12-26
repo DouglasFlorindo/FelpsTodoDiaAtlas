@@ -103,6 +103,46 @@
             </div>
         </div>
     </dialog>
+    <dialog id="derrotaMaratonaModal">
+        <div class="wrapper">
+            <header>
+                <h1>Tempo Esgotado...</h1>
+            </header>
+            <div class="gridResultadoMaratona">
+                <h3>Você achou:</h3>
+                <h1 id="quantFelpsEncontrados"></h1>
+                <h3>em:</h3>
+                <h1 id="timerResultadoMaratona"></h1>
+            </div>
+            <div class="gridBotoes">
+                <button id="botaoVoltarMenu3" class="menu"><img class="icon" src="Recursos/home.png">Menu</button>
+                <button id="botaoCompartilhar3" class="menu"><img class="icon"
+                        src="Recursos/compartilhar.png">Compartilhar</button>
+                <button id="botaoJogarNovamente3" class="menu principal"><img class="icon" src="Recursos/play.png">Jogar
+                    Novamente</button>
+            </div>
+        </div>
+    </dialog>
+    <dialog id="finalMaratonaModal">
+        <div class="wrapper">
+            <header>
+                <h1>Maratona Completa!!!</h1>
+            </header>
+            <div class="gridResultadoMaratona">
+                <h3>Você achou:</h3>
+                <h1 id="quantFelpsEncontradosFinal"></h1>
+                <h3>em:</h3>
+                <h1 id="timerResultadoMaratonaFinal"></h1>
+            </div>
+            <div class="gridBotoes">
+                <button id="botaoVoltarMenu4" class="menu"><img class="icon" src="Recursos/home.png">Menu</button>
+                <button id="botaoCompartilhar4" class="menu"><img class="icon"
+                        src="Recursos/compartilhar.png">Compartilhar</button>
+                <button id="botaoJogarNovamente4" class="menu principal"><img class="icon" src="Recursos/play.png">Jogar
+                    Novamente</button>
+            </div>
+        </div>
+    </dialog>
     <dialog id="voltarMenuModal">
         <div class="wrapper">
             <h1>Voltar ao Menu?</h1>
@@ -112,9 +152,15 @@
             </div>
         </div>
     </dialog>
-    <dialog id="erroModal">
-        <div class="wrapper"></div>
+    <dialog id="pausaMaratona">
+        <div class="wrapper">
+            <h1>Pausa Periódica</h1>
+            <div class="gridBotoes">
+                <button id="botaoContinuar" class="menu principal">Continuar jogando</button>
+            </div>
+        </div>
     </dialog>
+
     <script src="Scripts/partida.js" type="module"></script>
 </body>
 

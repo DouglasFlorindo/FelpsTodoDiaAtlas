@@ -408,7 +408,7 @@ dialog#instrucoesModal {
 
 /*=============== voltar Menu Modal =================*/
 
-dialog#voltarMenuModal {
+dialog#voltarMenuModal, dialog#pausaMaratona {
     height: auto;
 
     >div.wrapper {
@@ -600,7 +600,7 @@ section#sectionContagem {
 
 /*=============== Resultado Modal =================*/
 
-dialog#resultadoModal {
+dialog#resultadoModal, dialog#derrotaMaratonaModal, dialog#finalMaratonaModal {
 
     >div.wrapper {
         width: 100%;
@@ -659,6 +659,25 @@ dialog#resultadoModal {
             }
         }
 
+        >div.gridResultadoMaratona {
+            display: grid;
+            grid-auto-flow: row;
+            grid-template-rows: 1fr 2fr 1fr 2fr;
+            text-align: center;
+
+            >h1 {
+                font-size: 3.5rem;
+                color: var(--primary);
+            }
+
+            >h3 {
+                font-size: 1.75rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: end;
+            }
+        }
+
         >div.gridBotoes {
             padding: var(--espaco);
             display: grid;
@@ -669,7 +688,7 @@ dialog#resultadoModal {
             & button {
                 margin: 0;
 
-                &#botaoJogarNovamente {
+                &#botaoJogarNovamente, &#botaoJogarNovamente3, &#botaoJogarNovamente4{
                     grid-column: 1/3;
                 }
             }
@@ -694,6 +713,7 @@ dialog#derrotaModal {
             margin: var(--espaco);
             width: 80%;
             position: relative;
+            max-height: 50dvh;
             aspect-ratio: 1 / 1;
 
             & img {
@@ -1059,7 +1079,7 @@ button.principal:hover {
         }
     }
 
-    dialog#resultadoModal {
+    dialog#resultadoModal, dialog#derrotaMaratonaModal, dialog#finalMaratonaModal {
         >div.wrapper {
             justify-content: unset;
             min-height: unset;
@@ -1089,6 +1109,10 @@ button.principal:hover {
                 }
             }
 
+            >div.gridResultadoMaratona {
+                margin-top: var(--espaco);
+            }
+
             >div.gridBotoes {
                 grid-template-columns: unset;
                 grid-template-rows: repeat(3, 1fr);
@@ -1097,7 +1121,7 @@ button.principal:hover {
                 gap: 0.5rem;
                 bottom: 0;
 
-                >button#botaoJogarNovamente {
+                >button#botaoJogarNovamente, >button#botaoJogarNovamente3, >button#botaoJogarNovamente4 {
                     grid-column: unset;
                 }
             }
@@ -1124,7 +1148,7 @@ button.principal:hover {
         }
     }
 
-    dialog#voltarMenuModal {
+    dialog#voltarMenuModal, dialog#pausaMaratona {
         >div.wrapper>div.gridBotoes {
             grid-auto-flow: row;
             gap: 1rem;

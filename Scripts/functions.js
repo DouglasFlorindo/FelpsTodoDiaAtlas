@@ -1,6 +1,7 @@
 let movendo = false;
+let felpsInfo = [];
 let felpsDrag, felpsAtualId, quantFelps;
-let felpsAlvo, timer, timerId, modo, ano, modoTimer, intervalConfeti;
+let felpsAlvo, timer, timerId, modo, ano, modoTimer, intervalConfeti, timerMaratonaTotal = 0, itensFelpsMaratona = [], quantFelpsMaratona = 0, novaMaratona = true, pausaMaratona = 0;
 export const hitSFX = new Audio("../FelpsTodoDiaAtlas/Recursos/hitSFX.mp3");
 hitSFX.volume = 0;
 export const metronomoSFX = new Audio("../FelpsTodoDiaAtlas/Recursos/metronomoSFX.mp3");
@@ -9,12 +10,12 @@ export const metronomoHighSFX = new Audio("../FelpsTodoDiaAtlas/Recursos/metrono
 metronomoHighSFX.volume = 0;
 export let carregamentoCompleto = false;
 
-
 export async function populateAtlas(containerID, isAtlas) {
-    const response = await fetch("../FelpsTodoDiaAtlas/Recursos/felps.json");
-    const felpsInfo = await response.json();
-    quantFelps = felpsInfo.length;
-    const atlas = document.querySelector(`#${containerID}`);
+    if (felpsInfo.length == 0) {
+        const response = await fetch("../FelpsTodoDiaAtlas/Recursos/felps.json");
+        felpsInfo = await response.json();
+        quantFelps = felpsInfo.length;
+    } const atlas = document.querySelector(`#${containerID}`);
     let felpsCarregados = 0;
     carregamentoCompleto = false;
 
@@ -82,7 +83,7 @@ export async function populateAtlas(containerID, isAtlas) {
         })
 
         novoImg.addEventListener('load', () => {
-            let i = 0
+            let i = 0;
             while (i < 100 && checkHitbox(novoImg)) {
                 novoImg.parentElement.style.left = `${Math.floor(Math.random() * 90)}%`;
                 novoImg.parentElement.style.top = `${Math.floor(Math.random() * 90)}%`;
@@ -129,8 +130,11 @@ export async function populateAtlas(containerID, isAtlas) {
 };
 
 export async function populateCatalogo() {
-    const response = await fetch("../FelpsTodoDiaAtlas/Recursos/felps.json");
-    const felpsInfo = await response.json();
+    if (felpsInfo.length == 0) {
+        const response = await fetch("../FelpsTodoDiaAtlas/Recursos/felps.json");
+        felpsInfo = await response.json();
+        quantFelps = felpsInfo.length;
+    }
 
     for (const felps of felpsInfo) {
 
@@ -154,8 +158,11 @@ export async function populateCatalogo() {
 };
 
 export async function mostrarInfo(felpsId) {
-    const response = await fetch("../FelpsTodoDiaAtlas/Recursos/felps.json");
-    const felpsInfo = await response.json();
+    if (felpsInfo.length == 0) {
+        const response = await fetch("../FelpsTodoDiaAtlas/Recursos/felps.json");
+        felpsInfo = await response.json();
+        quantFelps = felpsInfo.length;
+    }
     felpsAtualId = felpsId;
 
     let dataAtual = gerarDataAtual()
@@ -279,16 +286,41 @@ export function coletarConfigs() {
     }
 }
 
+export async function populateMaratona(ano) {
+    if (felpsInfo.length == 0) {
+        const response = await fetch("../FelpsTodoDiaAtlas/Recursos/felps.json");
+        felpsInfo = await response.json();
+        quantFelps = felpsInfo.length;
+    }
+
+    switch (ano) {
+        case "todos":
+            for (const felps of felpsInfo) {
+                itensFelpsMaratona.push(felps)
+            }
+            break;
+
+        default:
+            for (const felps of felpsInfo) {
+                if (felps.data.substring(6, 8) == ano) {
+                    itensFelpsMaratona.push(felps);
+                }
+            }
+            break;
+    }
+}
+
 export async function escolherFelpsAlvo(modo, ano) {
-    const response = await fetch("../FelpsTodoDiaAtlas/Recursos/felps.json");
-    const felpsInfo = await response.json();
+    if (felpsInfo.length == 0) {
+        const response = await fetch("../FelpsTodoDiaAtlas/Recursos/felps.json");
+        felpsInfo = await response.json();
+        quantFelps = felpsInfo.length;
+    }
     let match = null;
-    quantFelps = felpsInfo.length;
     felpsAlvo = null;
 
     switch (modo) {
         case "diario":
-            ano == null ? ano = 22 : null;
             let dataAtual = `${gerarDataAtual()}/${ano}`;
             felpsAlvo = felpsInfo.find((felps) => felps.data === dataAtual);
 
@@ -303,14 +335,19 @@ export async function escolherFelpsAlvo(modo, ano) {
                 }
             }
             break;
+        case "maratona":
+            felpsAlvo = itensFelpsMaratona[Math.floor(Math.random() * (itensFelpsMaratona.length - 1))];
+            break;
     }
-    document.querySelector("#felpsAlvoNome").textContent = felpsAlvo.nome
-    document.querySelector("#felpsAlvoImagem").src = `../FelpsTodoDiaAtlas/Imagens/${felpsAlvo.arquivo}HRes.webp`
 };
 
 export function verificarFelpsAlvo(id) {
     if (id == felpsAlvo.id) {
-        finalizarPartida("vitoria")
+        if (modo == "maratona") {
+            finalizarPartida("vitoriaMaratona")
+        } else {
+            finalizarPartida("vitoria")
+        };
     } else {
         let elemento = document.querySelector(`#b${id}`);
         elemento.style.animation = "none";
@@ -342,7 +379,9 @@ export function controleTimer(start, modoTimer) {
                         tempoAtual = new Date().getTime();
                         timer = tempoAtual - tempoInicial;
                         tempoRestante = 60000 - timer;
-                        tempoRestante <= 0 ? finalizarPartida("derrota") : null
+                        if (tempoRestante <= 0) {
+                            modo == "maratona" ? finalizarPartida("derrotaMaratona") : finalizarPartida("derrota")
+                        }
                         tempoRestante = tempoRestante.toString();
                         document.querySelector("#timer").textContent = `${Math.floor(tempoRestante / 1000)}.${tempoRestante.slice(-3, -1)}`;
                     }, 10)
@@ -369,14 +408,34 @@ export function carregarPartida() {
     }
     resultadoModal.close();
     derrotaModal.close();
+    document.querySelector("#derrotaMaratonaModal").close();
+    document.querySelector("#finalMaratonaModal").close();
 
-    randomizarPosicoes();
+    if (modo == "maratona" && novaMaratona == true) {
+        populateMaratona(ano);
+        for (const elemento of document.querySelectorAll(".felps")) {
+            if (felpsInfo != []) {
+                elemento.style.display = "unset";
+            }
+        };
+        quantFelpsMaratona = 0;
+        timerMaratonaTotal = 0;
+        novaMaratona = false;
+    };
     escolherFelpsAlvo(modo, ano);
-    let esperarFelpsAlvo = setInterval(() => felpsAlvo != undefined ? clearInterval(esperarFelpsAlvo) : console.log("Ainda escolhendo Felps...")
-        , 10);
-    document.querySelector("#sectionCarregando").style.display = "none";
-    document.querySelector("#sectionContagem").style.display = "flex"
-    contagem();
+    let esperarFelpsAlvo = setInterval(() => {
+        if (felpsAlvo == null) {
+            console.log("Ainda escolhendo Felps...")
+        } else {
+            clearInterval(esperarFelpsAlvo);
+            document.querySelector("#felpsAlvoNome").textContent = felpsAlvo.nome
+            document.querySelector("#felpsAlvoImagem").src = `../FelpsTodoDiaAtlas/Imagens/${felpsAlvo.arquivo}HRes.webp`
+            document.querySelector("#sectionCarregando").style.display = "none";
+            document.querySelector("#sectionContagem").style.display = "flex";
+            randomizarPosicoes();
+            contagem();
+        }
+    }, 100);
 }
 
 export function contagem() {
@@ -433,11 +492,22 @@ export function contagem() {
 }
 
 export function finalizarPartida(resultado) {
+    let timerResultadoMaratona;
     switch (resultado) {
         case "derrota":
             controleTimer(false);
             document.querySelector("#felpsHResDerrota").src = `../FelpsTodoDiaAtlas/Imagens/${felpsAlvo.arquivo}HRes.webp`;
+            resultadoModal.showModal();
             document.querySelector("#derrotaModal").showModal();
+            break;
+        case "derrotaMaratona":
+            timerMaratonaTotal = timerMaratonaTotal + Number(timer);
+            controleTimer(false);
+            timerResultadoMaratona = timerMaratonaTotal.toString();
+            document.querySelector("#quantFelpsEncontrados").textContent = `${quantFelpsMaratona} Felps`;
+            document.querySelector("#timerResultadoMaratona").textContent = `${Math.floor(timerResultadoMaratona / 1000)}.${timerResultadoMaratona.slice(-3, -1)}s`;
+            document.querySelector("#derrotaMaratonaModal").showModal();
+            novaMaratona = true;
             break;
         case "vitoria":
             controleTimer(false);
@@ -447,6 +517,36 @@ export function finalizarPartida(resultado) {
             document.querySelector("#timerResultado").textContent = `${Math.floor(timerResultado / 1000)}.${timerResultado.slice(-3, -1)}s`;
             resultadoModal.showModal();
             intervalConfeti = setInterval(confeti, 500);
+            break;
+        case "vitoriaMaratona":
+            timerMaratonaTotal = timerMaratonaTotal + Number(timer);
+            controleTimer(false);
+            quantFelpsMaratona = quantFelpsMaratona + 1;
+            itensFelpsMaratona.splice(itensFelpsMaratona.indexOf(felpsAlvo), 1);
+            document.querySelector(`#b${felpsAlvo.id}`).style.display = "none";
+
+            if (itensFelpsMaratona.length > 0) {
+                if (pausaMaratona >= 10) {
+                    pausaMaratona = 0;
+                    document.querySelector("#pausaMaratona").showModal();
+                } else {
+                    pausaMaratona = pausaMaratona + 1;
+                    carregarPartida();
+                };
+            } else {
+                finalizarPartida("finalMaratona");
+            }
+            break;
+        case "finalMaratona":
+            document.querySelector("#finalMaratonaModal").showModal();
+            novaMaratona = true;
+            intervalConfeti = setInterval(confeti, 500);
+            timerResultadoMaratona = timerMaratonaTotal.toString();
+            document.querySelector("#quantFelpsEncontradosFinal").textContent = `${quantFelpsMaratona} Felps`;
+            document.querySelector("#timerResultadoMaratonaFinal").textContent = `${Math.floor(timerResultadoMaratona / 1000)}.${timerResultadoMaratona.slice(-3, -1)}s`;
+            document.querySelector("#finalMaratonaModal").showModal();
+            break;
+        default:
             break;
     }
 
@@ -474,8 +574,19 @@ export function confeti() {
 };
 
 export function compartilharResultado() {
-    const botaoCompartilhar = document.querySelector("#botaoCompartilhar");
-    let timerResultado = timer.toString();
+    let botaoCompartilhar;
+    let timerResultado;
+    switch (modo) {
+        case "maratona":
+            botaoCompartilhar = document.querySelector("#botaoCompartilhar3");
+            timerResultado = timerMaratonaTotal.toString();
+            break;
+
+        default:
+            botaoCompartilhar = document.querySelector("#botaoCompartilhar");
+            timerResultado = timer.toString();
+            break;
+    }
     let texto = `Achei `;
     switch (modo) {
         case "aleatorio":
@@ -483,6 +594,9 @@ export function compartilharResultado() {
             break;
         case "diario":
             texto = texto + `o Felps do dia ${felpsAlvo.data}`
+            break;
+        case "maratona":
+            texto = texto + `${quantFelpsMaratona} Felps`
         default:
             break;
     }

@@ -61,12 +61,18 @@ document.addEventListener('keydown', (event) => {
         case "m":
             confirmacaoModal.showModal();
             break;
-        // case "ç": //TIRAR ISSO DEPOIS!!!!!!!!!!!!!!!!
-        //     finalizarPartida("vitoria");
-        //     break;
-        // case "l": //TIRAR ISSO DEPOIS!!!!!!!!!!!!!!!!
-        //     finalizarPartida("derrota");
-        //     break;
+        //Cheats de dev: 
+        case "ç": 
+            finalizarPartida("vitoria");
+            break;
+        case "l": 
+            finalizarPartida("derrota");
+            break;
+        case "k":
+            finalizarPartida("vitoriaMaratona");
+            break;
+        case "j":
+            finalizarPartida("derrotaMaratona");
         default:
             break;
     }
@@ -85,8 +91,27 @@ document.querySelector("#derrotaModal").addEventListener('keydown', (event) => {
 document.querySelector("#botaoJogarNovamente2").addEventListener("click", carregarPartida);
 document.querySelector("#botaoVoltarMenu2").addEventListener("click", () => window.location.replace("https://douglasflorindo.github.io/FelpsTodoDiaAtlas/acheOFelps.html"));
 
+document.querySelector("#derrotaMaratonaModal").addEventListener('keydown', (event) => {
+    event.key == "Escape" ? event.preventDefault() : null;
+});
+document.querySelector("#botaoJogarNovamente3").addEventListener("click", carregarPartida);
+document.querySelector("#botaoCompartilhar3").addEventListener("click", compartilharResultado);
+document.querySelector("#botaoVoltarMenu3").addEventListener("click", () => window.location.replace("https://douglasflorindo.github.io/FelpsTodoDiaAtlas/acheOFelps.html"));
+
+document.querySelector("#finalMaratonaModal").addEventListener('keydown', (event) => {
+    event.key == "Escape" ? event.preventDefault() : null;
+});
+document.querySelector("#botaoJogarNovamente4").addEventListener("click", carregarPartida);
+document.querySelector("#botaoCompartilhar4").addEventListener("click", compartilharResultado);
+document.querySelector("#botaoVoltarMenu4").addEventListener("click", () => window.location.replace("https://douglasflorindo.github.io/FelpsTodoDiaAtlas/acheOFelps.html"));
+
 document.querySelector("#botaoVoltarSim").addEventListener("click", () => window.location.replace("https://douglasflorindo.github.io/FelpsTodoDiaAtlas/acheOFelps.html"));
 document.querySelector("#botaoVoltarNao").addEventListener("click", () => confirmacaoModal.close())
+
+document.querySelector("#botaoContinuar").addEventListener("click", () => {
+    document.querySelector("#pausaMaratona").close();
+    carregarPartida();
+})
 
 populateAtlas("areaFelps", false);
 
@@ -99,7 +124,7 @@ let esperarCarregamento = setInterval(() => {
 
 setTimeout(() => {
     if (carregamentoCompleto == false) {
-        alert("erro");
-        clearInterval(esperarCarregamento);
+        alert("A página está levando muito mais tempo para carregar do que o esperado. Continue aguardando ou recarregue a página.");
     }
 }, 20000);
+
