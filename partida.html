@@ -78,10 +78,12 @@
             </div>
             <div class="gridBotoes">
 
-                <button id="botaoVoltarMenu" class="menu"><img class="icon" src="Recursos/home.png">Menu</button>
-                <button id="botaoCompartilhar" class="menu"><img class="icon"
+                <button id="botaoVoltarMenu" class="menu botaoVoltarMenu"><img class="icon"
+                        src="Recursos/home.png">Menu</button>
+                <button id="botaoCompartilhar" class="menu botaoCompartilhar"><img class="icon"
                         src="Recursos/compartilhar.png">Compartilhar</button>
-                <button id="botaoJogarNovamente" class="menu principal"><img class="icon" src="Recursos/play.png">Jogar
+                <button id="botaoJogarNovamente" class="menu principal botaoJogarNovamente"><img class="icon"
+                        src="Recursos/play.png">Jogar
                     Novamente</button>
             </div>
         </div>
@@ -97,8 +99,10 @@
                 <img id="holofote1" src="Recursos/holofote1.png">
             </div>
             <div class="gridBotoes">
-                <button id="botaoVoltarMenu2" class="menu"><img class="icon" src="Recursos/home.png">Menu</button>
-                <button id="botaoJogarNovamente2" class="menu principal"><img class="icon" src="Recursos/play.png">Jogar
+                <button id="botaoVoltarMenu2" class="menu botaoVoltarMenu"><img class="icon"
+                        src="Recursos/home.png">Menu</button>
+                <button id="botaoJogarNovamente2" class="menu principal botaoJogarNovamente"><img class="icon"
+                        src="Recursos/play.png">Jogar
                     Novamente</button>
             </div>
         </div>
@@ -115,10 +119,12 @@
                 <h1 id="timerResultadoMaratona"></h1>
             </div>
             <div class="gridBotoes">
-                <button id="botaoVoltarMenu3" class="menu"><img class="icon" src="Recursos/home.png">Menu</button>
-                <button id="botaoCompartilhar3" class="menu"><img class="icon"
+                <button id="botaoVoltarMenu3" class="menu botaoVoltarMenu"><img class="icon"
+                        src="Recursos/home.png">Menu</button>
+                <button id="botaoCompartilhar3" class="menu botaoCompartilhar"><img class="icon"
                         src="Recursos/compartilhar.png">Compartilhar</button>
-                <button id="botaoJogarNovamente3" class="menu principal"><img class="icon" src="Recursos/play.png">Jogar
+                <button id="botaoJogarNovamente3" class="menu principal botaoJogarNovamente"><img class="icon"
+                        src="Recursos/play.png">Jogar
                     Novamente</button>
             </div>
         </div>
@@ -135,10 +141,12 @@
                 <h1 id="timerResultadoMaratonaFinal"></h1>
             </div>
             <div class="gridBotoes">
-                <button id="botaoVoltarMenu4" class="menu"><img class="icon" src="Recursos/home.png">Menu</button>
-                <button id="botaoCompartilhar4" class="menu"><img class="icon"
+                <button id="botaoVoltarMenu4" class="menu botaoVoltarMenu"><img class="icon"
+                        src="Recursos/home.png">Menu</button>
+                <button id="botaoCompartilhar4" class="menu botaoCompartilhar"><img class="icon"
                         src="Recursos/compartilhar.png">Compartilhar</button>
-                <button id="botaoJogarNovamente4" class="menu principal"><img class="icon" src="Recursos/play.png">Jogar
+                <button id="botaoJogarNovamente4" class="menu principal botaoJogarNovamente"><img class="icon"
+                        src="Recursos/play.png">Jogar
                     Novamente</button>
             </div>
         </div>
@@ -154,8 +162,14 @@
     </dialog>
     <dialog id="pausaMaratona">
         <div class="wrapper">
-            <h1>Pausa Periódica</h1>
-            <div class="gridBotoes">
+            <header>
+                <h1>Pausa Periódica</h1>
+            </header>
+            <div class="gridFelpsRestantes">
+                <h3>Restam apenas</h3>
+                <h1 id="felpsRestantes">x Felps</h1>
+            </div>
+            <div class="wrapperBotao">
                 <button id="botaoContinuar" class="menu principal">Continuar jogando</button>
             </div>
         </div>

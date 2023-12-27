@@ -39,7 +39,7 @@ header.addEventListener("click", () => {
             header.style.zIndex = "15"
             header.style.top = "100%"
         }
-    } 
+    }
 })
 
 document.querySelector("#aumentarEscala").addEventListener("click", () => alterarEscala(true));
@@ -61,11 +61,11 @@ document.addEventListener('keydown', (event) => {
         case "m":
             confirmacaoModal.showModal();
             break;
-        // //Cheats de dev: 
-        // case "ç": 
+        //Cheats de dev: 
+        // case "ç":
         //     finalizarPartida("vitoria");
         //     break;
-        // case "l": 
+        // case "l":
         //     finalizarPartida("derrota");
         //     break;
         // case "k":
@@ -73,37 +73,31 @@ document.addEventListener('keydown', (event) => {
         //     break;
         // case "j":
         //     finalizarPartida("derrotaMaratona");
-        // default:
         //     break;
+        default:
+            break;
     }
 });
 
-document.querySelector("#resultadoModal").addEventListener('keydown', (event) => {
-    event.key == "Escape" ? event.preventDefault() : null;
-});
-document.querySelector("#botaoJogarNovamente").addEventListener("click", carregarPartida);
-document.querySelector("#botaoVoltarMenu").addEventListener("click", () => window.location.replace("https://douglasflorindo.github.io/FelpsTodoDiaAtlas/acheOFelps.html"));
-document.querySelector("#botaoCompartilhar").addEventListener("click", compartilharResultado);
+for (const dialog of document.getElementsByTagName("dialog")) {
+    dialog.addEventListener("keydown", (event) => event.key == "Escape" ? event.preventDefault() : null);
+}
 
-document.querySelector("#derrotaModal").addEventListener('keydown', (event) => {
-    event.key == "Escape" ? event.preventDefault() : null;
-});
-document.querySelector("#botaoJogarNovamente2").addEventListener("click", carregarPartida);
-document.querySelector("#botaoVoltarMenu2").addEventListener("click", () => window.location.replace("https://douglasflorindo.github.io/FelpsTodoDiaAtlas/acheOFelps.html"));
+for (const botoaJogarNovamente of document.querySelectorAll("button.botaoJogarNovamente")) {
+    botoaJogarNovamente.addEventListener("click", carregarPartida);
+}
 
-document.querySelector("#derrotaMaratonaModal").addEventListener('keydown', (event) => {
-    event.key == "Escape" ? event.preventDefault() : null;
-});
-document.querySelector("#botaoJogarNovamente3").addEventListener("click", carregarPartida);
-document.querySelector("#botaoCompartilhar3").addEventListener("click", compartilharResultado);
-document.querySelector("#botaoVoltarMenu3").addEventListener("click", () => window.location.replace("https://douglasflorindo.github.io/FelpsTodoDiaAtlas/acheOFelps.html"));
+for (const botaoVoltarMenu of document.querySelectorAll("button.botaoVoltarMenu")) {
+    botaoVoltarMenu.addEventListener("click", () => window.location.replace("https://douglasflorindo.github.io/FelpsTodoDiaAtlas/acheOFelps.html"));
+}
 
-document.querySelector("#finalMaratonaModal").addEventListener('keydown', (event) => {
-    event.key == "Escape" ? event.preventDefault() : null;
-});
-document.querySelector("#botaoJogarNovamente4").addEventListener("click", carregarPartida);
-document.querySelector("#botaoCompartilhar4").addEventListener("click", compartilharResultado);
-document.querySelector("#botaoVoltarMenu4").addEventListener("click", () => window.location.replace("https://douglasflorindo.github.io/FelpsTodoDiaAtlas/acheOFelps.html"));
+for (const botaoCompartilhar of document.querySelectorAll("button.botaoCompartilhar")) {
+    botaoCompartilhar.addEventListener("click", () => {
+        compartilharResultado();
+        botaoCompartilhar.innerHTML = "<img class='icon' src='Recursos/compartilhar.png'>Copiado!";
+        setTimeout(() => botaoCompartilhar.innerHTML = "<img class='icon' src='Recursos/compartilhar.png'>Compartilhar", 3000);
+    });
+}
 
 document.querySelector("#botaoVoltarSim").addEventListener("click", () => window.location.replace("https://douglasflorindo.github.io/FelpsTodoDiaAtlas/acheOFelps.html"));
 document.querySelector("#botaoVoltarNao").addEventListener("click", () => confirmacaoModal.close())

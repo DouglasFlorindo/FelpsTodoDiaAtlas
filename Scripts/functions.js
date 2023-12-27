@@ -526,8 +526,9 @@ export function finalizarPartida(resultado) {
             document.querySelector(`#b${felpsAlvo.id}`).style.display = "none";
 
             if (itensFelpsMaratona.length > 0) {
-                if (pausaMaratona >= 10) {
+                if (pausaMaratona >= 9) {
                     pausaMaratona = 0;
+                    document.querySelector("#felpsRestantes").textContent = `${itensFelpsMaratona.length} Felps`;
                     document.querySelector("#pausaMaratona").showModal();
                 } else {
                     pausaMaratona = pausaMaratona + 1;
@@ -574,37 +575,23 @@ export function confeti() {
 };
 
 export function compartilharResultado() {
-    let botaoCompartilhar;
     let timerResultado;
-    switch (modo) {
-        case "maratona":
-            botaoCompartilhar = document.querySelector("#botaoCompartilhar3");
-            timerResultado = timerMaratonaTotal.toString();
-            break;
-
-        default:
-            botaoCompartilhar = document.querySelector("#botaoCompartilhar");
-            timerResultado = timer.toString();
-            break;
-    }
     let texto = `Achei `;
     switch (modo) {
         case "aleatorio":
+            timerResultado = timer.toString();
             texto = texto + `"${felpsAlvo.nome}"`;
             break;
         case "diario":
+            timerResultado = timer.toString();
             texto = texto + `o Felps do dia ${felpsAlvo.data}`
             break;
         case "maratona":
+            timerResultado = timerMaratonaTotal.toString();
             texto = texto + `${quantFelpsMaratona} Felps`
         default:
             break;
     }
     texto = texto + ` em ${Math.floor(timerResultado / 1000)}.${timerResultado.slice(-3, -1)} segundos!`
     navigator.clipboard.writeText(texto);
-
-    botaoCompartilhar.innerHTML = "<img class='icon' src='Recursos/compartilhar.png'>Copiado!";
-    setTimeout(() => {
-        botaoCompartilhar.innerHTML = "<img class='icon' src='Recursos/compartilhar.png'>Compartilhar";
-    }, 3000);
 }
