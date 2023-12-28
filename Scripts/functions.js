@@ -1,7 +1,7 @@
 let movendo = false;
 let felpsInfo = [];
 let felpsDrag, felpsAtualId, quantFelps;
-let felpsAlvo, timer, timerId, modo, ano, modoTimer, intervalConfeti, timerMaratonaTotal = 0, itensFelpsMaratona = [], quantFelpsMaratona = 0, novaMaratona = true, pausaMaratona = 0, tempoAntes = 0, devePausar = false;
+let felpsAlvo, timer, timerId, modo, ano, modoTimer, intervalConfeti, timerMaratonaTotal = 0, itensFelpsMaratona = [], quantFelpsMaratona = 0, novaMaratona = true, pausaMaratona = 0, tempoAntes = 0;
 export const hitSFX = new Audio("../FelpsTodoDiaAtlas/Recursos/hitSFX.mp3");
 hitSFX.volume = 0;
 export const metronomoSFX = new Audio("../FelpsTodoDiaAtlas/Recursos/metronomoSFX.mp3");
@@ -520,20 +520,15 @@ export function finalizarPartida(resultado) {
             break;
         case "vitoriaMaratona":
             tempoAntes += Number(timer);
-            console.log(tempoAntes);
             timerMaratonaTotal = timerMaratonaTotal + Number(timer);
-            if (tempoAntes >= 300000) {
-                console.log(tempoAntes);
-                devePausar = true;
-            }
+
             controleTimer(false);
             quantFelpsMaratona = quantFelpsMaratona + 1;
             itensFelpsMaratona.splice(itensFelpsMaratona.indexOf(felpsAlvo), 1);
             document.querySelector(`#b${felpsAlvo.id}`).style.display = "none";
 
             if (itensFelpsMaratona.length > 0) {
-                if (pausaMaratona >= 9 || devePausar) {
-                    devePausar = false;
+                if (pausaMaratona >= 9 || tempoAntes >= 300000) {
                     tempoAntes = 0;
                     pausaMaratona = 0;
                     document.querySelector("#felpsRestantes").textContent = `${itensFelpsMaratona.length} Felps`;
