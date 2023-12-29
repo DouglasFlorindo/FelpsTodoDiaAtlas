@@ -11,7 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-document.querySelector("#botaoInfoAcheOFelps").addEventListener("click", () => infoModal.showModal());
+document.querySelector("#botaoMenuAcheOFelps").addEventListener("click", () => menuModal.showModal());
+document.querySelector("#fecharMenu").addEventListener("click", () => menuModal.close());
 
 document.querySelector("#configsDeJogo").addEventListener("submit", coletarConfigs);
 
