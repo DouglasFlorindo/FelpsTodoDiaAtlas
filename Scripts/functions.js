@@ -412,6 +412,7 @@ export function carregarPartida() {
     document.querySelector("#finalMaratonaModal").close();
 
     if (modo == "maratona" && novaMaratona == true) {
+        itensFelpsMaratona = [];
         populateMaratona(ano);
         for (const elemento of document.querySelectorAll(".felps")) {
             if (felpsInfo != []) {
@@ -501,6 +502,7 @@ export function finalizarPartida(resultado) {
             document.querySelector("#derrotaModal").showModal();
             break;
         case "derrotaMaratona":
+            tempoAntes = 0;
             timerMaratonaTotal = timerMaratonaTotal + Number(timer);
             controleTimer(false);
             timerResultadoMaratona = timerMaratonaTotal.toString();
