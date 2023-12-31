@@ -503,6 +503,7 @@ export function finalizarPartida(resultado) {
             break;
         case "derrotaMaratona":
             tempoAntes = 0;
+            quantFelpsMaratona = 0;
             timerMaratonaTotal = timerMaratonaTotal + Number(timer);
             controleTimer(false);
             timerResultadoMaratona = timerMaratonaTotal.toString();
