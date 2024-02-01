@@ -288,6 +288,8 @@ export function coletarConfigs() {
 }
 
 export async function populateMaratona(ano) {
+    itensFelpsMaratona = [];
+    quantFelpsMaratona = 0;
     if (felpsInfo.length == 0) {
         const response = await fetch("../FelpsTodoDiaAtlas/Recursos/felps.json");
         felpsInfo = await response.json();
@@ -413,8 +415,7 @@ export function carregarPartida() {
     document.querySelector("#derrotaMaratonaModal").close();
     document.querySelector("#finalMaratonaModal").close();
 
-    if (modo == "maratona" && novaMaratona == true) {
-        itensFelpsMaratona = [];
+    if (modo == "maratona" && novaMaratona == true) {    
         populateMaratona(ano);
         for (const elemento of document.querySelectorAll(".felps")) {
             if (felpsInfo != []) {

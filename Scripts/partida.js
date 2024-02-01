@@ -55,6 +55,9 @@ document.addEventListener('keydown', (event) => {
         case "+":
             alterarEscala(true);
             break;
+        case "=":
+            alterarEscala(true);
+            break;
         case "-":
             alterarEscala(false);
             break;
