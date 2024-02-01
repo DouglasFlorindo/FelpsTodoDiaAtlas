@@ -1,4 +1,7 @@
 import { finalizarPartida, populateAtlas, randomizarPosicoes, alterarEscala, carregarPartida, carregamentoCompleto, compartilharResultado, hitSFX, metronomoSFX, metronomoHighSFX } from './functions.js';
+import { updateColorMode } from './colorModeModule.js';
+
+updateColorMode(true, null);
 
 const confirmacaoModal = document.querySelector("#voltarMenuModal");
 const inputAudio = document.querySelector("#inputAudio");

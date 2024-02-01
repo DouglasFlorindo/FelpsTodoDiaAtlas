@@ -57,7 +57,7 @@
                     <p id="descricaoModoDeTimer">Lorem Ipsum sit amet.</p>
                 </div>
             </div>
-            <div class="wrapper">
+            <!-- <div class="wrapper">
                 <fieldset>
                     <legend>Coleção de Felps:</legend>
 
@@ -78,7 +78,7 @@
                 <div class="descricao">
                     <p id="descricaoColecaoDeFelps">Lorem Ipsum sit amet.</p>
                 </div>
-            </div>
+            </div> -->
             <button type="submit" id="botaoJogar" class="principal menu"><img class="icon"
                     src="Recursos/play.png">Jogar</button>
         </form>
@@ -146,22 +146,25 @@
                     <h1>Maratonistas</h1>
                     <img class="icon" aria-label="" src="Recursos/mais.png">
                 </summary>
-                <h3>Aqui estão listados os 10 primeiros maratonistas (verificados por vídeo) a terminarem o modo maratona.</h3>
-                <h3 style="color: var(--text);">Quer aparecer nesta lista? Grave a sua tela enquanto completa a maratona e <a target="_blank" href="https://linktr.ee/NekoRaita">me mande o vídeo</a> para ser verificado!</h3>
+                <h3>Aqui estão listados os 10 primeiros maratonistas (verificados por vídeo) a terminarem o modo
+                    maratona de 2022.</h3>
+                <h3 style="color: var(--text);">Quer aparecer nesta lista? Grave a sua tela enquanto completa a maratona
+                    e <a target="_blank" href="https://linktr.ee/NekoRaita">me mande o vídeo</a> para ser verificado!
+                </h3>
                 <div class="gridMaratonistas">
                     <div>
                         <h1>Dreasbro</h1>
-                        <h2>365 Felps</h2>
+                        <h2>Cronômetro</h2>
                         <h2>9162.20s</h2>
                     </div>
                     <div>
                         <h1>Felps</h1>
-                        <h2>365 Felps</h2>
+                        <h2>Cronômetro</h2>
                         <h2>14209.12s</h2>
                     </div>
                     <div>
                         <h1>Navomeister</h1>
-                        <h2>365 Felps</h2>
+                        <h2>Cronômetro</h2>
                         <h2>21357.95s</h2>
                     </div>
                 </div>
@@ -173,14 +176,49 @@
                     <h1>Configurações</h1>
                     <img class="icon" aria-label="" src="Recursos/mais.png">
                 </summary>
+                <form id="formConfigs">
+                    <div class="wrapper">
+                        <fieldset>
+                            <legend>Modo de cor:</legend>
+
+                            <div class="divInputIndividual">
+                                <input type="radio" value="auto" id="inputModoAuto" name="modoDeCor" checked>
+                                <label for="inputModoAuto">Automático</label>
+                            </div>
+                            <div class="divInputIndividual">
+                                <input type="radio" value="light" id="inputModoClaro" name="modoDeCor">
+                                <label for="inputModoClaro">Claro</label>
+                            </div>
+                            <div class="divInputIndividual">
+                                <input type="radio" value="dark" id="inputModoEscuro" name="modoDeCor">
+                                <label for="inputModoEscuro">Escuro</label>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <button type="submit" id="botaoAplicarConfigs" class="principal menu"><img class="icon"
+                        src="Recursos/configs.png">Aplicar</button>
+                </form>
             </details>
             <span class="separador"></span>
+
             <details id="creditosDetails">
                 <summary>
                     <img class="icon" aria-label="" src="Recursos/sobre.png">
                     <h1>Créditos</h1>
                     <img class="icon" aria-label="" src="Recursos/mais.png">
                 </summary>
+                <div class="wrapperCreditos">
+                    <div class="wrapperItem">
+                        <h2>Atlas:</h2>
+                        <img aria-label="" src="Recursos/creditosNeko.png">
+                        <p><a href="https://linktr.ee/NekoRaita" target="_blank">NekoRaita</a></p>
+                    </div>
+                    <div class="wrapperItem">
+                        <h2>Felps Todo Dia:</h2>
+                        <img aria-label="" src="Recursos/creditosMoss.png">
+                        <p><a href="https://thwmoss.carrd.co/" target="_blank">ThwMoss</a></p>
+                    </div>
+                </div>
             </details>
             <span class="separador"></span>
             <a class="linkAtlas" href="https://douglasflorindo.github.io/FelpsTodoDiaAtlas/" target="_blank">
