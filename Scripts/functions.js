@@ -9,6 +9,7 @@ metronomoSFX.volume = 0;
 export const metronomoHighSFX = new Audio("../FelpsTodoDiaAtlas/Recursos/metronomoHighSFX.mp3");
 metronomoHighSFX.volume = 0;
 export let carregamentoCompleto = false;
+export let temaCor;
 
 export async function populateAtlas(containerID, isAtlas) {
     if (felpsInfo.length == 0) {
@@ -399,7 +400,8 @@ export function controleTimer(start, modoTimer) {
 export function carregarPartida() {
     modo = localStorage.getItem("modoDeJogo");
     modoTimer = localStorage.getItem("modoDeTimer");
-    ano = localStorage.getItem("colecaoDeFelps");
+    // ano = localStorage.getItem("colecaoDeFelps");
+    ano = 22;
     if (typeof intervalConfeti !== 'undefined') {
         clearInterval(intervalConfeti);
         document.querySelectorAll("img.confeti").forEach(element => {

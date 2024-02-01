@@ -14,17 +14,16 @@ dialog::backdrop {
     backdrop-filter: blur(25px);
 }
 
-@media (prefers-color-scheme: light) {
-    :root {
-        --text: #030202;
-        --background: #f0efef;
-        --backgroundOpacity: rgba(240, 239, 239, 0.8);
-        --primary: #ff3c64;
-        --secondary: #e4e3e3;
-        --primaryShade: #d30931;
-        --accent: #b5acac;
-        --invert: 0;
-    }
+[data-theme="light"] {
+
+    --text: #030202;
+    --background: #f0efef;
+    --backgroundOpacity: rgba(240, 239, 239, 0.8);
+    --primary: #ff3c64;
+    --secondary: #e4e3e3;
+    --primaryShade: #d30931;
+    --accent: #b5acac;
+    --invert: 0;
 
     dialog::backdrop {
         background: rgba(255, 255, 255, 0.5);
@@ -32,17 +31,17 @@ dialog::backdrop {
     }
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --text: #f9f4f4;
-        --background: #100f0f;
-        --backgroundOpacity: rgba(16, 15, 15, 0.8);
-        --primary: #ff3c64;
-        --secondary: #1d1b1b;
-        --primaryShade: rgb(255, 100, 131);
-        --accent: #544a4a;
-        --invert: 1;
-    }
+[data-theme="dark"] {
+
+    --text: #f9f4f4;
+    --background: #100f0f;
+    --backgroundOpacity: rgba(16, 15, 15, 0.8);
+    --primary: #ff3c64;
+    --secondary: #1d1b1b;
+    --primaryShade: rgb(255, 100, 131);
+    --accent: #544a4a;
+    --invert: 1;
+
 
     dialog::backdrop {
         background: rgba(0, 0, 0, 0.5);
@@ -188,92 +187,125 @@ fieldset#fieldsetAudio {
     text-align: center;
 }
 
-#sectionInicial button#botaoInfoAcheOFelps {
+#sectionInicial button#botaoMenuAcheOFelps {
     position: absolute;
     left: 80%;
     top: var(--espaco);
     width: 2rem;
     height: 2rem;
+
+    >img {
+        max-width: 2rem;
+    }
 }
 
-#sectionInicial button#botaoInfoAcheOFelps img {
-    max-width: 2rem;
-}
+form {
+    
+    &#formConfigs {
+        margin-top: var(--espaco);
+        width: 100%;
 
-#sectionInicial form div.wrapper {
-    padding: var(--espaco) 0;
-}
+        & fieldset {
+            border-radius: 15px;
 
-#sectionInicial form fieldset {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    border-radius: 15px 15px 0 0;
-    background-color: var(--secondary);
-    border: none;
-    position: relative;
-}
+            > div input {
+                border-bottom: solid 1px var(--primary);
+            } 
 
-#sectionInicial form fieldset legend {
-    color: var(--text);
-    position: absolute;
-    transform: translateY(-100%);
-    bottom: 0.5rem;
-    font-size: 1rem;
-}
+            > div:first-of-type input {
+                border-radius: 15px 0 0 15px;
+                border-top: solid 1px var(--primary);
+                border-left: solid 1px var(--primary);
+            }
+    
+            > div:last-of-type input {
+                border-radius: 0 15px 15px 0;
+                border-top: solid 1px var(--primary);
+                border-right: solid 1px var(--primary);
+            }
+        }
 
-#sectionInicial form fieldset div.divInputIndividual {
-    position: relative;
-    width: 100%;
-}
+        
+    }
 
-#sectionInicial form fieldset div:first-of-type input {
-    border-radius: 15px 0 0 0;
-    border-top: solid 1px var(--primary);
-    border-left: solid 1px var(--primary);
-}
+    >div.wrapper {
+        padding: var(--espaco) 0;
+        width: 100%;
 
-#sectionInicial form fieldset div:last-of-type input {
-    border-radius: 0 15px 0 0;
-    border-top: solid 1px var(--primary);
-    border-right: solid 1px var(--primary);
-}
+        >fieldset {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            border-radius: 15px 15px 0 0;
+            background-color: var(--secondary);
+            border: none;
+            position: relative;
 
-#sectionInicial form fieldset input[type="radio"] {
-    -webkit-appearance: none;
-    appearance: none;
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    border-top: solid 1px var(--primary);
-    background-color: var(--background);
-    box-shadow: 0 5px 0 0 var(--accent);
-}
+            >legend {
+                color: var(--text);
+                position: absolute;
+                transform: translateY(-100%);
+                bottom: 0.5rem;
+                font-size: 1rem;
+            }
 
-#sectionInicial form fieldset input[type="radio"]:checked {
-    background-color: var(--primary);
-    box-shadow: 0 5px 0 0 var(--primaryShade);
-}
+            >div.divInputIndividual {
+                position: relative;
+                width: 100%;
 
-#sectionInicial form fieldset input+label {
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1rem;
-    position: absolute;
-    cursor: pointer;
-    text-align: center;
-}
+                input[type="radio"] {
+                    -webkit-appearance: none;
+                    appearance: none;
+                    margin: 0;
+                    width: 100%;
+                    height: 100%;
+                    border-top: solid 1px var(--primary);
+                    background-color: var(--background);
+                    box-shadow: 0 5px 0 0 var(--accent);
 
-#sectionInicial form fieldset input:checked+label {
-    color: var(--background);
-}
+                    &:checked {
+                        background-color: var(--primary);
+                        box-shadow: 0 5px 0 0 var(--primaryShade);
 
-#sectionInicial form fieldset input:disabled+label {
-    color: var(--accent);
-    cursor: not-allowed;
+                        +label {
+                            color: var(--background);
+                        }
+                    }
+
+                    &:disabled {
+                        +label {
+                            color: var(--accent);
+                            cursor: not-allowed;
+                        }
+                    }
+
+                    +label {
+                        width: 100%;
+                        height: 100%;
+                        left: 0;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        font-size: 1rem;
+                        position: absolute;
+                        cursor: pointer;
+                        text-align: center;
+                    }
+                }
+            }
+
+            >div:first-of-type input {
+                border-radius: 15px 0 0 0;
+                border-top: solid 1px var(--primary);
+                border-left: solid 1px var(--primary);
+            }
+
+            >div:last-of-type input {
+                border-radius: 0 15px 0 0;
+                border-top: solid 1px var(--primary);
+                border-right: solid 1px var(--primary);
+            }
+        }
+    }
 }
 
 #sectionInicial form div.descricao {
@@ -289,7 +321,217 @@ fieldset#fieldsetAudio {
     margin: 0;
 }
 
-/*=============== instruções Modal =================*/
+dialog#menuModal {
+    >div.wrapper {
+        & details {
+            width: 100%;
+            padding: var(--espaco);
+            overflow: hidden;
+
+            &[open]>summary>img:last-child {
+                content: url(../Recursos/menos.png);
+            }
+
+            & summary {
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+
+                >img {
+                    max-height: 3rem;
+                }
+            }
+
+            &#instrucoesDetails {
+                >div.wrapperConteudo {
+                    padding: 0 var(--espaco);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    & .tutorialMobile {
+                        display: none;
+                    }
+
+                    & img.cursor {
+                        background-image: url(../Recursos/cursor.png);
+                        background-size: 100%;
+                        aspect-ratio: 1/1;
+                        border: 0 solid transparent;
+                    }
+
+                    & div.wrapperTutorial {
+                        width: 100%;
+                        height: 20dvh;
+                        max-height: 20dvh;
+                        min-height: 5rem;
+                        position: relative;
+                        overflow: hidden;
+
+                        >div#wrapperTutorial1 {
+                            transform: translateX(-50%);
+                            left: 50%;
+                            position: absolute;
+                            height: 100%;
+                            width: 20%;
+                            animation: tutorial1 5s infinite ease-in-out;
+
+                            & img {
+                                position: absolute;
+                                height: 100%;
+
+                                &:first-child {
+                                    transform: translateX(-50%);
+                                    left: 50%;
+                                }
+
+                                &:last-child {
+                                    height: 35%;
+                                    left: 50%;
+                                    top: 50%;
+                                }
+                            }
+                        }
+
+                        &#wrapperTutorial2 {
+
+                            & img {
+                                position: absolute;
+
+                                &:first-child {
+                                    transform: translateX(-50%);
+                                    height: 100%;
+                                    left: 50%;
+                                }
+
+                                &:last-child {
+                                    height: 35%;
+                                    left: 80%;
+                                    top: 50%;
+                                    animation: tutorial2 5s ease-in-out infinite;
+                                }
+                            }
+                        }
+
+                        div#gridControlesTutorial {
+                            border: solid 1px var(--primary);
+                            border-bottom: 0;
+                            background: var(--background);
+                            position: absolute;
+                            bottom: 0;
+                            left: 50%;
+                            display: flex;
+                            flex-direction: column;
+                            transform: translate(-50%, 4rem);
+                            transition: transform 0.1s linear;
+                            padding: 0 var(--espaco);
+                            border-radius: 15px 15px 0 0;
+                            animation: controles 3s infinite, tutorial3 5s ease-in-out infinite;
+
+                            >span {
+                                background: var(--primary);
+                                width: 100%;
+                                height: 0.5rem;
+                                border-radius: 0.25rem;
+                                margin: 0.5rem 0;
+                            }
+
+                            >div.wrapperBotoes {
+                                display: grid;
+                                grid-auto-flow: column;
+                                gap: 1.5rem;
+                                padding: 0 0 0.5rem 0;
+
+                                & button {
+                                    width: auto;
+                                    height: auto;
+                                }
+                            }
+                        }
+                    }
+
+                    & span {
+                        font-weight: bold;
+                    }
+                }
+            }
+
+            &#maratonistasDetails {
+                >h3 {
+                    margin: var(--espaco) 0;
+                    text-align: center;
+                }
+
+                >div.gridMaratonistas {
+                    width: 100%;
+                    gap: 0.5rem;
+                    display: grid;
+                    grid-auto-flow: row;
+
+                    >div {
+                        width: 100%;
+                        display: grid;
+                        grid-template-columns: 2fr 1fr 1fr;
+                        background-color: var(--primary);
+                        border-radius: 15px;
+                        align-items: center;
+
+                        >h1 {
+                            margin: var(--espaco);
+                        }
+                    }
+                }
+            }
+
+            &#creditosDetails {
+                >div.wrapperCreditos {
+                    display: flex;
+                    justify-content: center;
+                    width: 100%;
+
+                    >div.wrapperItem {
+                        width: 50%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+
+                        >h2 {
+                            margin-bottom: 0;
+                        }
+
+                        >img {
+                            padding: var(--espaco);
+                            height: 100%;
+                            max-width: 75%;
+                            object-fit: scale-down;
+                        }
+                    }
+                }
+            }
+        }
+
+        >span.separador {
+            width: 100%;
+            background-color: var(--accent);
+            height: 2px;
+            display: flex;
+        }
+
+        >a {
+            width: 100%;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: var(--espaco);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+
+            >img {
+                max-height: 3rem;
+            }
+        }
+    }
+}
 
 dialog#instrucoesModal {
 
@@ -1005,7 +1247,7 @@ button.principal:hover {
             font-size: 1rem;
         }
 
-        >button#botaoInfoAcheOFelps {
+        >button#botaoMenuAcheOFelps {
             left: unset;
             right: var(--espaco);
         }
@@ -1041,13 +1283,55 @@ button.principal:hover {
 
                 >img {
                     border: 1px solid var(--primary);
-                    width: 100%;
+                    width: 60%;
+                    margin: 0 20%;
                     transform: translateY(-85%);
                     animation: tutorialMobile 5s ease-in-out infinite;
                 }
 
             }
         }
+    }
+
+    details#instrucoesDetails {
+
+        >div.wrapperConteudo {
+            & .tutorialMobile {
+                display: unset !important;
+            }
+
+            & h2 {
+                font-size: 1.25rem;
+            }
+
+            & img.cursor {
+                background-image: url(../Recursos/cursorMobile.png) !important;
+            }
+
+            >div.tutorialMobile {
+                height: auto !important;
+                max-height: unset !important;
+
+                >img {
+                    border: 1px solid var(--primary);
+                    width: 60%;
+                    margin: 0 20%;
+                    transform: translateY(-85%);
+                    animation: tutorialMobile 5s ease-in-out infinite;
+                }
+            }
+        }
+    }
+
+    details#maratonistasDetails {
+        > div.gridMaratonistas{
+            overflow-x: auto;
+
+            & h2, h1 {
+                font-size: 1.25rem;
+            }
+        }
+
     }
 
 

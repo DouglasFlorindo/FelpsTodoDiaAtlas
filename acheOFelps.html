@@ -15,8 +15,8 @@
     <section id="sectionInicial">
         <h1>Ache o Felps!</h1>
         <p id="subtitulo">Ache um Felps específico no menor tempo possível.</p>
-        <button id="botaoInfoAcheOFelps" class="clicavel" title="Instruções"><img aria-label="" class="icon"
-                src="Recursos/sobre.png"></button>
+        <button id="botaoMenuAcheOFelps" class="clicavel" title="Menu"><img aria-label="" class="icon"
+                src="Recursos/menu.png"></button>
         <form id="configsDeJogo" method="get" action="partida.html">
             <div class="wrapper">
                 <fieldset>
@@ -57,7 +57,7 @@
                     <p id="descricaoModoDeTimer">Lorem Ipsum sit amet.</p>
                 </div>
             </div>
-            <div class="wrapper">
+            <!-- <div class="wrapper">
                 <fieldset>
                     <legend>Coleção de Felps:</legend>
 
@@ -78,11 +78,156 @@
                 <div class="descricao">
                     <p id="descricaoColecaoDeFelps">Lorem Ipsum sit amet.</p>
                 </div>
-            </div>
+            </div> -->
             <button type="submit" id="botaoJogar" class="principal menu"><img class="icon"
                     src="Recursos/play.png">Jogar</button>
         </form>
     </section>
+    <dialog id="menuModal">
+        <div class="wrapper">
+            <header>
+                <h1>Menu</h1>
+                <button id="fecharMenu" class="clicavel icon"><img src="Recursos/fechar.png"></button>
+            </header>
+            <details id="instrucoesDetails">
+                <summary>
+                    <img class="icon" aria-label="" src="Recursos/instrucoes.png">
+                    <h1>Instruções</h1>
+                    <img class="icon" aria-label="" src="Recursos/mais.png">
+                </summary>
+                <div class="wrapperConteudo">
+                    <h2>Clique e arraste um felps para movê-lo:</h2>
+                    <div class="wrapperTutorial">
+                        <div id="wrapperTutorial1">
+                            <img src="Recursos/felpsCara.png">
+                            <img class="icon cursor" src="Recursos/literalmenteNada.png">
+                        </div>
+                    </div>
+                    <h2>Clique no felps correto para encerrar a partida:</h2>
+                    <div id="wrapperTutorial2" class="wrapperTutorial">
+                        <img src="Recursos/felpsCara.png">
+                        <img class="icon cursor" src="Recursos/literalmenteNada.png">
+                    </div>
+                    <h2 class="tutorialMobile">Toque no timer para rever o felps correto:</h2>
+                    <div class="wrapperTutorial tutorialMobile">
+                        <img src="Recursos/exemploTutorialMobile.png">
+                    </div>
+                    <h2>Acesse a barra de ferramentas no centro inferior da tela:</h2>
+                    <div class="wrapperTutorial">
+                        <div id="gridControlesTutorial">
+                            <span></span>
+                            <div class="wrapperBotoes">
+                                <button type="button" class="clicavel" title="Aumentar tamanho das imagens"><img
+                                        aria-label="" src="Recursos/aumentar.png" class="icon"></button>
+                                <button type="button" class="clicavel" title="Diminuir tamanho das imagens"><img
+                                        aria-label="" src="Recursos/diminuir.png" class="icon"></button>
+                                <button type="button" class="clicavel" title="Randomizar posições"><img aria-label=""
+                                        src="Recursos/aleatorio.png" class="icon"></button>
+                                <button type="button" class="clicavel"><img class="icon"
+                                        src="Recursos/home.png"></a></button>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Ou use os atalhos do teclado:</h2>
+                    <ul>
+                        <li><span>tab</span> e <span>shift + tab</span>: selecionar Felps.</li>
+                        <li><span>espaço</span>: clicar no Felps selecionado.</li>
+                        <li><span>setinhas</span>: mover Felps selecionado.</li>
+                        <li><span>+</span> e <span>-</span>: aumentar ou diminuir tamanho dos Felps.</li>
+                        <li><span>r</span>: randomizar a posição dos Felps.</li>
+                        <li><span>m</span>: voltar ao menu.</li>
+                    </ul>
+                </div>
+            </details>
+            <span class="separador"></span>
+            <details id="maratonistasDetails">
+                <summary>
+                    <img class="icon" aria-label="" src="Recursos/medalha.png">
+                    <h1>Maratonistas</h1>
+                    <img class="icon" aria-label="" src="Recursos/mais.png">
+                </summary>
+                <h3>Aqui estão listados os 10 primeiros maratonistas (verificados por vídeo) a terminarem o modo
+                    maratona de 2022.</h3>
+                <h3 style="color: var(--text);">Quer aparecer nesta lista? Grave a sua tela enquanto completa a maratona
+                    e <a target="_blank" href="https://linktr.ee/NekoRaita">me mande o vídeo</a> para ser verificado!
+                </h3>
+                <div class="gridMaratonistas">
+                    <div>
+                        <h1>Dreasbro</h1>
+                        <h2>Cronômetro</h2>
+                        <h2>9162.20s</h2>
+                    </div>
+                    <div>
+                        <h1>Felps</h1>
+                        <h2>Cronômetro</h2>
+                        <h2>14209.12s</h2>
+                    </div>
+                    <div>
+                        <h1>Navomeister</h1>
+                        <h2>Cronômetro</h2>
+                        <h2>21357.95s</h2>
+                    </div>
+                </div>
+            </details>
+            <span class="separador"></span>
+            <details id="configsDetails">
+                <summary>
+                    <img class="icon" aria-label="" src="Recursos/configs.png">
+                    <h1>Configurações</h1>
+                    <img class="icon" aria-label="" src="Recursos/mais.png">
+                </summary>
+                <form id="formConfigs">
+                    <div class="wrapper">
+                        <fieldset>
+                            <legend>Modo de cor:</legend>
+
+                            <div class="divInputIndividual">
+                                <input type="radio" value="auto" id="inputModoAuto" name="modoDeCor" checked>
+                                <label for="inputModoAuto">Automático</label>
+                            </div>
+                            <div class="divInputIndividual">
+                                <input type="radio" value="light" id="inputModoClaro" name="modoDeCor">
+                                <label for="inputModoClaro">Claro</label>
+                            </div>
+                            <div class="divInputIndividual">
+                                <input type="radio" value="dark" id="inputModoEscuro" name="modoDeCor">
+                                <label for="inputModoEscuro">Escuro</label>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <button type="submit" id="botaoAplicarConfigs" class="principal menu"><img class="icon"
+                        src="Recursos/configs.png">Aplicar</button>
+                </form>
+            </details>
+            <span class="separador"></span>
+
+            <details id="creditosDetails">
+                <summary>
+                    <img class="icon" aria-label="" src="Recursos/sobre.png">
+                    <h1>Créditos</h1>
+                    <img class="icon" aria-label="" src="Recursos/mais.png">
+                </summary>
+                <div class="wrapperCreditos">
+                    <div class="wrapperItem">
+                        <h2>Atlas:</h2>
+                        <img aria-label="" src="Recursos/creditosNeko.png">
+                        <p><a href="https://linktr.ee/NekoRaita" target="_blank">NekoRaita</a></p>
+                    </div>
+                    <div class="wrapperItem">
+                        <h2>Felps Todo Dia:</h2>
+                        <img aria-label="" src="Recursos/creditosMoss.png">
+                        <p><a href="https://thwmoss.carrd.co/" target="_blank">ThwMoss</a></p>
+                    </div>
+                </div>
+            </details>
+            <span class="separador"></span>
+            <a class="linkAtlas" href="https://douglasflorindo.github.io/FelpsTodoDiaAtlas/" target="_blank">
+                <img class="icon" aria-label="" src="Recursos/carinha.png">
+                <h1>Atlas</h1>
+                <img class="icon" aria-label="" src="Recursos/original.png">
+            </a>
+        </div>
+    </dialog>
     <dialog id="instrucoesModal">
         <div class="wrapper">
             <header>
