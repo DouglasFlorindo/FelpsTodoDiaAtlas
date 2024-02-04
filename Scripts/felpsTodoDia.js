@@ -1,4 +1,5 @@
-import { populateAtlas, populateCatalogo, randomizarPosicoes, selecionarInfo, alterarEscala, verificarSenha } from './functions.js';
+import { populateAtlas, populateCatalogo, randomizarPosicoes, selecionarInfo, alterarEscala, verificarSenha, felpsInfo } from './functions.js';
+import { filtrarFelps } from './filtroFelps.js';
 
 const infoModal = document.querySelector("#infoModal");
 const catalogoModal = document.querySelector("#catalogoModal");
@@ -14,6 +15,12 @@ document.addEventListener("DOMContentLoaded", function () {
         boasVindasModal.showModal()
         localStorage.setItem("modalShown", "true");
     }
+
+    const formFiltroFelps = document.querySelector("#formFiltroFelps");
+
+    formFiltroFelps.reset();
+    
+    formFiltroFelps.addEventListener("change", () => filtrarFelps(felpsInfo));
 });
 
 document.querySelector("#abrirCatalogo").addEventListener("click", () => catalogoModal.showModal());

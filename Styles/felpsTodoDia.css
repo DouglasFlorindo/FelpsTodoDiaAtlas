@@ -121,6 +121,10 @@ dialog header button {
     margin: 0 var(--espaco);
 }
 
+.filtrado {
+    display: none !important;
+}
+
 /* ==========Section Principal========= */
 
 #sectionPrincipal {
@@ -142,6 +146,90 @@ dialog header button {
     width: 100%;
     position: absolute;
     top: 0;
+}
+
+form#formFiltroFelps {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    font-family: 'Comic Sans MS';
+    font-size: 1.25rem;
+    color: var(--text);
+
+    & legend {
+        max-height: 0;
+        max-width: 0;
+        font-size: 0;
+    }
+
+    >fieldset {
+        display: flex;
+        justify-content: space-between;
+        width: 25dvw;
+        min-width: 250px;
+        border-radius: 15px;
+        background-color: var(--secondary);
+        border: none;
+        position: relative;
+
+        >div.wrapperInputRadio {
+            position: relative;
+            width: 100%;
+
+            input[type="radio"] {
+                -webkit-appearance: none;
+                appearance: none;
+                margin: 0;
+                width: 100%;
+                height: 100%;
+                border-top: solid 1px var(--primary);
+                border-bottom: solid 1px var(--primary);
+                background-color: var(--background);
+                box-shadow: 0 5px 0 0 var(--accent);
+
+                &:checked {
+                    background-color: var(--primary);
+
+                    +label {
+                        color: var(--background);
+                    }
+                }
+
+                &:disabled {
+                    +label {
+                        color: var(--accent);
+                        cursor: not-allowed;
+                    }
+                }
+
+                +label {
+                    width: 100%;
+                    height: 100%;
+                    left: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    font-size: 1rem;
+                    position: absolute;
+                    cursor: pointer;
+                    text-align: center;
+                }
+            }
+        }
+
+        >div:first-of-type input {
+            border-radius: 15px 0 0 15px;
+            border-top: solid 1px var(--primary);
+            border-left: solid 1px var(--primary);
+        }
+
+        >div:last-of-type input {
+            border-radius: 0 15px 15px 0;
+            border-top: solid 1px var(--primary);
+            border-right: solid 1px var(--primary);
+        }
+    }
 }
 
 #divAtlas {
@@ -551,7 +639,7 @@ button.felps img {
         margin: var(--espaco);
         margin-bottom: calc(2.5rem + var(--espaco) * 2);
 
-        > p > a {
+        >p>a {
             font-weight: unset;
             -webkit-text-stroke-width: unset;
             -webkit-text-stroke-color: unset;

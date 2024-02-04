@@ -1,5 +1,5 @@
 let movendo = false;
-let felpsInfo = [];
+export let felpsInfo = [];
 let felpsDrag, felpsAtualId, quantFelps;
 let felpsAlvo, timer, timerId, modo, ano, modoTimer, intervalConfeti, timerMaratonaTotal = 0, itensFelpsMaratona = [], quantFelpsMaratona = 0, novaMaratona = true, pausaMaratona = 0, tempoAntes = 0;
 export const hitSFX = new Audio("../FelpsTodoDiaAtlas/Recursos/hitSFX.mp3");
@@ -30,12 +30,13 @@ export async function populateAtlas(containerID, isAtlas) {
         novoImg.src = `../FelpsTodoDiaAtlas/Imagens/${felps.arquivo}.webp`;
         novoImg.alt = felps.nome;
         novoImg.title = felps.nome;
-        novoImg.classList = "felpsImagem"
-        novoImg.style.opacity = "0"
+        novoImg.classList = "felpsImagem";
+        novoImg.style.opacity = "0";
 
 
         novoButton.id = `b${felps.id}`;
         novoButton.classList = "felps";
+        felps.data.substring(6, 8) != 22?novoButton.classList.add("filtrado"):null;
 
         isAtlas ? novoButton.addEventListener('click', () => movendo == false ? mostrarInfo(felps.id) : null) : novoButton.addEventListener('click', () => movendo == false ? verificarFelpsAlvo(felps.id) : null);
         novoButton.addEventListener('mousedown', function () {
@@ -197,7 +198,7 @@ export function gerarDataAtual() {
 };
 
 export function checkHitbox(felps) {
-    const hitboxes = document.querySelectorAll("div.hitbox");
+    const hitboxes = document.querySelectorAll(".hitbox");
     const felpsLimites = felps.getBoundingClientRect();
 
     for (const box of hitboxes) {
