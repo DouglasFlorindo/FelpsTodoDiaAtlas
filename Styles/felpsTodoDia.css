@@ -658,6 +658,10 @@ button.felps img {
         animation: aparecerBotoes 0.5s ease;
     }
 
+    form#formFiltroFelps {
+        top: 15%;
+    }
+
     /* ============Info Modal============== */
 
     #infoModal {
