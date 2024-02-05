@@ -94,7 +94,7 @@ export async function populateAtlas(containerID, isAtlas) {
             novoImg.style.opacity = "1";
             felpsCarregados = felpsCarregados + 1;
             felpsCarregados == quantFelps ? carregamentoCompleto = true : null;
-            felps.data.substring(6, 8) != 22?novoButton.classList.add("filtrado"):null;
+            felps.data.substring(6, 8) != 22 ? novoButton.classList.add("filtrado") : null;
         })
 
 
@@ -225,15 +225,18 @@ export function randomizarPosicoes() {
     let felps = document.querySelectorAll(".felps");
 
     felps.forEach(element => {
-        element.style.left = `${Math.floor(Math.random() * 90)}%`;
-        element.style.top = `${Math.floor(Math.random() * 90)}%`;
-        let i = 0;
-        while (i < 100 && checkHitbox(element)) {
+        if (!element.classList.contains("filtrado")) {
             element.style.left = `${Math.floor(Math.random() * 90)}%`;
             element.style.top = `${Math.floor(Math.random() * 90)}%`;
-            i++
-        };
-        element.style.filter = 'none';
+            let i = 0;
+            while (i < 100 && checkHitbox(element)) {
+                element.style.left = `${Math.floor(Math.random() * 90)}%`;
+                element.style.top = `${Math.floor(Math.random() * 90)}%`;
+                i++
+            };
+            element.style.filter = 'none';
+        }
+
     });
 };
 
@@ -417,7 +420,7 @@ export function carregarPartida() {
     document.querySelector("#derrotaMaratonaModal").close();
     document.querySelector("#finalMaratonaModal").close();
 
-    if (modo == "maratona" && novaMaratona == true) {    
+    if (modo == "maratona" && novaMaratona == true) {
         populateMaratona(ano);
         for (const elemento of document.querySelectorAll(".felps")) {
             if (felpsInfo != []) {
