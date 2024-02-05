@@ -36,7 +36,6 @@ export async function populateAtlas(containerID, isAtlas) {
 
         novoButton.id = `b${felps.id}`;
         novoButton.classList = "felps";
-        felps.data.substring(6, 8) != 22?novoButton.classList.add("filtrado"):null;
 
         isAtlas ? novoButton.addEventListener('click', () => movendo == false ? mostrarInfo(felps.id) : null) : novoButton.addEventListener('click', () => movendo == false ? verificarFelpsAlvo(felps.id) : null);
         novoButton.addEventListener('mousedown', function () {
@@ -94,8 +93,10 @@ export async function populateAtlas(containerID, isAtlas) {
             }
             novoImg.style.opacity = "1";
             felpsCarregados = felpsCarregados + 1;
-            felpsCarregados == quantFelps ? carregamentoCompleto = true : null
+            felpsCarregados == quantFelps ? carregamentoCompleto = true : null;
+            felps.data.substring(6, 8) != 22?novoButton.classList.add("filtrado"):null;
         })
+
 
         atlas.appendChild(novoButton);
     }

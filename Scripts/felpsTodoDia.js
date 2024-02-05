@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     formFiltroFelps.reset();
     
     formFiltroFelps.addEventListener("change", () => filtrarFelps(felpsInfo));
+    
 });
 
 document.querySelector("#abrirCatalogo").addEventListener("click", () => catalogoModal.showModal());
