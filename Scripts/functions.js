@@ -93,7 +93,7 @@ export async function populateAtlas(containerID, isAtlas) {
             }
             novoImg.style.opacity = "1";
             felpsCarregados = felpsCarregados + 1;
-            felpsCarregados == quantFelps ? carregamentoCompleto = true : null;
+            felpsCarregados == 365 ? carregamentoCompleto = true : null;
             felps.data.substring(6, 8) != 22 ? novoButton.classList.add("filtrado") : null;
         })
 
