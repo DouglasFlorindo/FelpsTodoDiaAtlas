@@ -131,5 +131,5 @@ setTimeout(() => {
     if (carregamentoCompleto == false) {
         alert("A página está levando muito mais tempo para carregar do que o esperado. Continue aguardando ou recarregue a página.");
     }
-}, 20000);
+}, 60000);
 
