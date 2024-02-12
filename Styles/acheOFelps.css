@@ -25,7 +25,7 @@ dialog::backdrop {
     --accent: #b5acac;
     --invert: 0;
 
-    dialog::backdrop {
+    & dialog::backdrop {
         background: rgba(255, 255, 255, 0.5);
         backdrop-filter: blur(25px);
     }
@@ -43,7 +43,7 @@ dialog::backdrop {
     --invert: 1;
 
 
-    dialog::backdrop {
+    & dialog::backdrop {
         background: rgba(0, 0, 0, 0.5);
         backdrop-filter: blur(25px);
     }
@@ -690,6 +690,10 @@ dialog#voltarMenuModal {
 
 }
 
+#sectionCarregando h1 {
+    animation: loading infinite 3s linear;
+}
+
 /*=============== section Contagem =================*/
 
 section#sectionContagem {
@@ -1234,6 +1238,20 @@ button.principal:hover {
 
     100% {
         color: var(--primary);
+    }
+}
+
+@keyframes loading {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
     }
 }
 

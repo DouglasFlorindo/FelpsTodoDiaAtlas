@@ -1,7 +1,12 @@
-import { finalizarPartida, populateAtlas, randomizarPosicoes, alterarEscala, carregarPartida, carregamentoCompleto, compartilharResultado, hitSFX, metronomoSFX, metronomoHighSFX } from './functions.js';
 import { updateColorMode } from './colorModeModule.js';
 
-updateColorMode(true, null);
+// document.onreadystatechange = () => {
+//     if (document.readyState === 'complete'){
+        updateColorMode(true, null);
+//     }
+// };
+
+import { finalizarPartida, populateAtlas, randomizarPosicoes, alterarEscala, carregarPartida, carregamentoCompleto, compartilharResultado, hitSFX, metronomoSFX, metronomoHighSFX } from './functions.js';
 
 const confirmacaoModal = document.querySelector("#voltarMenuModal");
 const inputAudio = document.querySelector("#inputAudio");
