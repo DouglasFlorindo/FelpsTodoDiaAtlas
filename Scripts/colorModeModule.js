@@ -4,6 +4,20 @@ export function updateColorMode(useLocalStorage, colorModePreference) {
     /*useLocalStorage = true | false;
     colorModePreference = null | "auto" | "light" | "dark";*/
 
+    //Removes color mode classes from root then adds the desired one:
+    function switchRootClass(className) {
+        const rootClassList = document.documentElement.classList;
+
+        if (rootClassList.contains("lightMode")) {
+            rootClassList.remove("lightMode");
+        };
+        if (rootClassList.contains("darkMode")) {
+            rootClassList.remove("darkMode");
+        };
+
+        rootClassList.add(className);
+    };
+    
     //Check if localStorage is available:
     function checkLocalStorage() {
         try {
@@ -23,7 +37,7 @@ export function updateColorMode(useLocalStorage, colorModePreference) {
         };
     } else {
         localStorageAvailable = false;
-    }
+    };
 
     //Update colorMode to localStorage item or custom value: 
     if (colorModePreference === "auto" || colorModePreference === "light" || colorModePreference === "dark") {
@@ -36,9 +50,9 @@ export function updateColorMode(useLocalStorage, colorModePreference) {
     switch (colorMode) {
         case "auto":            
             window.matchMedia("(prefers-color-scheme: dark)").matches ?
-                document.documentElement.setAttribute("data-theme", "dark")
+                switchRootClass("darkMode")
                 :
-                document.documentElement.setAttribute("data-theme", "light");
+                switchRootClass("lightMode");
 
             //AddEventListeners to window so that it also updates when browser's color mode is altered:
             const darkModePreference = window.matchMedia("(prefers-color-scheme: dark)");
@@ -48,10 +62,10 @@ export function updateColorMode(useLocalStorage, colorModePreference) {
             lightModePreference.addEventListener("change", function lightModeListener(e){e.matches && colorMode === "auto" ? updateColorMode(false, "auto") : null});
             break;
         case "light":
-            document.documentElement.setAttribute("data-theme", "light");
+            switchRootClass("lightMode");
             break;
         case "dark":
-            document.documentElement.setAttribute("data-theme", "dark");
+            switchRootClass("darkMode");
             break;
         default:
             break;

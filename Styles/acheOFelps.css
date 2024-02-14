@@ -14,7 +14,7 @@ dialog::backdrop {
     backdrop-filter: blur(25px);
 }
 
-[data-theme="light"] {
+:root.lightMode {
 
     --text: #030202;
     --background: #f0efef;
@@ -31,7 +31,7 @@ dialog::backdrop {
     }
 }
 
-[data-theme="dark"] {
+:root.darkMode {
 
     --text: #f9f4f4;
     --background: #100f0f;
