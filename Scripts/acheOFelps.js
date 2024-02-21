@@ -1,10 +1,10 @@
 import { updateColorMode } from './colorModeModule.js';
 
-// document.onreadystatechange = () => {
-//     if (document.readyState === 'complete'){
+document.onreadystatechange = () => {
+    if (document.readyState === 'complete'){
         updateColorMode(true, null);
-//     }
-// };
+    }
+};
 
 import {coletarConfigs} from './functions.js';
 
