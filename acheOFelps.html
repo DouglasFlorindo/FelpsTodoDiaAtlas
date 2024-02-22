@@ -2,6 +2,10 @@
 <html lang="pt-br">
 
 <head>
+    <script>
+        let colorMode="auto",localStorageAvailable=!1;function updateColorMode(o,e){function t(o){const e=document.documentElement.classList;e.contains("lightMode")&&e.remove("lightMode"),e.contains("darkMode")&&e.remove("darkMode"),e.add(o)}switch(!0===o&&function(){try{return localStorage.setItem("test","test"),localStorage.removeItem("test"),!0}catch(o){return!1}}()?(localStorageAvailable=!0,localStorage.getItem("colorMode")||localStorage.setItem("colorMode","auto")):localStorageAvailable=!1,"auto"===e||"light"===e||"dark"===e?(!0===localStorageAvailable&&localStorage.setItem("colorMode",e),colorMode=e):!0===localStorageAvailable&&(colorMode=localStorage.getItem("colorMode")),colorMode){case"auto":window.matchMedia("(prefers-color-scheme: dark)").matches?t("darkMode"):t("lightMode");const o=window.matchMedia("(prefers-color-scheme: dark)"),e=window.matchMedia("(prefers-color-scheme: light)");o.addEventListener("change",(function(o){o.matches&&"auto"===colorMode&&updateColorMode(!1,"auto")})),e.addEventListener("change",(function(o){o.matches&&"auto"===colorMode&&updateColorMode(!1,"auto")}));break;case"light":t("lightMode");break;case"dark":t("darkMode")}}
+        updateColorMode(true, null);
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Styles/felpsTodoDia.css">
@@ -36,7 +40,7 @@
                     </div>
                 </fieldset>
                 <div class="descricao">
-                    <p id="descricaoModoDeJogo">Lorem Ipsum sit amet.</p>
+                    <p id="descricaoModoDeJogo">Lorem Ipsum sit amet.</pg>
                 </div>
             </div>
             <div class="wrapper">
