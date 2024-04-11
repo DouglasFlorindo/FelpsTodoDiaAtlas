@@ -26,7 +26,6 @@
     --accent: #544a4a;
     --invert: 1;
 
-
     & dialog::backdrop {
         background: rgba(0, 0, 0, 0.5);
         backdrop-filter: blur(25px);
@@ -56,7 +55,7 @@ body {
 }
 
 form {
-    font-family: 'Comic Sans MS';
+    font-family: var(--fontes);
     font-size: 1.25rem;
     color: var(--text);
     height: 100%;
@@ -92,7 +91,7 @@ h3 {
     font-size: 1.25rem;
     color: var(--accent);
     font-weight: normal;
-    font-family: 'Comic Sans MS';
+    font-family: var(--fontes);
 }
 
 button.menu {

@@ -25,5 +25,12 @@ function filtrarPorAno(objetos, ano) {
         } else { 
             classes.contains("filtrado")?null:classes.add("filtrado");
         }
+    };
+    const tutorial2024 = document.querySelector("#displayTutorial2024");
+    const classes = tutorial2024.classList;
+    if (ano == 24) {
+        classes.remove("filtrado")
+    } else {
+        classes.contains("filtrado")?null:classes.add("filtrado")
     }
 }

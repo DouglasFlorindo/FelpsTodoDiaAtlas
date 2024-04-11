@@ -1,5 +1,5 @@
-import { updateColorMode } from './colorModeModule.js';
-import {coletarConfigs} from './functions.js';
+import { updateColorMode } from './Modulos/colorModeModule.js';
+import {coletarConfigs} from './Modulos/functions.js';
 
 atualizarDescricoes();
 
@@ -33,7 +33,7 @@ function atualizarDescricoes() {
 
     document.querySelector("#inputModoAleatorio").checked ? descricaoModoDeJogo.textContent = "Ache um Felps aleatório." : null;
     document.querySelector("#inputModoDiario").checked ? descricaoModoDeJogo.textContent = "Ache o Felps do dia." : null;
-    document.querySelector("#inputModoMaratona").checked ? descricaoModoDeJogo.innerHTML = "Ache TODOS os Felps em uma única partida.<br>Os Felps encontados serão removidos da tela." : null;
+    document.querySelector("#inputModoMaratona").checked ? descricaoModoDeJogo.innerHTML = "Ache TODOS os Felps em uma única partida.<br>Os Felps encontrados serão removidos da tela." : null;
 
     document.querySelector("#inputModoTimerCronometro").checked ? descricaoModoDeTimer.textContent = "Sem limite de tempo." : null;
     document.querySelector("#inputModoTimerTemporizador").checked ? descricaoModoDeTimer.textContent = "Apenas 60 segundos para achar o Felps." : null;

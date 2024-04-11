@@ -1,4 +1,4 @@
-import { finalizarPartida, populateAtlas, randomizarPosicoes, alterarEscala, carregarPartida, carregamentoCompleto, compartilharResultado, hitSFX, metronomoSFX, metronomoHighSFX } from './functions.js';
+import { finalizarPartida, populateAtlas, randomizarPosicoes, alterarEscala, carregarPartida, carregamentoCompleto, compartilharResultado, hitSFX, metronomoSFX, metronomoHighSFX } from './Modulos/functions.js';
 
 const confirmacaoModal = document.querySelector("#voltarMenuModal");
 const inputAudio = document.querySelector("#inputAudio");

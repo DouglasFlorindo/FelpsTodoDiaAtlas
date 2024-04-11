@@ -7,6 +7,35 @@
     --invert: 0;
     --escalaFelps: 1;
     --espaco: calc((3.5vh + 1.5vw) / 2);
+    --fontes: 'Comic Sans MS', 'Comic Neue';
+}
+
+@font-face {
+    font-family: 'Comic Neue';
+    src: url(../Recursos/Comic_Neue/ComicNeue-Regular.ttf);
+    font-weight: normal; 
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Comic Neue';
+    src: url(../Recursos/Comic_Neue/ComicNeue-Bold.ttf);
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Comic Neue';
+    src: url(../Recursos/Comic_Neue/ComicNeue-Italic.ttf);
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Comic Neue';
+    src: url(../Recursos/Comic_Neue/ComicNeue-BoldItalic.ttf);
+    font-weight: bold;
+    font-style: italic;
 }
 
 @media (prefers-color-scheme: light) {
@@ -49,7 +78,7 @@ p,
 li,
 a {
     color: var(--text);
-    font-family: 'Comic Sans MS';
+    font-family: var(--fontes);
 }
 
 p,
@@ -78,7 +107,7 @@ button {
     background: transparent;
     border: hidden;
     cursor: pointer;
-    font-family: 'Comic Sans MS';
+    font-family: var(--fontes);
     font-size: 1.25rem;
     color: var(--text);
 }
@@ -121,6 +150,10 @@ dialog header button {
     margin: 0 var(--espaco);
 }
 
+a {
+    cursor: alias !important;
+}
+
 .filtrado {
     display: none !important;
 }
@@ -154,7 +187,7 @@ form#formFiltroFelps {
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
-    font-family: 'Comic Sans MS';
+    font-family: var(--fontes);
     font-size: 1.25rem;
     color: var(--text);
 
@@ -260,7 +293,7 @@ div#gridBotoes {
     margin: var(--espaco);
 }
 
-#sectionPrincipal footer a {
+#sectionPrincipal footer a#linkAcheOFelps {
     color: var(--primary);
     font-weight: bold;
     -webkit-text-stroke-width: 0.5px;

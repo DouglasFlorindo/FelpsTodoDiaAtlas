@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Styles/felpsTodoDia.css">
+    <link rel="stylesheet" href="Styles/displayTutorial2024.css">
     <link rel="icon" href="Recursos/emoteCarinha.png">
-    <script src="Scripts/functions.js" type="module"></script>
-    <title>Atlas Felps Todo Dia</title>
+    <script src="Scripts/Modulos/functions.js" type="module"></script>    <title>Atlas Felps Todo Dia</title>
 </head>
 
 <body>
@@ -40,6 +40,15 @@
             <div class="hitbox" style="position: absolute; width: 10dvw; height: 100%; right: 0; left: 0; "></div>
             <div class="hitbox" style="position: absolute; width: 10dvw; height: 100%; right: 0; right: 0;"></div>
             <div class="hitbox" style="position: absolute; width: 100%; height: 15dvh; bottom: 0; left: 0;"></div>
+
+            <div id="displayTutorial2024" class="filtrado">
+                <img id="imgTutorial2024" src="Imagens2024/p1.webp">
+                <footer>
+                    <button id="tutorialPassoAnterior"><img src="Recursos/anterior.png" class="icon"></button>
+                    <div><h2><a id="numPasso" href="" target="_blank">Passo 1</a></h2><p id="dataPasso">01/01/24</p></div>
+                    <button id="tutorialPassoPosterior"><img src="Recursos/anterior.png" class="icon"></button>
+                </footer>
+            </div>
         </div>
         <div id="gridBotoes">
             <button type="button" id="aumentarEscala" class="clicavel"
@@ -55,7 +64,7 @@
         </div>
 
         <footer>
-            <p><a href="https://douglasflorindo.github.io/FelpsTodoDiaAtlas/acheOFelps.html" target="_blank">Jogue "Ache O Felps"!</a></p>
+            <p><a id="linkAcheOFelps" href="https://douglasflorindo.github.io/FelpsTodoDiaAtlas/acheOFelps.html" target="_blank">Jogue "Ache O Felps"!</a></p>
         </footer>
     </section>
 
