@@ -3,7 +3,7 @@ div#displayTutorial2024 {
     left: 50%;
     top: 30%;
     transform: translate(-50%, 0);
-    
+
     >img {
         width: 40vw;
         max-height: 40vh;
@@ -30,7 +30,7 @@ div#displayTutorial2024 {
         }
 
         >button,
-        div {
+        >div {
             padding: 0.5rem 0;
             width: 100%;
             background-color: var(--primary);
@@ -71,10 +71,54 @@ div#displayTutorial2024 {
         >div {
             display: grid;
             grid-auto-flow: row;
+            justify-content: center;
 
-            >h2, p {
+            >a {
                 margin: auto;
+                display: inline;
+                text-align: center;
             }
+
+            >div {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                >h2 {
+                    margin: auto;
+                    display: inline;
+                    text-align: center;
+                }
+
+                >input#inputPasso {
+                    border-radius: 15px;
+                    display: inline;
+                    border: 0;
+                    background-color: var(--accent);
+                    color: var(--text);
+                    font-family: var(--fontes);
+                    width: 3rem;
+                    font-size: 1.25rem;
+                    font-weight: bold;
+                    text-align: center;
+                    margin-left: 0.5rem;
+                    -moz-appearance: textfield;
+                }
+
+                input::-webkit-outer-spin-button,
+                input::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                    margin: 0;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 760px) {
+    div#displayTutorial2024 {
+        >img {
+            width: 80vw;
         }
     }
 }

@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="Styles/felpsTodoDia.css">
     <link rel="stylesheet" href="Styles/displayTutorial2024.css">
     <link rel="icon" href="Recursos/emoteCarinha.png">
-    <script src="Scripts/Modulos/functions.js" type="module"></script>    <title>Atlas Felps Todo Dia</title>
+    <script src="Scripts/Modulos/functions.js" type="module"></script>
+    <title>Atlas Felps Todo Dia</title>
 </head>
 
 <body>
@@ -45,18 +46,25 @@
                 <img id="imgTutorial2024" src="Imagens2024/p1.webp">
                 <footer>
                     <button id="tutorialPassoAnterior"><img src="Recursos/anterior.png" class="icon"></button>
-                    <div><h2><a id="numPasso" href="" target="_blank">Passo 1</a></h2><p id="dataPasso">01/01/24</p></div>
+                    <div>
+                        <div>
+                            <h2>Passo </h2>
+                            <input id="inputPasso" type="number" min="1" max="156" placeholder="1">
+                        </div>
+
+                        <a target="_blank" id="dataPasso" href="">01/01/24</a>
+                    </div>
                     <button id="tutorialPassoPosterior"><img src="Recursos/anterior.png" class="icon"></button>
                 </footer>
             </div>
         </div>
         <div id="gridBotoes">
-            <button type="button" id="aumentarEscala" class="clicavel"
-                title="Aumentar tamanho das imagens"><img aria-label="" src="Recursos/aumentar.png" class="icon"></button>
-            <button type="button" id="diminuirEscala" class="clicavel"
-                title="Diminuir tamanho das imagens"><img aria-label="" src="Recursos/diminuir.png" class="icon"></button>
-            <button type="button" id="randomizarPosicoes" class="clicavel"
-                title="Randomizar posições"><img aria-label="" src="Recursos/aleatorio.png" class="icon"></button>
+            <button type="button" id="aumentarEscala" class="clicavel" title="Aumentar tamanho das imagens"><img
+                    aria-label="" src="Recursos/aumentar.png" class="icon"></button>
+            <button type="button" id="diminuirEscala" class="clicavel" title="Diminuir tamanho das imagens"><img
+                    aria-label="" src="Recursos/diminuir.png" class="icon"></button>
+            <button type="button" id="randomizarPosicoes" class="clicavel" title="Randomizar posições"><img
+                    aria-label="" src="Recursos/aleatorio.png" class="icon"></button>
             <button type="button" id="abrirCatalogo" class="clicavel" title="Abrir catálogo"><img aria-label=""
                     src="Recursos/catalogo.png" class="icon"></button>
             <button type="button" id="abrirSobre" class="clicavel" title="Abrir sobre"><img aria-label=""
@@ -64,7 +72,8 @@
         </div>
 
         <footer>
-            <p><a id="linkAcheOFelps" href="https://douglasflorindo.github.io/FelpsTodoDiaAtlas/acheOFelps.html" target="_blank">Jogue "Ache O Felps"!</a></p>
+            <p><a id="linkAcheOFelps" href="https://douglasflorindo.github.io/FelpsTodoDiaAtlas/acheOFelps.html"
+                    target="_blank">Jogue "Ache O Felps"!</a></p>
         </footer>
     </section>
 
@@ -100,7 +109,8 @@
     <dialog id="catalogoModal" aria-label="Catálogo">
         <header>
             <h1>Catálogo</h1>
-            <button type="button" id="fecharCatalogo" class="clicavel"><img src="Recursos/fechar.png" class="icon"></button>
+            <button type="button" id="fecharCatalogo" class="clicavel"><img src="Recursos/fechar.png"
+                    class="icon"></button>
         </header>
         <div id="areaCatalogo" class="wrapper"></div>
     </dialog>
@@ -108,7 +118,8 @@
     <dialog id="sobreModal" aria-label="Sobre">
         <header>
             <h1>Sobre</h1>
-            <button type="button" id="fecharSobre" class="clicavel"><img src="Recursos/fechar.png" class="icon"></button>
+            <button type="button" id="fecharSobre" class="clicavel"><img src="Recursos/fechar.png"
+                    class="icon"></button>
         </header>
         <div class="wrapper">
             <h2>O que é o Felps Todo Dia?</h2>
@@ -116,9 +127,11 @@
                     target="_blank"><span>Moss</span></a> para comemorar o <i>anoversário</i> do <a
                     href="https://twitch.tv/felps" target="_blank"><span>Felps</span></a> em 2022. O projeto consistiu
                 em desenhar diferentes skins do Felps todo dia até o ano acabar.</p>
-            <p style="text-align: center; font-style: italic;"><a href="Imagens/final22.png" target="_blank">Imagem final de 2022</a></p>
+            <p style="text-align: center; font-style: italic;"><a href="Imagens/final22.png" target="_blank">Imagem
+                    final de 2022</a></p>
             <br>
-            <p>Em 2023 o projeto retornou. Porém, desta vez, foram feitos 24 desenhos, cada um para 1 das 24 horas do aniversário do Felps.</p>
+            <p>Em 2023 o projeto retornou. Porém, desta vez, foram feitos 24 desenhos, cada um para 1 das 24 horas do
+                aniversário do Felps.</p>
             <h2>Atalhos do teclado</h2>
             <ul>
                 <li><span>tab</span> e <span>shift + tab</span>: selecionar Felps.</li>
@@ -131,7 +144,9 @@
                 <li><span>esc</span>: fechar janelas.</li>
             </ul>
             <h2>Encontrou algum bug?</h2>
-            <p>Encontrou algum bug? Tem alguma crítica? Me mande uma <a href="https://linktr.ee/NekoRaita">mensagem</a> ou faça uma <a target="_blank" href="https://github.com/DouglasFlorindo/FelpsTodoDiaAtlas" target="_blank">contribuição</a>.</p>
+            <p>Encontrou algum bug? Tem alguma crítica? Me mande uma <a href="https://linktr.ee/NekoRaita">mensagem</a>
+                ou faça uma <a target="_blank" href="https://github.com/DouglasFlorindo/FelpsTodoDiaAtlas"
+                    target="_blank">contribuição</a>.</p>
             <h2>Créditos</h2>
             <div class="wrapperCreditos">
                 <div class="wrapperItem">
@@ -151,7 +166,8 @@
     <dialog id="boasVindasModal" aria-label="Boas Vindas">
         <header>
             <h1>Boas Vindas ao Atlas!</h1>
-            <button type="button" id="fecharBoasVindas" class="clicavel"><img src="Recursos/fechar.png" class="icon"></button>
+            <button type="button" id="fecharBoasVindas" class="clicavel"><img src="Recursos/fechar.png"
+                    class="icon"></button>
         </header>
         <div class="wrapper">
             <p>Seja muito bem-vinde ao Atlas Felps Todo Dia :D</p>

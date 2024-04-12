@@ -4,8 +4,12 @@ export let idPasso = 0;
 let numObjects = felpsTutorialObjects.length;
 
 const imagemPasso = document.querySelector("#imgTutorial2024");
-const numPasso = document.querySelector("#numPasso");
 const dataPasso = document.querySelector("#dataPasso");
+
+const inputPasso = document.querySelector("#inputPasso");
+inputPasso.addEventListener("change", () => {
+    mostrarPasso(inputPasso.value - 1)
+})
 
 const buttonAnterior = document.querySelector("#tutorialPassoAnterior");
 buttonAnterior.addEventListener("click", () => selecionarPasso(false));
@@ -27,15 +31,18 @@ export function selecionarPasso(controle) {
 }
 
 export function mostrarPasso(passo) {
+    passo = parseInt(passo);
+    passo < 0?passo = 0:null;
+    passo > numObjects - 1?passo = numObjects - 1:null; 
+    inputPasso.value = passo + 1;
     idPasso = passo;
     let passoObject = felpsTutorialObjects[idPasso] || felpsTutorialObjects[0];
-    if (passo > 99) {
-        imagemPasso.src = `../FelpsTodoDiaAtlas/Imagens2024/p101.webp`;
+    if (passo > 102) {
+        imagemPasso.src = `../FelpsTodoDiaAtlas/Imagens2024/p103.webp`;
     } else {
         imagemPasso.src = `../FelpsTodoDiaAtlas/Imagens2024/${passoObject.arquivo}.webp`;
     }
-    numPasso.textContent = `Passo ${passoObject.passo}`;
-    numPasso.href = passoObject.tweet;
+    dataPasso.href = passoObject.tweet;
     dataPasso.textContent = passoObject.data;
 }
 
