@@ -6,12 +6,12 @@ const infoModal = document.querySelector("#infoModal");
 const catalogoModal = document.querySelector("#catalogoModal");
 const boasVindasModal = document.querySelector("#boasVindasModal");
 
+let preload = false;
 let inputSenha = "";
 
 populateAtlas("divAtlas", true);
 populateCatalogo();
 mostrarPasso(0);
-preloadImagens();
 
 if (!localStorage.getItem("modalShown")) {
     boasVindasModal.showModal()
@@ -20,7 +20,11 @@ if (!localStorage.getItem("modalShown")) {
 
 const formFiltroFelps = document.querySelector("#formFiltroFelps");
 formFiltroFelps.reset();
-formFiltroFelps.addEventListener("change", () => filtrarFelps(felpsInfo));
+formFiltroFelps.addEventListener("change", () => {
+    filtrarFelps(felpsInfo);
+    preload ? null : preloadImagens();
+    preload = true;
+});
 
 document.querySelector("#abrirCatalogo").addEventListener("click", () => catalogoModal.showModal());
 document.querySelector("#fecharCatalogo").addEventListener("click", function () {

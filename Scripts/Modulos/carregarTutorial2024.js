@@ -48,6 +48,7 @@ export function mostrarPasso(passo) {
 }
 
 export function preloadImagens() {
+    console.log("Pré-carregando imagens...")
     try {
         for (const object of felpsTutorialObjects) {
             const img = new Image();
