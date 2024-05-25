@@ -1,6 +1,6 @@
 import { populateAtlas, populateCatalogo, randomizarPosicoes, selecionarInfo, alterarEscala, verificarSenha, felpsInfo } from './Modulos/functions.js';
 import { filtrarFelps } from './Modulos/filtroFelps.js';
-import { idPasso, mostrarPasso } from "./Modulos/carregarTutorial2024.js";
+import { idPasso, mostrarPasso, preloadImagens } from "./Modulos/carregarTutorial2024.js";
 
 const infoModal = document.querySelector("#infoModal");
 const catalogoModal = document.querySelector("#catalogoModal");
@@ -11,6 +11,7 @@ let inputSenha = "";
 populateAtlas("divAtlas", true);
 populateCatalogo();
 mostrarPasso(0);
+preloadImagens();
 
 if (!localStorage.getItem("modalShown")) {
     boasVindasModal.showModal()
