@@ -38,8 +38,8 @@ export function mostrarPasso(passo) {
     inputPasso.value = passo + 1;
     idPasso = passo;
     let passoObject = felpsTutorialObjects[idPasso] || felpsTutorialObjects[0];
-    if (passo >= 146) {
-        imagemPasso.src = `../FelpsTodoDiaAtlas/Imagens2024/p146.webp`;
+    if (passo >= 155) {
+        imagemPasso.src = `../FelpsTodoDiaAtlas/Imagens2024/p155.webp`;
     } else {
         imagemPasso.src = `../FelpsTodoDiaAtlas/Imagens2024/${passoObject.arquivo}.webp`;
     }
