@@ -113,8 +113,4 @@ document.addEventListener("keydown", function (event) {
     }
 });
 
-window.addEventListener("load", () => {
-    console.log("Recursos carregados")
-    tituloPrincipal.textContent = "Felps Todo Dia Atlas";
-    tituloPrincipal.classList = "";
-})
+
