@@ -547,6 +547,10 @@ button.felps img {
     z-index: -1;
 }
 
+.loading {
+    animation: loading 4s infinite 
+}
+
 /* ========================================== */
 
 @keyframes spin {
@@ -628,6 +632,20 @@ button.felps img {
     100% {
         opacity: 0;
         top: 120%
+    }
+}
+
+@keyframes loading {
+    0% {
+        opacity: 1
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
     }
 }
 

@@ -6,6 +6,8 @@ const infoModal = document.querySelector("#infoModal");
 const catalogoModal = document.querySelector("#catalogoModal");
 const boasVindasModal = document.querySelector("#boasVindasModal");
 
+const tituloPrincipal = document.querySelector("#sectionPrincipalH1")
+
 let preload = false;
 let inputSenha = "";
 
@@ -111,3 +113,7 @@ document.addEventListener("keydown", function (event) {
     }
 });
 
+document.addEventListener("load", () => {
+    tituloPrincipal.textContent = "Felps Todo Dia Atlas";
+    tituloPrincipal.classList = "";
+})
