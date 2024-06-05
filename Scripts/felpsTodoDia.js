@@ -113,7 +113,7 @@ document.addEventListener("keydown", function (event) {
     }
 });
 
-document.addEventListener("load", () => {
+window.addEventListener("load", () => {
     print("carregado")
     tituloPrincipal.textContent = "Felps Todo Dia Atlas";
     tituloPrincipal.classList = "";
